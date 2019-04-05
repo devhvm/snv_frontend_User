@@ -1,0 +1,34 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "standard",
+    "standard-jsx",
+    "plugin:react/recommended",
+    "plugin:compat/recommended"
+  ],
+  "plugins": [
+    "react-hooks",
+    "compat"
+  ],
+  "rules": {
+    "react/prop-types": 0,
+    "standard/computed-property-even-spacing": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react/display-name": false,
+    "compat/compat": "error"
+  },
+  "parser": "babel-eslint",
+  "globals": {
+    "__API_DOMAIN__": true,
+    "__AUTH_DOMAIN__": true,
+    "__CLIENTID__": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
