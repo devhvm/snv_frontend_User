@@ -1,0 +1,41 @@
+node {
+    stage('Checkout') {
+        git url: 'https://github.com/devhvm/snv_frontend_Admin.git', branch: 'development'
+    }
+    stage("build") {
+        docker.image("node:10.15.3-alpine").inside() { c ->
+            stage('build') {
+                sh "npm install"
+                sh "npm run build"
+            }
+        }
+    }
+    
+    def dockerImage
+    stage('build docker') {
+        echo 'I only execute on the development branch'
+        dockerImage = docker.build('snv-development/frontend-admin', '.')
+    } 
+    stage ('Run') {
+        
+        echo 'I only execute on the development branch'
+        try {
+            sh '( docker stop frontend-admin-app-dev > /dev/null && echo Stopped container frontend-admin-app-dev && \
+  docker rm frontend-admin-app-dev ) 2>/dev/null || true'
+        } catch(err) {
+            
+        }
+        docker.image("snv-development/frontend-admin").run('--name frontend-admin-app-dev --net network-snv-dev -p 9998:80')
+    
+        
+    }
+    stage ('Final') {
+        // Git committer email
+        def GIT_COMMIT_EMAIL = sh (
+            script: 'git --no-pager show -s --format=\'%ae\'',
+            returnStdout: true
+        ).trim()
+        echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+       
+    }
+}

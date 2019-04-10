@@ -1,21 +1,10 @@
-# base image
-FROM node:10.15.3-alpine
+FROM centos:latest
 
-# Setting working directory. All the path will be relative to WORKDIR
-WORKDIR /usr/src/app
+RUN yum -y install httpd
+WORKDIR /var/www/html
 
-# Installing dependencies
-COPY package*.json ./
-RUN npm install
+COPY build ./
 
-# Copying source files
-COPY . .
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
-# Building app
-RUN npm run build
-
-# Make port 3000 available to the world outside this container
-EXPOSE 3000
-
-# Running the app
-CMD [ "npm", "start" ]
+EXPOSE 80
