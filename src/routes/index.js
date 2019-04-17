@@ -1,7 +1,6 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
-import AdminDashBoardPage from './AdminDashBoardPage'
-import UserDashBoardPage from './UserDashBoardPage'
+import UserDashBoardPage from './DashBoardPage'
 
 const routes = (
   <div className='App'>

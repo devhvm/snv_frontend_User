@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { Layout } from 'antd'
-import UserHeader from '../components/UserHeader'
+import UserHeader from '../components/Header'
 import Footer from '../components/Footer'
 import styled from 'styled-components'
 import HomePage from '../pages/HomePage'
@@ -54,9 +54,7 @@ function DashboardPage () {
       {login ? (
         <RootLayout>
           <Layout>
-            <UserHeader
-              logoutReq={logoutReq}
-            />
+            <UserHeader logoutReq={logoutReq} />
             <LayoutContent>
               <ContentWrapper style={{ marginTop: '60px' }}>
                 <Switch>
@@ -78,27 +76,27 @@ function DashboardPage () {
                   />
                   <Route
                     exact
-                    path='/phathanhmau/search'
+                    path='/phathanhmau/truyluc'
                     component={MauPhatHanhSearch}
                   />
                   <Route
                     exact
-                    path='/phathanhmau/danhsachdangxuli'
+                    path='/maubaocao/danhsachdangxuli'
                     component={MauBaoCaoProcessing}
                   />
                   <Route
                     exact
-                    path='/phathanhmau/danhsachyeucaudieuchinh'
+                    path='/maubaocao/danhsachyeucaudieuchinh'
                     component={MauBaoCaoEditing}
                   />
                   <Route
                     exact
-                    path='/phathanhmau/danhsachchokyduyet'
+                    path='/maubaocao/danhsachchokyduyet'
                     component={MauBaoCaoWaitForApproval}
                   />
                   <Route
                     exact
-                    path='/phathanhmau/search'
+                    path='/maubaocao/truyluc'
                     component={MauBaoCaoSearch}
                   />
                   <Route

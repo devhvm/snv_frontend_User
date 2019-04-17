@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { Table, Layout, Tabs, Button, Input, Select, DatePicker, Form } from 'antd'
+import {
+  Table,
+  Layout,
+  Tabs,
+  Button,
+  Input,
+  Select,
+  DatePicker,
+  Form
+} from 'antd'
 import styled from 'styled-components'
 import moment from 'moment'
 import Modal from 'antd/lib/modal'
@@ -381,31 +390,38 @@ function MauBaoCao () {
     }
   ]
 
-  const columnsSmall = [{
-    title: 'Mã Mẫu',
-    dataIndex: 'maMau'
-  }, {
-    title: 'Tên Mẫu',
-    dataIndex: 'tenMau'
-  }]
-  const dataSmall = [{
-    key: '1',
-    maMau: 32,
-    tenMau: 'Báo Cáo Thanh Niên'
-  }, {
-    key: '2',
-    maMau: 33,
-    tenMau: 'Báo Cáo Thanh Niên'
-  }, {
-    key: '3',
-    maMau: 34,
-    tenMau: 'Báo Cáo Thanh Niên'
-  }]
+  const columnsSmall = [
+    {
+      title: 'Mã Mẫu',
+      dataIndex: 'maMau'
+    },
+    {
+      title: 'Tên Mẫu',
+      dataIndex: 'tenMau'
+    }
+  ]
+  const dataSmall = [
+    {
+      key: '1',
+      maMau: 32,
+      tenMau: 'Báo Cáo Thanh Niên'
+    },
+    {
+      key: '2',
+      maMau: 33,
+      tenMau: 'Báo Cáo Thanh Niên'
+    },
+    {
+      key: '3',
+      maMau: 34,
+      tenMau: 'Báo Cáo Thanh Niên'
+    }
+  ]
 
-  const [maMauPhatHanh, setMaMauPhatHanh] = useState('')
-  const [tenMauPhatHanh, setTenMauPhatHanh] = useState('')
-  const [ngayPhatHanh, setNgayPhatHanh] = useState(moment().format(dateFormat))
-  const [trangThai, setTrangThai] = useState('')
+  const [maMauPhatHanh] = useState('')
+  const [tenMauPhatHanh] = useState('')
+  const [ngayPhatHanh] = useState(moment().format(dateFormat))
+  // const [trangThai, setTrangThai] = useState('')
   const [visible, setVisible] = useState(false)
 
   return (
@@ -414,7 +430,7 @@ function MauBaoCao () {
         <Layout.Content style={{ background: '#fff' }}>
           <h3>Danh sách Phát Hành Mẫu Đang Xử Lí</h3>
           <Tabs defaultActiveKey='1'>
-            <TabPane tab='Tab 1' key='1'>
+            <TabPane tab='32' key='1'>
               <FormSearchMauPhatHanh>
                 <Form.Item label='Mã mẫu:'>
                   <InputSearchMauPhatHanh
@@ -429,7 +445,10 @@ function MauBaoCao () {
                   />
                 </Form.Item>
                 <Form.Item label='Ngày phát hành:'>
-                  <DatePickerSearchMauPhatHanh defaultValue={moment(ngayPhatHanh, dateFormat)} placeholder='Nhập ngày phát hành' />
+                  <DatePickerSearchMauPhatHanh
+                    defaultValue={moment(ngayPhatHanh, dateFormat)}
+                    placeholder='Nhập ngày phát hành'
+                  />
                 </Form.Item>
                 <Form.Item label='Chỉ tiêu:'>
                   <SelectSearchMauPhatHanh defaultValue='Chỉ tiêu'>
@@ -449,10 +468,15 @@ function MauBaoCao () {
                 <ButtonSearchMauPhatHanh
                   type='primary'
                   onClick={() => setVisible(true)}
-                >Xoá
+                >
+                  Xoá
                 </ButtonSearchMauPhatHanh>
-                <ButtonSearchMauPhatHanh type='primary'>Lưu Lại</ButtonSearchMauPhatHanh>
-                <ButtonSearchMauPhatHanh type='primary'>Hoàn Thành</ButtonSearchMauPhatHanh>
+                <ButtonSearchMauPhatHanh type='primary'>
+                  Lưu Lại
+                </ButtonSearchMauPhatHanh>
+                <ButtonSearchMauPhatHanh type='primary'>
+                  Hoàn Thành
+                </ButtonSearchMauPhatHanh>
               </div>
               <ListTable
                 columns={columns}
@@ -463,15 +487,86 @@ function MauBaoCao () {
                 style={{ marginRight: '20px' }}
               />
             </TabPane>
-            <TabPane tab='Tab 2' key='2'>Content of Tab Pane 2</TabPane>
-            <TabPane tab='Tab 3' key='3'>Content of Tab Pane 3</TabPane>
+            <TabPane tab='33' key='2'>
+              <FormSearchMauPhatHanh>
+                <Form.Item label='Mã mẫu:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập mã mẫu phát hành'
+                    value={maMauPhatHanh}
+                  />
+                </Form.Item>
+                <Form.Item label='Tên mẫu:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập tên mẫu phát hành'
+                    value={tenMauPhatHanh}
+                  />
+                </Form.Item>
+                <Form.Item label='Ngày phát hành:'>
+                  <DatePickerSearchMauPhatHanh
+                    defaultValue={moment(ngayPhatHanh, dateFormat)}
+                    placeholder='Nhập ngày phát hành'
+                  />
+                </Form.Item>
+                <Form.Item label='Chỉ tiêu:'>
+                  <SelectSearchMauPhatHanh defaultValue='Chỉ tiêu'>
+                    <Option value='Chỉ tiêu 1'>Tiêu chí 1</Option>
+                    <Option value='Chỉ tiêu 2'>Tiêu chí 2</Option>
+                  </SelectSearchMauPhatHanh>
+                </Form.Item>
+                <Form.Item label='Loại báo cáo:'>
+                  <SelectSearchMauPhatHanh defaultValue='Loại báo cáo'>
+                    <Option value='Đã phát hành'>Đã phát hành</Option>
+                    <Option value='Tạo mới'>Tạo mới</Option>
+                    <Option value='Đã xoá'>Đã xoá</Option>
+                  </SelectSearchMauPhatHanh>
+                </Form.Item>
+              </FormSearchMauPhatHanh>
+              <div style={{ display: 'flex', width: '65%' }}>
+                <ButtonSearchMauPhatHanh
+                  type='primary'
+                  onClick={() => setVisible(true)}
+                >
+                  Xoá
+                </ButtonSearchMauPhatHanh>
+                <ButtonSearchMauPhatHanh type='primary'>
+                  Lưu Lại
+                </ButtonSearchMauPhatHanh>
+                <ButtonSearchMauPhatHanh type='primary'>
+                  Hoàn Thành
+                </ButtonSearchMauPhatHanh>
+              </div>
+              <ListTable
+                columns={columns}
+                dataSource={data}
+                bordered
+                pagination={{ defaultPageSize: 20, pageSize: 20 }}
+                scroll={{ x: 1630, y: 400 }}
+                style={{ marginRight: '20px' }}
+              />
+            </TabPane>
+            <TabPane tab='34' key='3'>
+              Content of Tab Pane 3
+            </TabPane>
           </Tabs>
         </Layout.Content>
-        <Layout.Sider width={300} style={{ background: '#fff', borderLeft: '1px solid #ccc' }}>
+        <Layout.Sider
+          width={300}
+          style={{ background: '#fff', borderLeft: '1px solid #ccc' }}
+        >
           <Layout.Content>
-            <Input placeholder='Tìm Kiếm' />
-            <Button type='primary' style={{ marginLeft: '20px', marginTop: '10px' }}>Tạo Mới</Button>
-            <ListTable style={{ marginLeft: '20px' }} columns={columnsSmall} dataSource={dataSmall} size='small' />
+            <Input placeholder='Tìm Kiếm' style={{ marginLeft: '20px' }} />
+            <Button
+              type='primary'
+              style={{ marginLeft: '20px', marginTop: '10px' }}
+            >
+              Tạo Mới
+            </Button>
+            <ListTable
+              style={{ marginLeft: '20px' }}
+              columns={columnsSmall}
+              dataSource={dataSmall}
+              size='small'
+            />
           </Layout.Content>
         </Layout.Sider>
         <Modal
