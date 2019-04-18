@@ -428,9 +428,26 @@ function MauBaoCao () {
     <React.Fragment>
       <Layout>
         <Layout.Content style={{ background: '#fff' }}>
-          <h3>Danh sách Phát Hành Mẫu Đang Xử Lí</h3>
+          <div
+            style={{
+              display: 'flex',
+              width: '100%',
+              justifyContent: 'space-around'
+            }}
+          >
+            <h3>Danh sách Phát Hành Mẫu Đang Xử Lí</h3>
+            <ButtonSearchMauPhatHanh
+              type='primary'
+              onClick={() => setVisible(true)}
+            >
+              Xoá
+            </ButtonSearchMauPhatHanh>
+            <ButtonSearchMauPhatHanh type='primary'>
+              Lưu Lại
+            </ButtonSearchMauPhatHanh>
+          </div>
           <Tabs defaultActiveKey='1'>
-            <TabPane tab='32' key='1'>
+            <TabPane tab='Báo cáo thanh niên(new)' key='1'>
               <FormSearchMauPhatHanh>
                 <Form.Item label='Mã mẫu:'>
                   <InputSearchMauPhatHanh
@@ -464,20 +481,6 @@ function MauBaoCao () {
                   </SelectSearchMauPhatHanh>
                 </Form.Item>
               </FormSearchMauPhatHanh>
-              <div style={{ display: 'flex', width: '65%' }}>
-                <ButtonSearchMauPhatHanh
-                  type='primary'
-                  onClick={() => setVisible(true)}
-                >
-                  Xoá
-                </ButtonSearchMauPhatHanh>
-                <ButtonSearchMauPhatHanh type='primary'>
-                  Lưu Lại
-                </ButtonSearchMauPhatHanh>
-                <ButtonSearchMauPhatHanh type='primary'>
-                  Hoàn Thành
-                </ButtonSearchMauPhatHanh>
-              </div>
               <ListTable
                 columns={columns}
                 dataSource={data}
@@ -486,8 +489,11 @@ function MauBaoCao () {
                 scroll={{ x: 1630, y: 400 }}
                 style={{ marginRight: '20px' }}
               />
+              <ButtonSearchMauPhatHanh type='primary'>
+                Hoàn Thành
+              </ButtonSearchMauPhatHanh>
             </TabPane>
-            <TabPane tab='33' key='2'>
+            <TabPane tab='Báo cáo thanh niên(new)' key='2'>
               <FormSearchMauPhatHanh>
                 <Form.Item label='Mã mẫu:'>
                   <InputSearchMauPhatHanh
@@ -521,20 +527,6 @@ function MauBaoCao () {
                   </SelectSearchMauPhatHanh>
                 </Form.Item>
               </FormSearchMauPhatHanh>
-              <div style={{ display: 'flex', width: '65%' }}>
-                <ButtonSearchMauPhatHanh
-                  type='primary'
-                  onClick={() => setVisible(true)}
-                >
-                  Xoá
-                </ButtonSearchMauPhatHanh>
-                <ButtonSearchMauPhatHanh type='primary'>
-                  Lưu Lại
-                </ButtonSearchMauPhatHanh>
-                <ButtonSearchMauPhatHanh type='primary'>
-                  Hoàn Thành
-                </ButtonSearchMauPhatHanh>
-              </div>
               <ListTable
                 columns={columns}
                 dataSource={data}
@@ -544,7 +536,7 @@ function MauBaoCao () {
                 style={{ marginRight: '20px' }}
               />
             </TabPane>
-            <TabPane tab='34' key='3'>
+            <TabPane tab='Báo cáo thanh niên(new)' key='3'>
               Content of Tab Pane 3
             </TabPane>
           </Tabs>

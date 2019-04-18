@@ -35,21 +35,22 @@ const AppName = styled.span`
 export default function UserHeader (props) {
   useEffect(() => {
     axios({
-      url: 'http://210.2.91.13:9999/api/authenticate',
+      url: 'http://210.2.91.13:9999/api/menu-items',
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*'
       }
     })
       .then(res => {
-        localStorage.setItem('id_token', res.data.id_token)
-        props.loginReq()
+        console.log(res)
+        // localStorage.setItem('id_token', res.data.id_token)
+        // props.loginReq()
       })
       .catch(err => {
         alert('Sai username hay password, mời thử lại')
         console.log(err)
       })
-  })
+  }, [])
   const menuList = [
     {
       name: 'PHÁT HÀNH MẪU',
