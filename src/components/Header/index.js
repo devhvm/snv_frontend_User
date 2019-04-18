@@ -18,10 +18,11 @@
 //   })
 // )(Header)
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Layout, Menu, Avatar } from 'antd'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const { Header, Footer } = Layout
 
@@ -31,7 +32,24 @@ const AppName = styled.span`
   color: #fff;
 `
 
-export default function UserHeader () {
+export default function UserHeader (props) {
+  useEffect(() => {
+    axios({
+      url: 'http://210.2.91.13:9999/api/authenticate',
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+      .then(res => {
+        localStorage.setItem('id_token', res.data.id_token)
+        props.loginReq()
+      })
+      .catch(err => {
+        alert('Sai username hay password, mời thử lại')
+        console.log(err)
+      })
+  })
   const menuList = [
     {
       name: 'PHÁT HÀNH MẪU',
@@ -160,7 +178,7 @@ export default function UserHeader () {
           })}
           <Menu.SubMenu key='21' title={<Avatar size='large' icon='user' />}>
             <Menu.Item>change password</Menu.Item>
-            <Menu.Item>logout</Menu.Item>
+            <Menu.Item onClick={props.logoutReq}>logout</Menu.Item>
           </Menu.SubMenu>
         </Menu>
       </Header>

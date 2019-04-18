@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { Layout } from 'antd'
-import UserHeader from '../components/Header'
+import Header from '../components/Header'
 import Footer from '../components/Footer'
 import styled from 'styled-components'
 import HomePage from '../pages/HomePage'
@@ -37,7 +37,7 @@ const ContentWrapper = styled.div`
 `
 
 function DashboardPage () {
-  const [login, setLogin] = useState(true)
+  const [login, setLogin] = useState(false)
 
   const loginReq = () => {
     setLogin(true)
@@ -54,7 +54,7 @@ function DashboardPage () {
       {login ? (
         <RootLayout>
           <Layout>
-            <UserHeader logoutReq={logoutReq} />
+            <Header logoutReq={logoutReq} />
             <LayoutContent>
               <ContentWrapper style={{ marginTop: '60px' }}>
                 <Switch>
