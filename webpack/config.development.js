@@ -23,9 +23,6 @@ const devConf = {
     contentBase: ['build'],
     headers: {
       'Access-Control-Allow-Origin': '*'
-    },
-    proxy: {
-      '/url': 'http://vtools.xyz:9999'
     }
   }
 }

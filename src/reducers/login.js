@@ -1,41 +1,55 @@
 import axios from 'axios'
 import { handleActions, createAction } from 'redux-actions'
+import { getMenuItem } from './menu'
 
 // Action
-export const LOGIN = 'LOGIN'
+export const LOGIN_STATUS = 'LOGIN_STATUS'
 
 // Action Creator
-export const login = () => {
-  return dispatch => {
-    axios({
-      url: 'http://210.2.91.13:8771/api/authenticate',
-      method: 'POST',
-      data: {
-        password: 'string',
-        rememberMe: true,
-        username: 'string'
-      }
+export const loginReq = item => dispatch => {
+  return axios({
+    url: 'http://vtools.xyz:9999/api/authenticate',
+    data: {
+      username: item.userName,
+      password: item.userPassword,
+      rememberMe: item.rememberMe
+    },
+    method: 'POST'
+  })
+    .then(res => {
+      localStorage.setItem('jwt_token', res.data.id_token)
     })
-      .then(res => {
-        dispatch(loginRequest(res))
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+    .then(() => {
+      dispatch(getMenuItem())
+      // dispatch(setLoginStatus(true))
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
-const loginRequest = createAction(LOGIN)
+export const logOutReq = () => dispatch => {
+  dispatch(setLoginStatus(false))
+  localStorage.removeItem('jwt_token')
+}
+
+export const setLoginStatus = status => dispatch => {
+  return dispatch(getLoginStatus(status))
+}
+
+const getLoginStatus = createAction(LOGIN_STATUS)
 
 // Initial State
-const initialState = {}
+const initialState = {
+  loginStatus: false
+}
 
 // reducer
 export default handleActions(
   {
-    [LOGIN]: (state, { payload }) => ({
+    [LOGIN_STATUS]: (state, { payload }) => ({
       ...state,
-      login: payload
+      loginStatus: payload
     })
   },
   initialState

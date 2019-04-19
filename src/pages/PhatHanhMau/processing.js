@@ -428,26 +428,35 @@ function MauBaoCao () {
     <React.Fragment>
       <Layout>
         <Layout.Content style={{ background: '#fff' }}>
-          <div
-            style={{
-              display: 'flex',
-              width: '100%',
-              justifyContent: 'space-around'
-            }}
-          >
-            <h3>Danh sách Phát Hành Mẫu Đang Xử Lí</h3>
-            <ButtonSearchMauPhatHanh
-              type='primary'
-              onClick={() => setVisible(true)}
-            >
-              Xoá
-            </ButtonSearchMauPhatHanh>
-            <ButtonSearchMauPhatHanh type='primary'>
-              Lưu Lại
-            </ButtonSearchMauPhatHanh>
-          </div>
           <Tabs defaultActiveKey='1'>
             <TabPane tab='Báo cáo thanh niên(new)' key='1'>
+              <div
+                style={{
+                  display: 'flex',
+                  width: '100%',
+                  justifyContent: 'flex-end'
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <ButtonSearchMauPhatHanh
+                    type='primary'
+                    onClick={() => setVisible(true)}
+                  >
+                    Xoá
+                  </ButtonSearchMauPhatHanh>
+                  <ButtonSearchMauPhatHanh
+                    type='primary'
+                    style={{ marginLeft: '30px' }}
+                  >
+                    Lưu Lại
+                  </ButtonSearchMauPhatHanh>
+                </div>
+              </div>
               <FormSearchMauPhatHanh>
                 <Form.Item label='Mã mẫu:'>
                   <InputSearchMauPhatHanh
@@ -489,9 +498,11 @@ function MauBaoCao () {
                 scroll={{ x: 1630, y: 400 }}
                 style={{ marginRight: '20px' }}
               />
-              <ButtonSearchMauPhatHanh type='primary'>
-                Hoàn Thành
-              </ButtonSearchMauPhatHanh>
+              <div>
+                <ButtonSearchMauPhatHanh type='primary'>
+                  Hoàn Thành
+                </ButtonSearchMauPhatHanh>
+              </div>
             </TabPane>
             <TabPane tab='Báo cáo thanh niên(new)' key='2'>
               <FormSearchMauPhatHanh>

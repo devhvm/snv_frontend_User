@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { Layout } from 'antd'
 import Header from '../components/Header'
@@ -18,6 +18,8 @@ import MauBaoCaoProcessing from '../pages/MauBaoCao/processing'
 import MauBaoCaoEditing from '../pages/MauBaoCao/editing'
 import MauBaoCaoWaitForApproval from '../pages/MauBaoCao/waitForApproval'
 import MauBaoCaoSearch from '../pages/MauBaoCao/search'
+import { connect } from 'react-redux'
+import { loginReq } from '../reducers/login'
 
 const RootLayout = styled(Layout)`
   && {
@@ -36,25 +38,26 @@ const ContentWrapper = styled.div`
   }
 `
 
-function DashboardPage () {
-  const [login, setLogin] = useState(false)
+function DashboardPage ({ loginStatus }) {
+  // const [login, setLogin] = useState(false)
+  // console.log('loginStatus', loginStatus)
+  //
+  // const loginShow = () => {
+  //   setLogin(true)
+  // }
+  //
+  // const logoutReq = () => {
+  //   setLogin(false)
+  // }
 
-  const loginReq = () => {
-    setLogin(true)
-  }
-
-  const logoutReq = () => {
-    setLogin(false)
-  }
-
-  const ExContext = React.createContext(login)
+  // const ExContext = React.createContext(login)
 
   return (
     <div className='App'>
-      {login ? (
+      {loginStatus ? (
         <RootLayout>
           <Layout>
-            <Header logoutReq={logoutReq} />
+            <Header />
             <LayoutContent>
               <ContentWrapper style={{ marginTop: '60px' }}>
                 <Switch>
@@ -118,10 +121,20 @@ function DashboardPage () {
           </Layout>
         </RootLayout>
       ) : (
-        <LoginPage ExContext={ExContext} loginReq={loginReq} />
+        <LoginPage
+        // ExContext={ExContext}
+        // loginShow={loginShow}
+        />
       )}
     </div>
   )
 }
 
-export default DashboardPage
+export default connect(
+  state => ({
+    ...state.login
+  }),
+  {
+    loginReq
+  }
+)(DashboardPage)

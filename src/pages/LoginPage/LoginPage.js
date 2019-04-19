@@ -29,19 +29,16 @@ const LoginInput = styled(Input)`
   margin-bottom: 10px !important;
 `
 
-function LoginPage (props) {
+function LoginPage ({ loginReq }) {
   const [userName, setUserName] = useState('')
   const [userPassword, setUserPassword] = useState('')
 
-  const user = {
-    name: 'khuong',
-    pass: '123'
-  }
   const handleClick = () => {
-    if (userName === user.name && userPassword === user.pass) {
-    } else {
-      alert('Sai tên hoặc pass, mời đăng nhập lại')
-    }
+    loginReq({
+      userName,
+      userPassword,
+      rememberMe: true
+    })
   }
 
   return (
