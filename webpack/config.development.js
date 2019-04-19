@@ -23,10 +23,10 @@ const devConf = {
     contentBase: ['build'],
     headers: {
       'Access-Control-Allow-Origin': '*'
+    },
+    proxy: {
+      '/url': 'http://vtools.xyz:9999'
     }
-    // proxy: {
-    //   'url': 'http://210.2.91.13:9999'
-    // }
   }
 }
 

@@ -23,6 +23,7 @@ import { Layout, Menu, Avatar } from 'antd'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import token from './../../common/jwtToken'
 
 const { Header, Footer } = Layout
 
@@ -35,10 +36,11 @@ const AppName = styled.span`
 export default function UserHeader (props) {
   useEffect(() => {
     axios({
-      url: 'http://210.2.91.13:9999/api/menu-items',
+      url: 'http://vtools.xyz:9999/phanquyenchucnang/api/menu-items',
       method: 'GET',
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        Authorization: token()
       }
     })
       .then(res => {

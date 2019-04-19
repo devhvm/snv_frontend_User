@@ -54,7 +54,7 @@ function LoginPage (props) {
 
   const handleClick = () => {
     axios({
-      url: 'http://210.2.91.13:9999/api/authenticate',
+      url: 'http://vtools.xyz:9999/api/authenticate',
       method: 'POST',
       data: {
         username: userName,
@@ -66,7 +66,7 @@ function LoginPage (props) {
       }
     })
       .then(res => {
-        localStorage.setItem('id_token', res.data.id_token)
+        localStorage.setItem('jwt_token', res.data.id_token)
         props.loginReq()
       })
       .catch(err => {

@@ -37,7 +37,7 @@ const ContentWrapper = styled.div`
 `
 
 function DashboardPage () {
-  const [login, setLogin] = useState(true)
+  const [login, setLogin] = useState(false)
 
   const loginReq = () => {
     setLogin(true)
