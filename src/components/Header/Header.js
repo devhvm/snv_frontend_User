@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Layout, Menu, Avatar } from 'antd'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -11,7 +11,10 @@ const AppName = styled.span`
   color: #fff;
 `
 
-export default function UserHeader ({ menu, logOutReq }) {
+export default function UserHeader ({ menu, logOutReq, getMenuItem }) {
+  useEffect(() => {
+    getMenuItem()
+  }, [])
   console.log('menu', menu)
   const menuList = [
     {
@@ -143,6 +146,7 @@ export default function UserHeader ({ menu, logOutReq }) {
             <Menu.Item>change password</Menu.Item>
             <Menu.Item
               onClick={() => {
+                localStorage.removeItem('loginStatus')
                 logOutReq()
               }}
             >

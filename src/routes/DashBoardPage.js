@@ -38,7 +38,7 @@ const ContentWrapper = styled.div`
   }
 `
 
-function DashboardPage ({ loginStatus }) {
+function DashboardPage () {
   // const [login, setLogin] = useState(false)
   // console.log('loginStatus', loginStatus)
   //
@@ -51,6 +51,7 @@ function DashboardPage ({ loginStatus }) {
   // }
 
   // const ExContext = React.createContext(login)
+  let loginStatus = localStorage.getItem('loginStatus')
 
   return (
     <div className='App'>

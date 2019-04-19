@@ -28,9 +28,7 @@ const FormSearchMauPhatHanh = styled(Form)`
 `
 
 const ButtonSearchMauPhatHanh = styled(Button)`
-  display: flex !important;
-  margin: auto;
-  right: 10%;
+  margin-right: 30px;
 `
 
 const InputSearchMauPhatHanh = styled(Input)`
@@ -451,7 +449,7 @@ function MauBaoCao () {
                   </ButtonSearchMauPhatHanh>
                   <ButtonSearchMauPhatHanh
                     type='primary'
-                    style={{ marginLeft: '30px' }}
+                    style={{ marginLeft: '20px' }}
                   >
                     Lưu Lại
                   </ButtonSearchMauPhatHanh>
@@ -498,7 +496,7 @@ function MauBaoCao () {
                 scroll={{ x: 1630, y: 400 }}
                 style={{ marginRight: '20px' }}
               />
-              <div>
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <ButtonSearchMauPhatHanh type='primary'>
                   Hoàn Thành
                 </ButtonSearchMauPhatHanh>

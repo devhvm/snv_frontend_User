@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { handleActions, createAction } from 'redux-actions'
 import token from '../common/jwtToken'
-import { setLoginStatus } from './login'
 
 // Action
 export const MENU_ITEM = 'MENU_ITEM'
@@ -16,9 +15,7 @@ export const getMenuItem = () => dispatch => {
     }
   })
     .then(res => {
-      console.log(res)
       dispatch(getMenuRequest(res.data))
-      dispatch(setLoginStatus(true))
     })
     .catch(err => {
       console.log(err)

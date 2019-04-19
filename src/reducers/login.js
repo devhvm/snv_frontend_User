@@ -18,10 +18,12 @@ export const loginReq = item => dispatch => {
   })
     .then(res => {
       localStorage.setItem('jwt_token', res.data.id_token)
+      localStorage.setItem('loginStatus', true)
     })
     .then(() => {
       dispatch(getMenuItem())
-      // dispatch(setLoginStatus(true))
+      dispatch(setLoginStatus(true))
+      window.location.reload()
     })
     .catch(err => {
       console.log(err)
@@ -29,8 +31,10 @@ export const loginReq = item => dispatch => {
 }
 
 export const logOutReq = () => dispatch => {
-  dispatch(setLoginStatus(false))
+  // dispatch(setLoginStatus(false))
   localStorage.removeItem('jwt_token')
+  localStorage.removeItem('loginStatus')
+  window.location.reload()
 }
 
 export const setLoginStatus = status => dispatch => {
