@@ -11,103 +11,131 @@ const AppName = styled.span`
   color: #fff;
 `
 
-export default function UserHeader ({ menu, logOutReq, getMenuItem }) {
+export default function UserHeader ({
+  menu,
+  logOutReq,
+  getMenuItem,
+  getMenu,
+  getScreen
+}) {
   useEffect(() => {
+    getMenu()
     getMenuItem()
+    getScreen()
   }, [])
-  console.log('menu', menu)
-  const menuList = [
-    {
-      name: 'PHÁT HÀNH MẪU',
-      child: [
-        {
-          screenCode: 5,
-          name: 'DANH SÁCH ĐANG XỬ LÝ',
-          link: '/phathanhmau/danhsachdangxuli'
-        },
-        {
-          screenCode: 6,
-          name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-          link: '/phathanhmau/danhsachyeucaudieuchinh'
-        },
-        {
-          screenCode: 7,
-          name: 'DANH SÁCH CHỜ KÝ DUYỆT',
-          link: '/phathanhmau/danhsachchokyduyet'
-        },
-        {
-          screenCode: 8,
-          name: 'TRUY LỤC',
-          link: '/phathanhmau/truyluc'
+
+  const menuList1 = []
+
+  for (let i in menu.menu) {
+    menuList1.push({ name: menu.menu[i].name, child: [] })
+    for (let j in menu.menuItem) {
+      for (let k in menu.screen) {
+        if (menu.menu[i].menuCode === menu.menuItem[j].menuMenuCode) {
+          if (menu.menuItem[j].screenScreenCode === menu.screen[k].screenCode) {
+            const _menuItem = {
+              screenCode: menu.menuItem[j].screenCode,
+              name: menu.menuItem[j].name,
+              link: menu.screen[k].link
+            }
+            menuList1[i].child.push(_menuItem)
+          }
         }
-      ]
-    },
-    {
-      name: 'MẪU BÁO CÁO',
-      child: [
-        {
-          screenCode: 9,
-          name: 'DANH SÁCH ĐANG XỬ LÝ',
-          link: '/maubaocao/danhsachdangxuli'
-        },
-        {
-          screenCode: 10,
-          name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-          link: '/maubaocao/danhsachyeucaudieuchinh'
-        },
-        {
-          screenCode: 11,
-          name: 'DANH SÁCH CHỜ KÝ DUYỆT',
-          link: '/maubaocao/danhsachchokyduyet'
-        },
-        {
-          screenCode: 12,
-          name: 'TRUY LỤC',
-          link: '/maubaocao/truyluc'
-        }
-      ]
-    },
-    {
-      name: 'BÁO CÁO',
-      child: [
-        {
-          screenCode: 13,
-          name: 'DANH SÁCH ĐANG XỬ LÝ',
-          link: '/baocao/danhsachdangxuli'
-        },
-        {
-          screenCode: 14,
-          name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-          link: '/baocao/danhsachyeucaudieuchinh'
-        },
-        {
-          screenCode: 15,
-          name: 'DANH SÁCH CHỜ KÝ DUYỆT',
-          link: '/baocao/danhsachchokyduyet'
-        },
-        {
-          screenCode: 16,
-          name: 'TRUY LỤC',
-          link: '/baocao/truyluc'
-        }
-      ]
-    },
-    {
-      name: 'TỔNG HỢP DỮ LIỆU',
-      child: [
-        {
-          screenCode: 17,
-          name: 'DANH SÁCH DỮ LIỆU TỔNG HỢP',
-          link: '/tonghopdulieu/danhsachdulieutonghop'
-        },
-        {
-          screenCode: 18,
-          name: 'TRUY LỤC',
-          link: '/tonghopdulieu/truyluc'
-        }
-      ]
+      }
     }
-  ]
+  }
+
+  // const menuList = [
+  //   {
+  //     name: 'PHÁT HÀNH MẪU',
+  //     child: [
+  //       {
+  //         screenCode: 5,
+  //         name: 'DANH SÁCH ĐANG XỬ LÝ',
+  //         link: '/phathanhmau/danhsachdangxuli'
+  //       },
+  //       {
+  //         screenCode: 6,
+  //         name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
+  //         link: '/phathanhmau/danhsachyeucaudieuchinh'
+  //       },
+  //       {
+  //         screenCode: 7,
+  //         name: 'DANH SÁCH CHỜ KÝ DUYỆT',
+  //         link: '/phathanhmau/danhsachchokyduyet'
+  //       },
+  //       {
+  //         screenCode: 8,
+  //         name: 'TRUY LỤC',
+  //         link: '/phathanhmau/truyluc'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     name: 'MẪU BÁO CÁO',
+  //     child: [
+  //       {
+  //         screenCode: 9,
+  //         name: 'DANH SÁCH ĐANG XỬ LÝ',
+  //         link: '/maubaocao/danhsachdangxuli'
+  //       },
+  //       {
+  //         screenCode: 10,
+  //         name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
+  //         link: '/maubaocao/danhsachyeucaudieuchinh'
+  //       },
+  //       {
+  //         screenCode: 11,
+  //         name: 'DANH SÁCH CHỜ KÝ DUYỆT',
+  //         link: '/maubaocao/danhsachchokyduyet'
+  //       },
+  //       {
+  //         screenCode: 12,
+  //         name: 'TRUY LỤC',
+  //         link: '/maubaocao/truyluc'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     name: 'BÁO CÁO',
+  //     child: [
+  //       {
+  //         screenCode: 13,
+  //         name: 'DANH SÁCH ĐANG XỬ LÝ',
+  //         link: '/baocao/danhsachdangxuli'
+  //       },
+  //       {
+  //         screenCode: 14,
+  //         name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
+  //         link: '/baocao/danhsachyeucaudieuchinh'
+  //       },
+  //       {
+  //         screenCode: 15,
+  //         name: 'DANH SÁCH CHỜ KÝ DUYỆT',
+  //         link: '/baocao/danhsachchokyduyet'
+  //       },
+  //       {
+  //         screenCode: 16,
+  //         name: 'TRUY LỤC',
+  //         link: '/baocao/truyluc'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     name: 'TỔNG HỢP DỮ LIỆU',
+  //     child: [
+  //       {
+  //         screenCode: 17,
+  //         name: 'DANH SÁCH DỮ LIỆU TỔNG HỢP',
+  //         link: '/tonghopdulieu/danhsachdulieutonghop'
+  //       },
+  //       {
+  //         screenCode: 18,
+  //         name: 'TRUY LỤC',
+  //         link: '/tonghopdulieu/truyluc'
+  //       }
+  //     ]
+  //   }
+  // ]
 
   return (
     <Layout>
@@ -125,7 +153,7 @@ export default function UserHeader ({ menu, logOutReq, getMenuItem }) {
           <AppName key='23'>
             <Link to='/home'>SNV</Link>
           </AppName>
-          {menuList.map((item, index) => {
+          {menuList1.map((item, index) => {
             return (
               <Menu.SubMenu key={index} title={item.name}>
                 {/* eslint-disable indent */}

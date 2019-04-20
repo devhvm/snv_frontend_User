@@ -65,7 +65,7 @@ function DashboardPage () {
                   <Route exact path='/home' component={HomePage} />
                   <Route
                     exact
-                    path='/phathanhmau/danhsachdangxuli'
+                    path='/phathanhmau/danhsachdangxuly'
                     component={MauPhatHanhProcessing}
                   />
                   <Route
