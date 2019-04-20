@@ -114,7 +114,7 @@ function DashboardPage () {
                     render={props => <MauPhatHanhAdd {...props} />}
                   />
                   <Route exact path='/maubaocao' component={MauBaoCao} />
-                  <Redirect exact from='/' to='/home' component={HomePage} />
+                  <Redirect exact from='/' to='/' component={HomePage} />
                 </Switch>
               </ContentWrapper>
             </LayoutContent>
