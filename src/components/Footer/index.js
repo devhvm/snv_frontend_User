@@ -9,7 +9,7 @@ const LayoutFooter = styled(Layout.Footer)`
 export default function Footer () {
   return (
     <LayoutFooter>
-      Copyright © 2019 Inc. All rights reserved.
+      Copyright Trung tâm Công nghệ Thông tin 2019 Inc. All rights reserved.
     </LayoutFooter>
   )
 }

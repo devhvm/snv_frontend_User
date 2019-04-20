@@ -33,7 +33,6 @@ export const getMenu = () => dispatch => {
     }
   })
     .then(res => {
-      console.log('res', res)
       dispatch(getMenuRequest(res.data))
     })
     .catch(err => {
@@ -64,7 +63,8 @@ const getScreenRequest = createAction(SCREEN)
 // Initial State
 const initialState = {
   menuItem: [],
-  menu: []
+  menu: [],
+  screen: []
 }
 
 // reducer

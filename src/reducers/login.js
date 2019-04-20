@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { handleActions, createAction } from 'redux-actions'
-import { getMenuItem, getMenu, getScreen } from './menu'
 
 // Action
 export const LOGIN_STATUS = 'LOGIN_STATUS'
@@ -21,9 +20,6 @@ export const loginReq = item => dispatch => {
       localStorage.setItem('loginStatus', true)
     })
     .then(() => {
-      dispatch(getMenu())
-      dispatch(getMenuItem())
-      dispatch(getScreen())
       dispatch(setLoginStatus(true))
       window.location.reload()
     })

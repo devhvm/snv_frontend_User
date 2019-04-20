@@ -24,25 +24,29 @@ export default function UserHeader ({
     getScreen()
   }, [])
 
-  const menuList1 = []
+  const menuList = []
+
+  console.log(menu)
 
   for (let i in menu.menu) {
-    menuList1.push({ name: menu.menu[i].name, child: [] })
+    menuList.push({ name: menu.menu[i].name, child: [] })
     for (let j in menu.menuItem) {
       for (let k in menu.screen) {
         if (menu.menu[i].menuCode === menu.menuItem[j].menuMenuCode) {
           if (menu.menuItem[j].screenScreenCode === menu.screen[k].screenCode) {
             const _menuItem = {
-              screenCode: menu.menuItem[j].screenCode,
-              name: menu.menuItem[j].name,
+              screenCode: menu.screen[k].screenCode,
+              name: menu.screen[k].name,
               link: menu.screen[k].link
             }
-            menuList1[i].child.push(_menuItem)
+            menuList[i].child.push(_menuItem)
           }
         }
       }
     }
   }
+
+  console.log(menuList)
 
   // const menuList = [
   //   {
@@ -153,7 +157,7 @@ export default function UserHeader ({
           <AppName key='23'>
             <Link to='/home'>SNV</Link>
           </AppName>
-          {menuList1.map((item, index) => {
+          {menuList.map((item, index) => {
             return (
               <Menu.SubMenu key={index} title={item.name}>
                 {/* eslint-disable indent */}

@@ -502,7 +502,34 @@ function MauBaoCao () {
                 </ButtonSearchMauPhatHanh>
               </div>
             </TabPane>
-            <TabPane tab='Báo cáo thanh niên(new)' key='2'>
+            <TabPane tab='Báo cáo thanh niên(editing)' key='2'>
+              <div
+                style={{
+                  display: 'flex',
+                  width: '100%',
+                  justifyContent: 'flex-end'
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <ButtonSearchMauPhatHanh
+                    type='primary'
+                    onClick={() => setVisible(true)}
+                  >
+                    Xoá
+                  </ButtonSearchMauPhatHanh>
+                  <ButtonSearchMauPhatHanh
+                    type='primary'
+                    style={{ marginLeft: '20px' }}
+                  >
+                    Lưu Lại
+                  </ButtonSearchMauPhatHanh>
+                </div>
+              </div>
               <FormSearchMauPhatHanh>
                 <Form.Item label='Mã mẫu:'>
                   <InputSearchMauPhatHanh
@@ -528,8 +555,8 @@ function MauBaoCao () {
                     <Option value='Chỉ tiêu 2'>Tiêu chí 2</Option>
                   </SelectSearchMauPhatHanh>
                 </Form.Item>
-                <Form.Item label='Loại báo cáo:'>
-                  <SelectSearchMauPhatHanh defaultValue='Loại báo cáo'>
+                <Form.Item label='Trạng thái:'>
+                  <SelectSearchMauPhatHanh defaultValue='Đã phát hành'>
                     <Option value='Đã phát hành'>Đã phát hành</Option>
                     <Option value='Tạo mới'>Tạo mới</Option>
                     <Option value='Đã xoá'>Đã xoá</Option>
@@ -544,9 +571,86 @@ function MauBaoCao () {
                 scroll={{ x: 1630, y: 400 }}
                 style={{ marginRight: '20px' }}
               />
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <ButtonSearchMauPhatHanh type='primary'>
+                  Hoàn Thành
+                </ButtonSearchMauPhatHanh>
+              </div>
             </TabPane>
             <TabPane tab='Báo cáo thanh niên(new)' key='3'>
-              Content of Tab Pane 3
+              <div
+                style={{
+                  display: 'flex',
+                  width: '100%',
+                  justifyContent: 'flex-end'
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <ButtonSearchMauPhatHanh
+                    type='primary'
+                    onClick={() => setVisible(true)}
+                  >
+                    Xoá
+                  </ButtonSearchMauPhatHanh>
+                  <ButtonSearchMauPhatHanh
+                    type='primary'
+                    style={{ marginLeft: '20px' }}
+                  >
+                    Lưu Lại
+                  </ButtonSearchMauPhatHanh>
+                </div>
+              </div>
+              <FormSearchMauPhatHanh>
+                <Form.Item label='Mã mẫu:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập mã mẫu phát hành'
+                    value={maMauPhatHanh}
+                  />
+                </Form.Item>
+                <Form.Item label='Tên mẫu:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập tên mẫu phát hành'
+                    value={tenMauPhatHanh}
+                  />
+                </Form.Item>
+                <Form.Item label='Ngày phát hành:'>
+                  <DatePickerSearchMauPhatHanh
+                    defaultValue={moment(ngayPhatHanh, dateFormat)}
+                    placeholder='Nhập ngày phát hành'
+                  />
+                </Form.Item>
+                <Form.Item label='Chỉ tiêu:'>
+                  <SelectSearchMauPhatHanh defaultValue='Chỉ tiêu'>
+                    <Option value='Chỉ tiêu 1'>Tiêu chí 1</Option>
+                    <Option value='Chỉ tiêu 2'>Tiêu chí 2</Option>
+                  </SelectSearchMauPhatHanh>
+                </Form.Item>
+                <Form.Item label='Trạng thái:'>
+                  <SelectSearchMauPhatHanh defaultValue='Đã phát hành'>
+                    <Option value='Đã phát hành'>Đã phát hành</Option>
+                    <Option value='Tạo mới'>Tạo mới</Option>
+                    <Option value='Đã xoá'>Đã xoá</Option>
+                  </SelectSearchMauPhatHanh>
+                </Form.Item>
+              </FormSearchMauPhatHanh>
+              <ListTable
+                columns={columns}
+                dataSource={data}
+                bordered
+                pagination={{ defaultPageSize: 20, pageSize: 20 }}
+                scroll={{ x: 1630, y: 400 }}
+                style={{ marginRight: '20px' }}
+              />
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <ButtonSearchMauPhatHanh type='primary'>
+                  Hoàn Thành
+                </ButtonSearchMauPhatHanh>
+              </div>
             </TabPane>
           </Tabs>
         </Layout.Content>

@@ -70,7 +70,7 @@ function DashboardPage () {
                   />
                   <Route
                     exact
-                    path='/phathanhmau/danhsachyeucaudieuchinh'
+                    path='/phathanhmau/danhsach%08yeucaudieuchinh'
                     component={MauPhatHanhEditing}
                   />
                   <Route
@@ -80,7 +80,7 @@ function DashboardPage () {
                   />
                   <Route
                     exact
-                    path='/phathanhmau/truyluc'
+                    path='/phathanhmau/search'
                     component={MauPhatHanhSearch}
                   />
                   <Route
@@ -95,7 +95,7 @@ function DashboardPage () {
                   />
                   <Route
                     exact
-                    path='/maubaocao/danhsachchokyduyet'
+                    path='/baocao/danhsachchokyduyet'
                     component={MauBaoCaoWaitForApproval}
                   />
                   <Route
