@@ -56,7 +56,7 @@ function LoginPage ({ loginReq }) {
           className='login-input'
           onChange={e => setUserPassword(e.target.value)}
         />
-        <LoginButton type='primary' htmlType='button' onClick={handleClick}>
+        <LoginButton type='primary' htmlType='submit' onClick={handleClick}>
           Login
         </LoginButton>
       </LoginForm>
