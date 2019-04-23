@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { handleActions, createAction } from 'redux-actions'
 import token from '../common/jwtToken'
+import callApi from '../common/APIcaller'
 
 // Action
 export const MENU_ITEM = 'MENU_ITEM'
@@ -9,19 +10,22 @@ export const SCREEN = 'SCREEN'
 
 // Action Creator
 export const getMenuItem = () => dispatch => {
-  return axios({
-    url: 'http://vtools.xyz:9999/phanquyenchucnang/api/menu-items',
-    method: 'GET',
-    headers: {
-      Authorization: token()
-    }
-  })
-    .then(res => {
-      dispatch(getMenuItemRequest(res.data))
-    })
-    .catch(err => {
-      console.log(err)
-    })
+  return (
+    callApi('/phanquyenchucnang/api/menu-items', 'GET')
+      // return axios({
+      //   url: 'http://vtools.xyz:9999/phanquyenchucnang/api/menu-items',
+      //   method: 'GET',
+      //   headers: {
+      //     Authorization: token()
+      //   }
+      // })
+      .then(res => {
+        dispatch(getMenuItemRequest(res.data))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  )
 }
 
 export const getMenu = () => dispatch => {

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import * as config from './Config'
+import * as config from './config'
 import token from './jwtToken'
 
 export default function callApi (endpoint, method = 'GET', data) {

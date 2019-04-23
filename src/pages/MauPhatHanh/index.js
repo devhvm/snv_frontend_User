@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Button, Table, Divider, Input, Select, DatePicker, Form } from 'antd'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 // import axios from 'axios'
 import { connect } from 'react-redux'
-import { getDataEditMauPhatHanh } from '../../reducers/mauphathanh'
-import moment from 'moment'
+// import { getDataEditMauPhatHanh } from '../../reducers/mauphathanh'
+// import moment from 'moment'
 
 const Option = Select.Option
-const dateFormat = 'DD-MM-YYYY'
+// const dateFormat = 'DD-MM-YYYY'
 
 const AddButton = styled(Button)`
   width: 200px !important;
@@ -48,10 +48,10 @@ const DatePickerSearchMauPhatHanh = styled(DatePicker)`
 function MauPhatHanhListPage ({ data, getDataEditMauPhatHanh }) {
   useEffect(() => {}, [])
 
-  const [maMauPhatHanh, setMaMauPhatHanh] = useState('')
-  const [tenMauPhatHanh, setTenMauPhatHanh] = useState('')
-  const [ngayPhatHanh, setNgayPhatHanh] = useState(moment().format(dateFormat))
-  const [trangThai, setTrangThai] = useState('')
+  // const [maMauPhatHanh, setMaMauPhatHanh] = useState('')
+  // const [tenMauPhatHanh, setTenMauPhatHanh] = useState('')
+  // const [ngayPhatHanh, setNgayPhatHanh] = useState(moment().format(dateFormat))
+  // const [trangThai, setTrangThai] = useState('')
 
   const dataTable = [
     {
@@ -149,17 +149,20 @@ function MauPhatHanhListPage ({ data, getDataEditMauPhatHanh }) {
         <Form.Item label='Mã mẫu:'>
           <InputSearchMauPhatHanh
             placeholder='Nhập mã mẫu phát hành'
-            value={maMauPhatHanh}
+            // value={maMauPhatHanh}
           />
         </Form.Item>
         <Form.Item label='Tên mẫu:'>
           <InputSearchMauPhatHanh
             placeholder='Nhập tên mẫu phát hành'
-            value={tenMauPhatHanh}
+            // value={tenMauPhatHanh}
           />
         </Form.Item>
         <Form.Item label='Ngày phát hành:'>
-          <DatePickerSearchMauPhatHanh defaultValue={moment(ngayPhatHanh, dateFormat)} placeholder='Nhập ngày phát hành' />
+          <DatePickerSearchMauPhatHanh
+            // defaultValue={moment(ngayPhatHanh, dateFormat)}
+            placeholder='Nhập ngày phát hành'
+          />
         </Form.Item>
         <Form.Item label='Chỉ tiêu:'>
           <SelectSearchMauPhatHanh defaultValue='Chỉ tiêu'>
@@ -178,9 +181,7 @@ function MauPhatHanhListPage ({ data, getDataEditMauPhatHanh }) {
       <ButtonSearchMauPhatHanh type='primary'>Tìm Kiếm</ButtonSearchMauPhatHanh>
       <h3>Danh sách Mẫu Phát Hành</h3>
       <Link to='/mauphathanh/add'>
-        <AddButton type='primary'>
-          Tạo mới
-        </AddButton>
+        <AddButton type='primary'>Tạo mới</AddButton>
       </Link>
       <ListTable columns={columns} dataSource={dataTable} />
     </React.Fragment>
@@ -192,6 +193,6 @@ export default connect(
     data: state
   }),
   {
-    getDataEditMauPhatHanh
+    // getDataEditMauPhatHanh
   }
 )(MauPhatHanhListPage)

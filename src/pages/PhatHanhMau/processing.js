@@ -7,11 +7,15 @@ import {
   Input,
   Select,
   DatePicker,
-  Form
+  Form,
+  Menu,
+  Icon,
+  Modal
 } from 'antd'
 import styled from 'styled-components'
 import moment from 'moment'
-import Modal from 'antd/lib/modal'
+// import Modal from 'antd/lib/modal'
+import CreateNewMphModal from '../../components/CreateNewMphModal'
 
 const TabPane = Tabs.TabPane
 const Option = Select.Option
@@ -47,7 +51,42 @@ function MauBaoCao () {
   const data = [
     {
       key: '1',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
+      table: {
+        rows: [
+          {
+            tieu_chi_code: '',
+            tieu_chi_name: '',
+            nhom_danh_muc: [
+              {
+                nhom_danh_muc_code: '',
+                nhom_danh_muc_name: '',
+                danh_mucs: [
+                  {
+                    danh_muc_code: '',
+                    danh_muc_name: ''
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        columns: [
+          {
+            title: '',
+            code: '',
+            children: [
+              {
+                title: '',
+                code: ''
+              },
+              {
+                title: '',
+                code: ''
+              }
+            ]
+          }
+        ]
+      },
       nhom: 'Dân tộc',
       danhmuc: 'Nhóm 1'
     },
@@ -421,6 +460,7 @@ function MauBaoCao () {
   const [ngayPhatHanh] = useState(moment().format(dateFormat))
   // const [trangThai, setTrangThai] = useState('')
   const [visible, setVisible] = useState(false)
+  const [visibleCreateModal, setVisibleCreateModal] = useState(false)
 
   return (
     <React.Fragment>
@@ -460,12 +500,14 @@ function MauBaoCao () {
                   <InputSearchMauPhatHanh
                     placeholder='Nhập mã mẫu phát hành'
                     value={maMauPhatHanh}
+                    disabled
                   />
                 </Form.Item>
                 <Form.Item label='Tên mẫu:'>
                   <InputSearchMauPhatHanh
                     placeholder='Nhập tên mẫu phát hành'
                     value={tenMauPhatHanh}
+                    disabled
                   />
                 </Form.Item>
                 <Form.Item label='Ngày phát hành:'>
@@ -474,17 +516,10 @@ function MauBaoCao () {
                     placeholder='Nhập ngày phát hành'
                   />
                 </Form.Item>
-                <Form.Item label='Chỉ tiêu:'>
-                  <SelectSearchMauPhatHanh defaultValue='Chỉ tiêu'>
-                    <Option value='Chỉ tiêu 1'>Tiêu chí 1</Option>
-                    <Option value='Chỉ tiêu 2'>Tiêu chí 2</Option>
-                  </SelectSearchMauPhatHanh>
-                </Form.Item>
-                <Form.Item label='Trạng thái:'>
-                  <SelectSearchMauPhatHanh defaultValue='Đã phát hành'>
-                    <Option value='Đã phát hành'>Đã phát hành</Option>
-                    <Option value='Tạo mới'>Tạo mới</Option>
-                    <Option value='Đã xoá'>Đã xoá</Option>
+                <Form.Item label='Đơn vị chủ trì:'>
+                  <SelectSearchMauPhatHanh defaultValue='Đơn vị 1' disabled>
+                    <Option value='Đơn vị 1'>Đơn vị 1</Option>
+                    <Option value='Chỉ tiêu 2'>Đơn vị 2</Option>
                   </SelectSearchMauPhatHanh>
                 </Form.Item>
               </FormSearchMauPhatHanh>
@@ -659,19 +694,78 @@ function MauBaoCao () {
           style={{ background: '#fff', borderLeft: '1px solid #ccc' }}
         >
           <Layout.Content>
-            <Input placeholder='Tìm Kiếm' style={{ marginLeft: '20px' }} />
-            <Button
-              type='primary'
-              style={{ marginLeft: '20px', marginTop: '10px' }}
-            >
-              Tạo Mới
-            </Button>
-            <ListTable
-              style={{ marginLeft: '20px' }}
-              columns={columnsSmall}
-              dataSource={dataSmall}
-              size='small'
-            />
+            <Menu mode='inline' defaultOpenKeys={['createList']}>
+              <Menu.SubMenu
+                key='createList'
+                title={
+                  <span>
+                    <Icon type='user' />
+                    Danh sách tạo mới
+                  </span>
+                }
+              >
+                <Menu.Item
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '300px',
+                    padding: '0 0 !important'
+                  }}
+                >
+                  <Input placeholder='Tìm Kiếm' style={{ marginTop: '10px' }} />
+                  <Button
+                    type='primary'
+                    icon='plus'
+                    style={{
+                      marginTop: '20px',
+                      background: '#44b100cc',
+                      borderColor: '#44b100cc',
+                      width: '60%'
+                    }}
+                    onClick={() => {
+                      setVisibleCreateModal(true)
+                    }}
+                  >
+                    Tạo Mới
+                  </Button>
+                  <ListTable
+                    style={{}}
+                    columns={columnsSmall}
+                    dataSource={dataSmall}
+                    size='small'
+                  />
+                </Menu.Item>
+              </Menu.SubMenu>
+              <Menu.SubMenu
+                key='editList'
+                title={
+                  <span>
+                    <Icon type='user' />
+                    Danh sách yêu cầu điều chỉnh
+                  </span>
+                }
+              >
+                <Menu.Item
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '300px',
+                    padding: '0 0 !important'
+                  }}
+                >
+                  <Input
+                    placeholder='Mã mẫu, Tên mẫu'
+                    style={{ marginTop: '10px' }}
+                  />
+                  <ListTable
+                    style={{}}
+                    columns={columnsSmall}
+                    dataSource={dataSmall}
+                    size='small'
+                  />
+                </Menu.Item>
+              </Menu.SubMenu>
+            </Menu>
           </Layout.Content>
         </Layout.Sider>
         <Modal
@@ -682,6 +776,12 @@ function MauBaoCao () {
         >
           <p>Mẫu Phát Hành được xoá sẽ không thể khôi phục được</p>
         </Modal>
+        <CreateNewMphModal
+          visible={visibleCreateModal}
+          closeModal={() => {
+            setVisibleCreateModal(false)
+          }}
+        />
       </Layout>
     </React.Fragment>
   )

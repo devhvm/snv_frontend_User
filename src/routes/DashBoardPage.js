@@ -41,14 +41,6 @@ const ContentWrapper = styled.div`
 function DashboardPage () {
   // const [login, setLogin] = useState(false)
   // console.log('loginStatus', loginStatus)
-  //
-  // const loginShow = () => {
-  //   setLogin(true)
-  // }
-  //
-  // const logoutReq = () => {
-  //   setLogin(false)
-  // }
 
   // const ExContext = React.createContext(login)
   let loginStatus = localStorage.getItem('loginStatus')
