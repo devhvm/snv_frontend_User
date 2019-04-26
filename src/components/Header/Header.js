@@ -16,12 +16,14 @@ export default function UserHeader ({
   logOutReq,
   getMenuItem,
   getMenu,
-  getScreen
+  getScreen,
+  getCoQuanChuTri
 }) {
   useEffect(() => {
-    getMenu()
-    getMenuItem()
-    getScreen()
+    // getMenu()
+    // getMenuItem()
+    // getScreen()
+    getCoQuanChuTri()
   }, [])
 
   // const menuList = []

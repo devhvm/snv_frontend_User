@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Table,
   Layout,
@@ -14,7 +14,6 @@ import {
 } from 'antd'
 import styled from 'styled-components'
 import moment from 'moment'
-// import Modal from 'antd/lib/modal'
 import CreateNewMphModal from '../../components/CreateNewMphModal'
 
 const TabPane = Tabs.TabPane
@@ -47,7 +46,11 @@ const DatePickerSearchMauPhatHanh = styled(DatePicker)`
   width: 95% !important;
 `
 
-function MauBaoCao () {
+export default function DangXuLi () {
+  useEffect(() => {
+    // getCoQuanChuTri()
+  }, [])
+
   const data = [
     {
       key: '1',
@@ -461,6 +464,7 @@ function MauBaoCao () {
   // const [trangThai, setTrangThai] = useState('')
   const [visible, setVisible] = useState(false)
   const [visibleCreateModal, setVisibleCreateModal] = useState(false)
+  // const [collapsed, setCollapsed] = useState(false)
 
   return (
     <React.Fragment>
@@ -527,7 +531,7 @@ function MauBaoCao () {
                 columns={columns}
                 dataSource={data}
                 bordered
-                pagination={{ defaultPageSize: 20, pageSize: 20 }}
+                pagination={false}
                 scroll={{ x: 1630, y: 400 }}
                 style={{ marginRight: '20px' }}
               />
@@ -602,7 +606,7 @@ function MauBaoCao () {
                 columns={columns}
                 dataSource={data}
                 bordered
-                pagination={{ defaultPageSize: 20, pageSize: 20 }}
+                pagination={false}
                 scroll={{ x: 1630, y: 400 }}
                 style={{ marginRight: '20px' }}
               />
@@ -691,16 +695,28 @@ function MauBaoCao () {
         </Layout.Content>
         <Layout.Sider
           width={300}
-          style={{ background: '#fff', borderLeft: '1px solid #ccc' }}
+          style={{
+            background: '#fff',
+            borderLeft: '1px solid #e8e8e8',
+            paddingTop: '43px'
+          }}
+          // collapsed={collapsed}
         >
           <Layout.Content>
-            <Menu mode='inline' defaultOpenKeys={['createList']}>
+            <Menu mode='inline' defaultOpenKeys={['createList']} style={{}}>
+              {/* <Icon */}
+              {/* className='trigger' */}
+              {/* type={collapsed ? 'left-circle' : 'right-circle'} */}
+              {/* onClick={() => { */}
+              {/* setCollapsed(!collapsed) */}
+              {/* }} */}
+              {/* /> */}
               <Menu.SubMenu
                 key='createList'
                 title={
                   <span>
                     <Icon type='user' />
-                    Danh sách tạo mới
+                    <span>Danh sách tạo mới</span>
                   </span>
                 }
               >
@@ -741,7 +757,7 @@ function MauBaoCao () {
                 title={
                   <span>
                     <Icon type='user' />
-                    Danh sách yêu cầu điều chỉnh
+                    <span>Danh sách yêu cầu điều chỉnh</span>
                   </span>
                 }
               >
@@ -786,5 +802,3 @@ function MauBaoCao () {
     </React.Fragment>
   )
 }
-
-export default MauBaoCao

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { handleActions, createAction } from 'redux-actions'
-import token from '../common/jwtToken'
-import callApi from '../common/APIcaller'
+import token from '../utils/jwtToken'
+import callApi from '../utils/APIcaller'
 
 // Action
 export const MENU_ITEM = 'MENU_ITEM'
