@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { Layout, Menu, Avatar } from 'antd'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -16,14 +16,13 @@ export default function UserHeader ({
   logOutReq,
   getMenuItem,
   getMenu,
-  getScreen,
-  getCoQuanChuTri
+  getScreen
 }) {
-  useEffect(() => {
+  useLayoutEffect(() => {
+    console.log('useLayoutEffect')
     // getMenu()
     // getMenuItem()
     // getScreen()
-    getCoQuanChuTri()
   }, [])
 
   // const menuList = []

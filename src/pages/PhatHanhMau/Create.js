@@ -10,7 +10,9 @@ import {
   Form,
   Menu,
   Icon,
-  Modal
+  Modal,
+  Row,
+  Col
 } from 'antd'
 import styled from 'styled-components'
 import moment from 'moment'
@@ -46,10 +48,10 @@ const DatePickerSearchMauPhatHanh = styled(DatePicker)`
   width: 95% !important;
 `
 
-export default function DangXuLi () {
+export default function Create ({ dataTest, getCoQuanChuTri }) {
   useEffect(() => {
-    // getCoQuanChuTri()
-  }, [])
+    getCoQuanChuTri()
+  }, [dataTest])
 
   const data = [
     {
@@ -500,32 +502,91 @@ export default function DangXuLi () {
                 </div>
               </div>
               <FormSearchMauPhatHanh>
-                <Form.Item label='Mã mẫu:'>
-                  <InputSearchMauPhatHanh
-                    placeholder='Nhập mã mẫu phát hành'
-                    value={maMauPhatHanh}
-                    disabled
-                  />
-                </Form.Item>
-                <Form.Item label='Tên mẫu:'>
-                  <InputSearchMauPhatHanh
-                    placeholder='Nhập tên mẫu phát hành'
-                    value={tenMauPhatHanh}
-                    disabled
-                  />
-                </Form.Item>
-                <Form.Item label='Ngày phát hành:'>
-                  <DatePickerSearchMauPhatHanh
-                    defaultValue={moment(ngayPhatHanh, dateFormat)}
-                    placeholder='Nhập ngày phát hành'
-                  />
-                </Form.Item>
-                <Form.Item label='Đơn vị chủ trì:'>
-                  <SelectSearchMauPhatHanh defaultValue='Đơn vị 1' disabled>
-                    <Option value='Đơn vị 1'>Đơn vị 1</Option>
-                    <Option value='Chỉ tiêu 2'>Đơn vị 2</Option>
-                  </SelectSearchMauPhatHanh>
-                </Form.Item>
+                <Row>
+                  <Col span={21}>
+                    <Row>
+                      <Col span={12}>
+                        <Form.Item label='Mã mẫu:'>
+                          <InputSearchMauPhatHanh
+                            placeholder='Nhập mã mẫu phát hành'
+                            value={maMauPhatHanh}
+                            disabled
+                          />
+                        </Form.Item>
+                        <Form.Item label='Tên mẫu:'>
+                          <InputSearchMauPhatHanh
+                            placeholder='Nhập tên mẫu phát hành'
+                            value={tenMauPhatHanh}
+                          />
+                        </Form.Item>
+                        <Form.Item label='Người lập:'>
+                          <InputSearchMauPhatHanh
+                            placeholder='Nhập tên mẫu phát hành'
+                            value={tenMauPhatHanh}
+                            disabled
+                          />
+                        </Form.Item>
+                      </Col>
+                      <Col span={12}>
+                        <Form.Item label='Cơ quan chủ trì:'>
+                          <InputSearchMauPhatHanh
+                            placeholder='Nhập tên mẫu phát hành'
+                            value={tenMauPhatHanh}
+                            disabled
+                          />
+                        </Form.Item>
+                        <Form.Item label='Ngày phát hành:'>
+                          <DatePickerSearchMauPhatHanh
+                            defaultValue={moment(ngayPhatHanh, dateFormat)}
+                            placeholder='Nhập ngày phát hành'
+                          />
+                        </Form.Item>
+                        <Form.Item label='Chọn phạm vi'>
+                          <Input.Group compact>
+                            <Select defaultValue='1'>
+                              <Select.Option value='1'>Phạm vi</Select.Option>
+                              <Select.Option value='2'>Except</Select.Option>
+                            </Select>
+                            <Input
+                              style={{ width: 100, textAlign: 'center' }}
+                              placeholder='Minimum'
+                            />
+                            <Input
+                              style={{
+                                width: 30,
+                                borderLeft: 0,
+                                pointerEvents: 'none',
+                                backgroundColor: '#fff'
+                              }}
+                              placeholder='~'
+                              disabled
+                            />
+                            <Input
+                              style={{
+                                width: 100,
+                                textAlign: 'center',
+                                borderLeft: 0
+                              }}
+                              placeholder='Maximum'
+                            />
+                          </Input.Group>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col span={3}>
+                    <Form.Item label='Ghi chú:'>
+                      <Input.TextArea
+                        placeholder='Ghi chú'
+                        style={{
+                          height: 70,
+                          width: '300px',
+                          maxWidth: 'unset'
+                        }}
+                      />
+                    </Form.Item>
+                  </Col>
+                </Row>
               </FormSearchMauPhatHanh>
               <ListTable
                 columns={columns}
@@ -537,7 +598,7 @@ export default function DangXuLi () {
               />
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <ButtonSearchMauPhatHanh type='primary'>
-                  Hoàn Thành
+                  Yêu Cầu Kí Duyệt
                 </ButtonSearchMauPhatHanh>
               </div>
             </TabPane>
@@ -696,14 +757,18 @@ export default function DangXuLi () {
         <Layout.Sider
           width={300}
           style={{
-            background: '#fff',
             borderLeft: '1px solid #e8e8e8',
-            paddingTop: '43px'
+            marginLeft: '10px',
+            background: '#fff'
           }}
           // collapsed={collapsed}
         >
           <Layout.Content>
-            <Menu mode='inline' defaultOpenKeys={['createList']} style={{}}>
+            <Menu
+              mode='inline'
+              defaultOpenKeys={['createList']}
+              style={{ background: '#ccc' }}
+            >
               {/* <Icon */}
               {/* className='trigger' */}
               {/* type={collapsed ? 'left-circle' : 'right-circle'} */}
@@ -729,21 +794,44 @@ export default function DangXuLi () {
                   }}
                 >
                   <Input placeholder='Tìm Kiếm' style={{ marginTop: '10px' }} />
-                  <Button
-                    type='primary'
-                    icon='plus'
-                    style={{
-                      marginTop: '20px',
-                      background: '#44b100cc',
-                      borderColor: '#44b100cc',
-                      width: '60%'
-                    }}
-                    onClick={() => {
-                      setVisibleCreateModal(true)
-                    }}
-                  >
-                    Tạo Mới
-                  </Button>
+                  <Row>
+                    <Col span={11}>
+                      <Button
+                        type='primary'
+                        icon='plus'
+                        style={{
+                          marginTop: '20px',
+                          background: '#44b100cc',
+                          borderColor: '#44b100cc',
+                          // width: '90%',
+                          fontSize: '10px'
+                        }}
+                        onClick={() => {
+                          setVisibleCreateModal(true)
+                        }}
+                      >
+                        Tạo Mới
+                      </Button>
+                    </Col>
+                    <Col span={11}>
+                      <Button
+                        type='primary'
+                        icon='search'
+                        style={{
+                          marginTop: '20px',
+                          background: '#06d0d0',
+                          borderColor: '#06d0d0',
+                          // width: '90%',
+                          fontSize: '10px'
+                        }}
+                        onClick={() => {
+                          setVisibleCreateModal(true)
+                        }}
+                      >
+                        Tìm kiếm
+                      </Button>
+                    </Col>
+                  </Row>
                   <ListTable
                     style={{}}
                     columns={columnsSmall}
