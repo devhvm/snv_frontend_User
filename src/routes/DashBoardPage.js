@@ -32,7 +32,7 @@ const LayoutContent = styled(Layout.Content)`
 `
 const ContentWrapper = styled.div`
   && {
-    padding: 24px;
+    padding: 15px;
     background: #fff;
     min-height: 520px;
   }

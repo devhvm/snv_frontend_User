@@ -12,6 +12,5 @@ export default connect(
     getMenuItem,
     getMenu,
     getScreen
-  },
-  console.log('getMenu', getMenu)
+  }
 )(Header)

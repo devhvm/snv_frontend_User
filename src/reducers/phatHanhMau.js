@@ -3,22 +3,31 @@ import callApi from '../utils/APIcaller'
 
 // Action
 export const CO_QUAN_CHU_TRI = 'CO_QUAN_CHU_TRI'
+export const MAU_PHAT_HANH = 'MAU_PHAT_HANH'
 
 // Action Creator
 export const getCoQuanChuTri = () => dispatch => {
-  console.log('get')
   callApi('common/api/co-quan-chu-tris', 'GET')
     .then(res => {
-      console.log('res', res)
       dispatch(getCoQuanChuTriRequest(res.data))
     })
     .catch(err => {
       console.log(err)
     })
-  // )
+}
+
+export const getMauPhatHanh = () => dispatch => {
+  // callApi('common/api/co-quan-chu-tris', 'GET')
+  //   .then(res => {
+  //     dispatch(getCoQuanChuTriRequest(res.data))
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
 }
 
 const getCoQuanChuTriRequest = createAction(CO_QUAN_CHU_TRI)
+// const getMauPhatHanhRequest = createAction(MAU_PHAT_HANH)
 
 // Initial State
 const initialState = {}
@@ -29,6 +38,10 @@ export default handleActions(
     [CO_QUAN_CHU_TRI]: (state, { payload }) => ({
       ...state,
       coQuanChuTri: payload
+    }),
+    [MAU_PHAT_HANH]: (state, { payload }) => ({
+      ...state,
+      mauPhatHanh: payload
     })
   },
   initialState

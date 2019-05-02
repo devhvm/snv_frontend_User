@@ -14,12 +14,11 @@ const AppName = styled.span`
 export default function UserHeader ({
   menu,
   logOutReq,
-  getMenuItem,
-  getMenu,
-  getScreen
+  // getMenuItem,
+  // getScreen,
+  getMenu
 }) {
   useLayoutEffect(() => {
-    console.log('useLayoutEffect')
     // getMenu()
     // getMenuItem()
     // getScreen()
@@ -47,8 +46,6 @@ export default function UserHeader ({
   //   }
   // }
 
-  // console.log(menuList)
-
   const menuList = [
     {
       name: 'PHÁT HÀNH MẪU',
@@ -57,6 +54,11 @@ export default function UserHeader ({
           screenCode: 5,
           name: 'DANH SÁCH XỬ LÝ',
           link: '/phathanhmau/danhsachdangxuly'
+        },
+        {
+          screenCode: 14,
+          name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
+          link: '/phathanhmau/danhsachyeucaudieuchinh'
         },
         {
           screenCode: 7,

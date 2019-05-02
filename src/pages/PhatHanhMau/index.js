@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
-import Create from './Create'
+import DangXuLi from './DangXuLi'
 import { getCoQuanChuTri } from '../../reducers/phatHanhMau'
 
 export default connect(
   state => ({
-    dataTest: state.phatHanhMau
+    data: state.phatHanhMau
   }),
   {
     getCoQuanChuTri
   }
-)(Create)
+)(DangXuLi)
