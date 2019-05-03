@@ -9,8 +9,8 @@ import LoginPage from '../pages/LoginPage'
 import MauBaoCao from '../pages/MauBaoCao'
 import MauPhatHanhDangXuLi from '../pages/MauPhatHanh/DangXuLiPage'
 import MauPhatHanhYeuCauDieuChinh from '../pages/MauPhatHanh/YeuCauDieuChinhPage'
-import MauPhatHanhWaitForApproval from '../pages/MauPhatHanh/waitForApproval'
-import MauPhatHanhSearch from '../pages/MauPhatHanh/search'
+// import MauPhatHanhWaitForApproval from '../pages/MauPhatHanh/waitForApproval'
+// import MauPhatHanhSearch from '../pages/MauPhatHanh/search'
 import MauBaoCaoProcessing from '../pages/MauBaoCao/processing'
 import MauBaoCaoEditing from '../pages/MauBaoCao/editing'
 import MauBaoCaoWaitForApproval from '../pages/MauBaoCao/waitForApproval'
@@ -62,16 +62,16 @@ function DashboardPage () {
                     path='/phathanhmau/danhsachyeucaudieuchinh'
                     component={MauPhatHanhYeuCauDieuChinh}
                   />
-                  <Route
-                    exact
-                    path='/phathanhmau/danhsachchokyduyet'
-                    component={MauPhatHanhWaitForApproval}
-                  />
-                  <Route
-                    exact
-                    path='/phathanhmau/search'
-                    component={MauPhatHanhSearch}
-                  />
+                  {/* <Route */}
+                  {/* exact */}
+                  {/* path='/phathanhmau/danhsachchokyduyet' */}
+                  {/* component={MauPhatHanhWaitForApproval} */}
+                  {/* /> */}
+                  {/* <Route */}
+                  {/* exact */}
+                  {/* path='/phathanhmau/search' */}
+                  {/* component={MauPhatHanhSearch} */}
+                  {/* /> */}
                   <Route
                     exact
                     path='/maubaocao/danhsachdangxuli'
