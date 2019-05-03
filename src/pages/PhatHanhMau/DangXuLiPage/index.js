@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import DangXuLi from './DangXuLi'
-import { getCoQuanChuTri } from '../../reducers/phatHanhMau'
+import DangXuLiPage from './DangXuLiPage'
+import { getCoQuanChuTri } from '../../../reducers/phatHanhMau'
 
 export default connect(
   state => ({
@@ -9,4 +9,4 @@ export default connect(
   {
     getCoQuanChuTri
   }
-)(DangXuLi)
+)(DangXuLiPage)

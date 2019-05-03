@@ -10,8 +10,8 @@ import MauBaoCao from '../pages/MauBaoCao'
 // import MauPhatHanhList from '../pages/MauPhatHanh'
 import MauPhatHanhEdit from '../pages/MauPhatHanh/edit'
 import MauPhatHanhAdd from '../pages/MauPhatHanh/add'
-import PhatHanhMau from '../pages/PhatHanhMau'
-import MauPhatHanhEditing from '../pages/PhatHanhMau/editing'
+import MauPhatHanhDangXuLi from '../pages/PhatHanhMau/DangXuLiPage'
+import MauPhatHanhYeuCauDieuChinh from '../pages/PhatHanhMau/YeuCauDieuChinhPage'
 import MauPhatHanhWaitForApproval from '../pages/PhatHanhMau/waitForApproval'
 import MauPhatHanhSearch from '../pages/PhatHanhMau/search'
 import MauBaoCaoProcessing from '../pages/MauBaoCao/processing'
@@ -58,12 +58,12 @@ function DashboardPage () {
                   <Route
                     exact
                     path='/phathanhmau/danhsachdangxuly'
-                    component={PhatHanhMau}
+                    component={MauPhatHanhDangXuLi}
                   />
                   <Route
                     exact
-                    path='/phathanhmau/danhsach%08yeucaudieuchinh'
-                    component={MauPhatHanhEditing}
+                    path='/phathanhmau/danhsachyeucaudieuchinh'
+                    component={MauPhatHanhYeuCauDieuChinh}
                   />
                   <Route
                     exact
