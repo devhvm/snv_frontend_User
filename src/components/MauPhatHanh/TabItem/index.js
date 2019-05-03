@@ -1,21 +1,22 @@
-import React, { useState } from 'react'
-import { Table, Layout, Tabs, Button, Input, Select, DatePicker, Form } from 'antd'
-import styled from 'styled-components'
+import React, { Fragment, useState } from 'react'
+import { Col, DatePicker, Row, Table, Select, Form, Input, Button } from 'antd'
 import moment from 'moment'
-import Modal from 'antd/lib/modal'
-
-const TabPane = Tabs.TabPane
-const Option = Select.Option
-const dateFormat = 'DD-MM-YYYY'
-
-const ListTable = styled(Table)`
-  margin-top: 20px;
-`
+import styled from 'styled-components'
+import DeleteModal from '../DeleteModal'
+// import styled from 'styled-components'
 
 const FormSearchMauPhatHanh = styled(Form)`
   display: grid;
   grid-template-columns: auto auto;
   width: 80%;
+`
+
+const InputSearchMauPhatHanh = styled(Input)`
+  width: 95% !important;
+`
+
+const DatePickerSearchMauPhatHanh = styled(DatePicker)`
+  width: 95% !important;
 `
 
 const ButtonSearchMauPhatHanh = styled(Button)`
@@ -24,23 +25,52 @@ const ButtonSearchMauPhatHanh = styled(Button)`
   right: 10%;
 `
 
-const InputSearchMauPhatHanh = styled(Input)`
-  width: 95% !important;
-`
+const dateFormat = 'DD-MM-YYYY'
 
-const SelectSearchMauPhatHanh = styled(Select)`
-  width: 95% !important;
-`
-
-const DatePickerSearchMauPhatHanh = styled(DatePicker)`
-  width: 95% !important;
-`
-
-function MauBaoCao () {
-  const data = [
+export default function TabItem ({ visible, closeModal }) {
+  const [maMauPhatHanh] = useState('')
+  const [tenMauPhatHanh] = useState('')
+  const [ngayPhatHanh] = useState(moment().format(dateFormat))
+  const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
+  const dataTable = [
     {
       key: '1',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
+      table: {
+        rows: [
+          {
+            tieu_chi_code: '',
+            tieu_chi_name: '',
+            nhom_danh_muc: [
+              {
+                nhom_danh_muc_code: '',
+                nhom_danh_muc_name: '',
+                danh_mucs: [
+                  {
+                    danh_muc_code: '',
+                    danh_muc_name: ''
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        columns: [
+          {
+            title: '',
+            code: '',
+            children: [
+              {
+                title: '',
+                code: ''
+              },
+              {
+                title: '',
+                code: ''
+              }
+            ]
+          }
+        ]
+      },
       nhom: 'Dân tộc',
       danhmuc: 'Nhóm 1'
     },
@@ -381,97 +411,130 @@ function MauBaoCao () {
     }
   ]
 
-  const columnsSmall = [{
-    title: 'Mã Mẫu',
-    dataIndex: 'maMau'
-  }, {
-    title: 'Tên Mẫu',
-    dataIndex: 'tenMau'
-  }]
-  const dataSmall = [{
-    key: '1',
-    maMau: 32,
-    tenMau: 'Báo Cáo Thanh Niên'
-  }, {
-    key: '2',
-    maMau: 33,
-    tenMau: 'Báo Cáo Thanh Niên'
-  }, {
-    key: '3',
-    maMau: 34,
-    tenMau: 'Báo Cáo Thanh Niên'
-  }]
-
-  const [maMauPhatHanh, setMaMauPhatHanh] = useState('')
-  const [tenMauPhatHanh, setTenMauPhatHanh] = useState('')
-  const [ngayPhatHanh, setNgayPhatHanh] = useState(moment().format(dateFormat))
-  const [trangThai, setTrangThai] = useState('')
-  const [visible, setVisible] = useState(false)
-
   return (
-    <React.Fragment>
-      <h3>Danh sách Phát Hành Mẫu Đang Xử Lí</h3>
-      <Tabs defaultActiveKey='1'>
-        <TabPane tab='Tab 1' key='1'>
-          <FormSearchMauPhatHanh>
-            <Form.Item label='Mã mẫu:'>
-              <InputSearchMauPhatHanh
-                placeholder='Nhập mã mẫu phát hành'
-                value={maMauPhatHanh}
+    <Fragment>
+      <Row type='flex' justify='end'>
+        <Row type='flex' justify='space-between'>
+          <ButtonSearchMauPhatHanh
+            type='primary'
+            onClick={() => setVisibleDeleteModal(true)}
+          >
+            Xoá
+          </ButtonSearchMauPhatHanh>
+          <ButtonSearchMauPhatHanh
+            type='primary'
+            style={{ marginLeft: '20px' }}
+          >
+            Lưu Lại
+          </ButtonSearchMauPhatHanh>
+        </Row>
+      </Row>
+      <FormSearchMauPhatHanh>
+        <Row>
+          <Col span={21}>
+            <Row>
+              <Col span={12}>
+                <Form.Item label='Mã mẫu:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập mã mẫu phát hành'
+                    value={maMauPhatHanh}
+                    disabled
+                  />
+                </Form.Item>
+                <Form.Item label='Tên mẫu:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập tên mẫu phát hành'
+                    value={tenMauPhatHanh}
+                  />
+                </Form.Item>
+                <Form.Item label='Người lập:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập tên mẫu phát hành'
+                    value={tenMauPhatHanh}
+                    disabled
+                  />
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label='Cơ quan chủ trì:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập tên mẫu phát hành'
+                    value={tenMauPhatHanh}
+                    disabled
+                  />
+                </Form.Item>
+                <Form.Item label='Ngày phát hành:'>
+                  <DatePickerSearchMauPhatHanh
+                    defaultValue={moment(ngayPhatHanh, dateFormat)}
+                    placeholder='Nhập ngày phát hành'
+                  />
+                </Form.Item>
+                <Form.Item label='Chọn phạm vi'>
+                  <Input.Group compact>
+                    <Select defaultValue='1'>
+                      <Select.Option value='1'>Phạm vi</Select.Option>
+                      <Select.Option value='2'>Except</Select.Option>
+                    </Select>
+                    <Input
+                      style={{ width: 100, textAlign: 'center' }}
+                      placeholder='Minimum'
+                    />
+                    <Input
+                      style={{
+                        width: 30,
+                        borderLeft: 0,
+                        pointerEvents: 'none',
+                        backgroundColor: '#fff'
+                      }}
+                      placeholder='~'
+                      disabled
+                    />
+                    <Input
+                      style={{
+                        width: 100,
+                        textAlign: 'center',
+                        borderLeft: 0
+                      }}
+                      placeholder='Maximum'
+                    />
+                  </Input.Group>
+                </Form.Item>
+              </Col>
+            </Row>
+          </Col>
+          <Col span={3}>
+            <Form.Item label='Ghi chú:'>
+              <Input.TextArea
+                placeholder='Ghi chú'
+                style={{
+                  height: 70,
+                  width: '300px',
+                  maxWidth: 'unset'
+                }}
               />
             </Form.Item>
-            <Form.Item label='Tên mẫu:'>
-              <InputSearchMauPhatHanh
-                placeholder='Nhập tên mẫu phát hành'
-                value={tenMauPhatHanh}
-              />
-            </Form.Item>
-            <Form.Item label='Ngày phát hành:'>
-              <DatePickerSearchMauPhatHanh defaultValue={moment(ngayPhatHanh, dateFormat)} placeholder='Nhập ngày phát hành' />
-            </Form.Item>
-            <Form.Item label='Chỉ tiêu:'>
-              <SelectSearchMauPhatHanh defaultValue='Chỉ tiêu'>
-                <Option value='Chỉ tiêu 1'>Tiêu chí 1</Option>
-                <Option value='Chỉ tiêu 2'>Tiêu chí 2</Option>
-              </SelectSearchMauPhatHanh>
-            </Form.Item>
-            <Form.Item label='Trạng thái:'>
-              <SelectSearchMauPhatHanh defaultValue='Đã phát hành'>
-                <Option value='Đã phát hành'>Đã phát hành</Option>
-                <Option value='Tạo mới'>Tạo mới</Option>
-                <Option value='Đã xoá'>Đã xoá</Option>
-              </SelectSearchMauPhatHanh>
-            </Form.Item>
-          </FormSearchMauPhatHanh>
-          <div style={{ display: 'flex', width: '65%' }}>
-            <ButtonSearchMauPhatHanh
-              type='primary'
-              onClick={() => setVisible(true)}
-            >Tìm Kiếm
-            </ButtonSearchMauPhatHanh>
-          </div>
-          <ListTable
-            columns={columns}
-            dataSource={data}
-            bordered
-            pagination={{ defaultPageSize: 20, pageSize: 20 }}
-            scroll={{ x: 1630, y: 400 }}
-            style={{ marginRight: '20px' }}
-          />
-        </TabPane>
-        <TabPane tab='Tab 2' key='2'>Content of Tab Pane 2</TabPane>
-        <TabPane tab='Tab 3' key='3'>Content of Tab Pane 3</TabPane>
-      </Tabs>
-      <Modal
-        title='Basic Modal'
-        visible={visible}
-        onOk={() => setVisible(false)}
-        onCancel={() => setVisible(false)}
-      >
-        <p>Mẫu Phát Hành được xoá sẽ không thể khôi phục được</p>
-      </Modal>
-    </React.Fragment>
+          </Col>
+        </Row>
+      </FormSearchMauPhatHanh>
+      <Table
+        columns={columns}
+        dataSource={dataTable}
+        bordered
+        pagination={false}
+        scroll={{ x: 1630, y: 400 }}
+        style={{ marginRight: '20px' }}
+      />
+      <Row type='flex' justify='end'>
+        <ButtonSearchMauPhatHanh type='primary'>
+          Yêu Cầu Kí Duyệt
+        </ButtonSearchMauPhatHanh>
+      </Row>
+      <DeleteModal
+        visible={visibleDeleteModal}
+        closeModal={() => {
+          setVisibleDeleteModal(false)
+        }}
+      />
+    </Fragment>
   )
 }
-
-export default MauBaoCao

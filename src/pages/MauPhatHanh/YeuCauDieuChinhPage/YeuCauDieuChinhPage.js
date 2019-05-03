@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Layout } from 'antd'
 import CreateModal from '../../../components/MauPhatHanh/CreateModal'
 import DeleteModal from '../../../components/MauPhatHanh/DeleteModal'
-import ContentTabs from '../../../components/MauPhatHanh/ContentTabs'
-import CreateMenuSider from '../../../components/MauPhatHanh/MenuSider/create'
+import ContentTabs from '../../../components/MauPhatHanh/TabsList'
+import CreateMenuSider from '../../../components/MauPhatHanh/MenuSider/dangxuli'
 
-export default function DangXuLiPage ({ data, getCoQuanChuTri }) {
+export default function YeuCauDieuChinhPage ({ data, getCoQuanChuTri }) {
   console.log(data.coQuanChuTri)
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
   const [visibleCreateModal, setVisibleCreateModal] = useState(false)

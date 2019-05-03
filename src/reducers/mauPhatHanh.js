@@ -4,6 +4,7 @@ import callApi from '../utils/APIcaller'
 // Action
 export const CO_QUAN_CHU_TRI = 'CO_QUAN_CHU_TRI'
 export const MAU_PHAT_HANH = 'MAU_PHAT_HANH'
+export const MAU_PHAT_HANH_TAB = 'MAU_PHAT_HANH_TAB'
 
 // Action Creator
 export const getCoQuanChuTri = () => dispatch => {
@@ -38,6 +39,10 @@ export default handleActions(
     [CO_QUAN_CHU_TRI]: (state, { payload }) => ({
       ...state,
       coQuanChuTri: payload
+    }),
+    [MAU_PHAT_HANH]: (state, { payload }) => ({
+      ...state,
+      mauPhatHanh: payload
     }),
     [MAU_PHAT_HANH]: (state, { payload }) => ({
       ...state,

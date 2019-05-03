@@ -29,7 +29,7 @@ export default function CreateModal ({ visible, closeModal, coQuanChuTri }) {
   const dataSelect =
     coQuanChuTri &&
     coQuanChuTri.map((item, i) => (
-      <Select.Option key={item.maDinhDanhCode} value={item.maDinhDanhCode}>
+      <Select.Option key={item.id} value={item.id}>
         {item.name}
       </Select.Option>
     ))
@@ -55,6 +55,9 @@ export default function CreateModal ({ visible, closeModal, coQuanChuTri }) {
                 // size={size}
                 // style={{ width: '32%' }}
                 // onChange={this.handleCurrencyChange}
+                onSelect={value => {
+                  console.log(value)
+                }}
               >
                 {dataSelect}
               </Select>

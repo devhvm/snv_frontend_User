@@ -1,11 +1,12 @@
 import React from 'react'
 import { Input, Row, Col, Table, Menu, Icon, Button } from 'antd'
 import styled from 'styled-components'
-// import styled from 'styled-components'
 
-export default function MenuCreateSlider ({
+export default function DangXuLiMenuSider ({
   setVisibleCreateModal,
-  getCoQuanChuTri
+  getCoQuanChuTri,
+  addNewTab,
+  changeActiveTab
 }) {
   const SubMenu = Menu.SubMenu
 
@@ -32,17 +33,17 @@ export default function MenuCreateSlider ({
   const dataSmall = [
     {
       key: '1',
-      maMau: 32,
+      maMau: '32',
       tenMau: 'Báo Cáo Thanh Niên'
     },
     {
       key: '2',
-      maMau: 33,
+      maMau: '33',
       tenMau: 'Báo Cáo Thanh Niên'
     },
     {
       key: '3',
-      maMau: 34,
+      maMau: '34',
       tenMau: 'Báo Cáo Thanh Niên'
     }
   ]
@@ -119,6 +120,14 @@ export default function MenuCreateSlider ({
             columns={columnsSmall}
             dataSource={dataSmall}
             size='small'
+            onRow={record => {
+              return {
+                onClick: () => {
+                  addNewTab(record)
+                  changeActiveTab(String(record.maMau))
+                }
+              }
+            }}
           />
         </Menu.ItemGroup>
       </SubMenu>

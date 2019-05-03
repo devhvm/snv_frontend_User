@@ -7,13 +7,10 @@ import styled from 'styled-components'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
 import MauBaoCao from '../pages/MauBaoCao'
-// import MauPhatHanhList from '../pages/MauPhatHanh'
-import MauPhatHanhEdit from '../pages/MauPhatHanh/edit'
-import MauPhatHanhAdd from '../pages/MauPhatHanh/add'
-import MauPhatHanhDangXuLi from '../pages/PhatHanhMau/DangXuLiPage'
-import MauPhatHanhYeuCauDieuChinh from '../pages/PhatHanhMau/YeuCauDieuChinhPage'
-import MauPhatHanhWaitForApproval from '../pages/PhatHanhMau/waitForApproval'
-import MauPhatHanhSearch from '../pages/PhatHanhMau/search'
+import MauPhatHanhDangXuLi from '../pages/MauPhatHanh/DangXuLiPage'
+import MauPhatHanhYeuCauDieuChinh from '../pages/MauPhatHanh/YeuCauDieuChinhPage'
+import MauPhatHanhWaitForApproval from '../pages/MauPhatHanh/waitForApproval'
+import MauPhatHanhSearch from '../pages/MauPhatHanh/search'
 import MauBaoCaoProcessing from '../pages/MauBaoCao/processing'
 import MauBaoCaoEditing from '../pages/MauBaoCao/editing'
 import MauBaoCaoWaitForApproval from '../pages/MauBaoCao/waitForApproval'
@@ -95,16 +92,16 @@ function DashboardPage () {
                     path='/maubaocao/truyluc'
                     component={MauBaoCaoSearch}
                   />
-                  <Route
-                    exact
-                    path='/mauphathanh/edit'
-                    render={props => <MauPhatHanhEdit {...props} />}
-                  />
-                  <Route
-                    exact
-                    path='/mauphathanh/add'
-                    render={props => <MauPhatHanhAdd {...props} />}
-                  />
+                  {/* <Route */}
+                  {/* exact */}
+                  {/* path='/mauphathanh/edit' */}
+                  {/* render={props => <MauPhatHanhEdit {...props} />} */}
+                  {/* /> */}
+                  {/* <Route */}
+                  {/* exact */}
+                  {/* path='/mauphathanh/add' */}
+                  {/* render={props => <MauPhatHanhAdd {...props} />} */}
+                  {/* /> */}
                   <Route exact path='/maubaocao' component={MauBaoCao} />
                   <Redirect exact from='/' to='/' component={HomePage} />
                 </Switch>
