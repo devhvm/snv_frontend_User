@@ -1,19 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Layout } from 'antd'
 import CreateModal from '../../../components/MauPhatHanh/CreateModal'
-import DeleteModal from '../../../components/MauPhatHanh/DeleteModal'
-import ContentTabs from '../../../components/MauPhatHanh/TabsList'
-import CreateMenuSider from '../../../components/MauPhatHanh/MenuSider/dangxuli'
+import TabsList from '../../../components/MauPhatHanh/TabsList'
+import YeuCauDieuChinhMenuSider from '../../../components/MauPhatHanh/MenuSider/yeucaudieuchinh'
 
-export default function YeuCauDieuChinhPage ({ data, getCoQuanChuTri }) {
-  console.log(data.coQuanChuTri)
-  const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
+export default function DangXuLiPage ({
+  data,
+  tab,
+  getCoQuanChuTri,
+  getMauPhatHanh,
+  getLoaiBaoCao,
+  getTieuChi,
+  fecthTab,
+  addNewTab,
+  changeTabList,
+  changeActiveTab
+}) {
+  // console.log('data', data)
+
+  useEffect(() => {
+    // getMauPhatHanh()
+  })
+
   const [visibleCreateModal, setVisibleCreateModal] = useState(false)
 
   return (
     <Layout>
       <Layout.Content style={{ background: '#fff' }}>
-        <ContentTabs setVisibleDeleteModal={setVisibleDeleteModal} />
+        <TabsList
+          tab={tab}
+          fecthTab={fecthTab}
+          changeTabList={changeTabList}
+          changeActiveTab={changeActiveTab}
+        />
       </Layout.Content>
       <Layout.Sider
         width={300}
@@ -22,26 +41,27 @@ export default function YeuCauDieuChinhPage ({ data, getCoQuanChuTri }) {
           marginLeft: '10px',
           background: '#fff'
         }}
+        // collapsed={collapsed}
       >
         <Layout.Content>
-          <CreateMenuSider
+          <YeuCauDieuChinhMenuSider
             setVisibleCreateModal={setVisibleCreateModal}
             getCoQuanChuTri={getCoQuanChuTri}
+            addNewTab={addNewTab}
+            changeActiveTab={changeActiveTab}
+            getLoaiBaoCao={getLoaiBaoCao}
           />
         </Layout.Content>
       </Layout.Sider>
-      <DeleteModal
-        visible={visibleDeleteModal}
-        closeModal={() => {
-          setVisibleDeleteModal(false)
-        }}
-      />
       <CreateModal
         visible={visibleCreateModal}
         closeModal={() => {
           setVisibleCreateModal(false)
         }}
-        coQuanChuTri={data.coQuanChuTri}
+        // coQuanChuTri={data.coQuanChuTri}
+        // mauBaoCao={data.mauBaoCao}
+        // tieuChi={data.tieuChi}
+        getTieuChi={getTieuChi}
       />
     </Layout>
   )

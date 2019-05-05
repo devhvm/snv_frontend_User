@@ -60,7 +60,7 @@ export default function DangXuLiMenuSider ({
         title={
           <React.Fragment>
             <Icon type='user' />
-            Danh sách tạo mới
+            Danh sách yêu cầu điều chỉnh
           </React.Fragment>
         }
       >
@@ -130,6 +130,32 @@ export default function DangXuLiMenuSider ({
                 }
               }
             }}
+          />
+        </Menu.ItemGroup>
+      </SubMenu>
+      <SubMenu
+        key='editList'
+        title={
+          <React.Fragment>
+            <Icon type='user' />
+            Danh sách uỷ quyền
+          </React.Fragment>
+        }
+      >
+        <Menu.ItemGroup
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '300px',
+            padding: '0 0 !important'
+          }}
+        >
+          <Input placeholder='Mã mẫu, Tên mẫu' style={{ marginTop: '10px' }} />
+          <ListTable
+            style={{}}
+            columns={columnsSmall}
+            dataSource={dataSmall}
+            size='small'
           />
         </Menu.ItemGroup>
       </SubMenu>
