@@ -20,9 +20,8 @@ const DatePickerSearchMauPhatHanh = styled(DatePicker)`
 `
 
 const ButtonSearchMauPhatHanh = styled(Button)`
-  display: flex !important;
-  margin: auto;
-  right: 10%;
+  margin-top: 10px;
+  right: 5%;
 `
 
 const dateFormat = 'DD-MM-YYYY'
@@ -447,6 +446,14 @@ export default function TabItem ({ visible, closeModal }) {
                     value={tenMauPhatHanh}
                   />
                 </Form.Item>
+                <Form.Item label='Ngày phát hành:'>
+                  <DatePickerSearchMauPhatHanh
+                    defaultValue={moment(ngayPhatHanh, dateFormat)}
+                    placeholder='Nhập ngày phát hành'
+                  />
+                </Form.Item>
+              </Col>
+              <Col span={12}>
                 <Form.Item label='Người lập:'>
                   <InputSearchMauPhatHanh
                     placeholder='Nhập tên mẫu phát hành'
@@ -454,19 +461,11 @@ export default function TabItem ({ visible, closeModal }) {
                     disabled
                   />
                 </Form.Item>
-              </Col>
-              <Col span={12}>
                 <Form.Item label='Cơ quan chủ trì:'>
                   <InputSearchMauPhatHanh
                     placeholder='Nhập tên mẫu phát hành'
                     value={tenMauPhatHanh}
                     disabled
-                  />
-                </Form.Item>
-                <Form.Item label='Ngày phát hành:'>
-                  <DatePickerSearchMauPhatHanh
-                    defaultValue={moment(ngayPhatHanh, dateFormat)}
-                    placeholder='Nhập ngày phát hành'
                   />
                 </Form.Item>
                 <Form.Item label='Chọn phạm vi'>
@@ -507,7 +506,7 @@ export default function TabItem ({ visible, closeModal }) {
               <Input.TextArea
                 placeholder='Ghi chú'
                 style={{
-                  height: 70,
+                  height: 130,
                   width: '300px',
                   maxWidth: 'unset'
                 }}

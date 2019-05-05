@@ -22,7 +22,6 @@ export default function YeuCauDieuChinhPage ({ data, getCoQuanChuTri }) {
           marginLeft: '10px',
           background: '#fff'
         }}
-        // collapsed={collapsed}
       >
         <Layout.Content>
           <CreateMenuSider
