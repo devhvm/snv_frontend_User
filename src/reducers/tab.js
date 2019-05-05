@@ -2,8 +2,7 @@ import { handleActions, createAction } from 'redux-actions'
 
 const tabList = [
   { title: 'Tab 1', content: 'Content of Tab 1', key: '1' },
-  { title: 'Tab 2', content: 'Content of Tab 2', key: '2' },
-  { title: 'Tab 3', content: 'Content of Tab 3', key: '3' }
+  { title: 'Tab 2', content: 'Content of Tab 2', key: '2' }
 ]
 
 // Action
@@ -24,12 +23,17 @@ export const changeActiveTab = item => dispatch => {
 }
 
 export const addNewTab = item => dispatch => {
-  console.log(item)
+  // tabList.forEach(function (elm) {
+  //   console.log(elm.key)
+  //   if (elm.key !== item.maMau) {
   tabList.push({
     title: item.tenMau,
     content: 'Content of new Tab',
     key: item.maMau
   })
+  console.log('tabList', item.maMau)
+  // }
+  // })
   dispatch(fetchTabRequest(tabList))
 }
 

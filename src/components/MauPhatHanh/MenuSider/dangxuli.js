@@ -5,6 +5,7 @@ import styled from 'styled-components'
 export default function DangXuLiMenuSider ({
   setVisibleCreateModal,
   getCoQuanChuTri,
+  getLoaiBaoCao,
   addNewTab,
   changeActiveTab
 }) {
@@ -89,6 +90,7 @@ export default function DangXuLiMenuSider ({
                     onClick={() => {
                       setVisibleCreateModal(true)
                       getCoQuanChuTri()
+                      getLoaiBaoCao()
                     }}
                   >
                     Tạo Mới

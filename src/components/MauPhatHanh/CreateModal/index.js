@@ -2,7 +2,14 @@ import React from 'react'
 import { Modal, Form, Input, Select, Row, Col, Table } from 'antd'
 // import styled from 'styled-components'
 
-export default function CreateModal ({ visible, closeModal, coQuanChuTri }) {
+export default function CreateModal ({
+  visible,
+  closeModal,
+  coQuanChuTri,
+  mauBaoCao,
+  tieuChi,
+  getTieuChi
+}) {
   const columns = [
     {
       title: 'Code',
@@ -21,10 +28,14 @@ export default function CreateModal ({ visible, closeModal, coQuanChuTri }) {
     }
   ]
 
-  // const dataTable = (coQuanChuTri && coQuanChuTri.map((item, i) => ({
-  //   key: item.maDinhDanhCode,
-  //
-  // })))
+  const dataTable =
+    tieuChi &&
+    tieuChi.map((item, i) => ({
+      key: item.id,
+      code: item.id,
+      name: item.chiTieu.name,
+      kicongbo: item.kyCongBo.name
+    }))
 
   const dataSelect =
     coQuanChuTri &&
@@ -48,27 +59,24 @@ export default function CreateModal ({ visible, closeModal, coQuanChuTri }) {
             <Form.Item label='Mã mẫu phát hành'>
               <Input />
             </Form.Item>
+            <Form.Item label='Tên mẫu phát hành'>
+              <Input />
+            </Form.Item>
             <Form.Item label='Đơn vị chủ trì'>
               <Select
                 defaultValue={coQuanChuTri ? coQuanChuTri[0].name : ''}
                 value={coQuanChuTri ? coQuanChuTri[0].name : ''}
-                // size={size}
-                // style={{ width: '32%' }}
-                // onChange={this.handleCurrencyChange}
                 onSelect={value => {
-                  console.log(value)
+                  getTieuChi(value)
                 }}
               >
                 {dataSelect}
               </Select>
             </Form.Item>
-            <Form.Item label='Tên mẫu phát hành'>
-              <Input />
-            </Form.Item>
           </Col>
           <Col span={11} style={{ marginLeft: '20px' }}>
-            <Form.Item label='Đối tượng'>
-              <Input />
+            <Form.Item label='Loại báo cáo'>
+              <Input value={mauBaoCao} />
             </Form.Item>
             <Form.Item label='Phạm vi'>
               <Input.Group compact>
@@ -99,10 +107,7 @@ export default function CreateModal ({ visible, closeModal, coQuanChuTri }) {
           </Col>
         </Row>
         <Form.Item label='Tiêu chí'>
-          <Table
-            columns={columns}
-            // dataSource={dataTable}
-          />
+          <Table columns={columns} dataSource={dataTable} pagination={false} />
         </Form.Item>
       </Form>
     </Modal>

@@ -1,6 +1,11 @@
 import { connect } from 'react-redux'
 import DangXuLiPage from './DangXuLiPage'
-import { getCoQuanChuTri } from '../../../reducers/mauPhatHanh'
+import {
+  getCoQuanChuTri,
+  getMauPhatHanh,
+  getLoaiBaoCao,
+  getTieuChi
+} from '../../../reducers/mauPhatHanh'
 import {
   fecthTab,
   changeTabList,
@@ -18,6 +23,9 @@ export default connect(
     changeTabList,
     addNewTab,
     changeActiveTab,
-    getCoQuanChuTri
+    getCoQuanChuTri,
+    getMauPhatHanh,
+    getLoaiBaoCao,
+    getTieuChi
   }
 )(DangXuLiPage)

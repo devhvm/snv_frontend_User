@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Layout } from 'antd'
 import CreateModal from '../../../components/MauPhatHanh/CreateModal'
 import TabsList from '../../../components/MauPhatHanh/TabsList'
@@ -8,12 +8,19 @@ export default function DangXuLiPage ({
   data,
   tab,
   getCoQuanChuTri,
+  getMauPhatHanh,
+  getLoaiBaoCao,
+  getTieuChi,
   fecthTab,
   addNewTab,
   changeTabList,
   changeActiveTab
 }) {
-  // console.log(data.coQuanChuTri)
+  // console.log('data', data)
+
+  useEffect(() => {
+    // getMauPhatHanh()
+  })
 
   const [visibleCreateModal, setVisibleCreateModal] = useState(false)
 
@@ -42,6 +49,7 @@ export default function DangXuLiPage ({
             getCoQuanChuTri={getCoQuanChuTri}
             addNewTab={addNewTab}
             changeActiveTab={changeActiveTab}
+            getLoaiBaoCao={getLoaiBaoCao}
           />
         </Layout.Content>
       </Layout.Sider>
@@ -51,6 +59,9 @@ export default function DangXuLiPage ({
           setVisibleCreateModal(false)
         }}
         coQuanChuTri={data.coQuanChuTri}
+        mauBaoCao={data.mauBaoCao}
+        tieuChi={data.tieuChi}
+        getTieuChi={getTieuChi}
       />
     </Layout>
   )
