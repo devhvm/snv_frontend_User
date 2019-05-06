@@ -9,8 +9,8 @@ import LoginPage from '../pages/LoginPage'
 import MauBaoCao from '../pages/MauBaoCao'
 import MauPhatHanhDangXuLi from '../pages/MauPhatHanh/DangXuLiPage'
 import MauPhatHanhYeuCauDieuChinh from '../pages/MauPhatHanh/YeuCauDieuChinhPage'
-// import MauPhatHanhWaitForApproval from '../pages/MauPhatHanh/waitForApproval'
-// import MauPhatHanhSearch from '../pages/MauPhatHanh/search'
+import MauPhatHanhKyDuyet from '../pages/MauPhatHanh/KyDuyetPage'
+import MauPhatHanhTruyLuc from '../pages/MauPhatHanh/TruyLucPage'
 import MauBaoCaoProcessing from '../pages/MauBaoCao/processing'
 import MauBaoCaoEditing from '../pages/MauBaoCao/editing'
 import MauBaoCaoWaitForApproval from '../pages/MauBaoCao/waitForApproval'
@@ -54,24 +54,24 @@ function DashboardPage () {
                   <Route exact path='/home' component={HomePage} />
                   <Route
                     exact
-                    path='/phathanhmau/danhsachdangxuly'
+                    path='/mauphathanh/danhsachdangxuly'
                     component={MauPhatHanhDangXuLi}
                   />
                   <Route
                     exact
-                    path='/phathanhmau/danhsachyeucaudieuchinh'
+                    path='/mauphathanh/danhsachyeucaudieuchinh'
                     component={MauPhatHanhYeuCauDieuChinh}
                   />
-                  {/* <Route */}
-                  {/* exact */}
-                  {/* path='/phathanhmau/danhsachchokyduyet' */}
-                  {/* component={MauPhatHanhWaitForApproval} */}
-                  {/* /> */}
-                  {/* <Route */}
-                  {/* exact */}
-                  {/* path='/phathanhmau/search' */}
-                  {/* component={MauPhatHanhSearch} */}
-                  {/* /> */}
+                  <Route
+                    exact
+                    path='/mauphathanh/danhsachchokyduyet'
+                    component={MauPhatHanhKyDuyet}
+                  />
+                  <Route
+                    exact
+                    path='/mauphathanh/truyluc'
+                    component={MauPhatHanhTruyLuc}
+                  />
                   <Route
                     exact
                     path='/maubaocao/danhsachdangxuli'

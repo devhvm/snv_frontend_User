@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const { Header } = Layout
 
-const AppName = styled.span`
+const AppName = styled(Menu.Item)`
   font-size: 18px;
   font-weight: 400;
   color: #fff;
@@ -53,22 +53,22 @@ export default function UserHeader ({
         {
           screenCode: 5,
           name: 'DANH SÁCH XỬ LÝ',
-          link: '/phathanhmau/danhsachdangxuly'
+          link: '/mauphathanh/danhsachdangxuly'
         },
         {
           screenCode: 14,
           name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-          link: '/phathanhmau/danhsachyeucaudieuchinh'
+          link: '/mauphathanh/danhsachyeucaudieuchinh'
         },
         {
           screenCode: 7,
           name: 'DANH SÁCH KÝ DUYỆT',
-          link: '/phathanhmau/danhsachchokyduyet'
+          link: '/mauphathanh/danhsachchokyduyet'
         },
         {
           screenCode: 8,
           name: 'TRUY LỤC',
-          link: '/phathanhmau/truyluc'
+          link: '/mauphathanh/truyluc'
         }
       ]
     },

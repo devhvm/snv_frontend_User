@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Layout } from 'antd'
 import TabsList from '../../../components/MauPhatHanh/TabsList'
-import KyDuyetMenuSider from '../../../components/MauPhatHanh/MenuSider/kyDuyet'
+import TruyLucMenuSider from '../../../components/MauPhatHanh/MenuSider/truyLuc'
 
-export default function KyDuyetPage ({
+export default function TruyLucPage ({
   data,
   tab,
   fecthTab,
@@ -41,7 +41,7 @@ export default function KyDuyetPage ({
         // collapsed={collapsed}
       >
         <Layout.Content>
-          <KyDuyetMenuSider
+          <TruyLucMenuSider
             getCoQuanChuTri={getCoQuanChuTri}
             addNewTab={addNewTab}
             tabList={tab.tabList}
