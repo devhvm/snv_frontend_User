@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Layout } from 'antd'
-import CreateModal from '../../../components/MauPhatHanh/CreateModal'
 import TabsList from '../../../components/MauPhatHanh/TabsList'
-import YeuCauDieuChinhMenuSider from '../../../components/MauPhatHanh/MenuSider/yeucaudieuchinh'
+import YeuCauDieuChinhMenuSider from '../../../components/MauPhatHanh/MenuSider/yeuCauDieuChinh'
 
-export default function DangXuLiPage ({
+export default function YeuCauDieuChinhPage ({
   data,
   tab,
+  fecthTab,
+  addNewTab,
+  removeTab,
+  changeActiveTab,
   getCoQuanChuTri,
   getMauPhatHanh,
   getLoaiBaoCao,
-  getTieuChi,
-  fecthTab,
-  addNewTab,
-  changeTabList,
-  changeActiveTab
+  getTieuChi
 }) {
   // console.log('data', data)
 
@@ -22,15 +21,13 @@ export default function DangXuLiPage ({
     // getMauPhatHanh()
   })
 
-  const [visibleCreateModal, setVisibleCreateModal] = useState(false)
-
   return (
     <Layout>
       <Layout.Content style={{ background: '#fff' }}>
         <TabsList
           tab={tab}
           fecthTab={fecthTab}
-          changeTabList={changeTabList}
+          removeTab={removeTab}
           changeActiveTab={changeActiveTab}
         />
       </Layout.Content>
@@ -45,24 +42,12 @@ export default function DangXuLiPage ({
       >
         <Layout.Content>
           <YeuCauDieuChinhMenuSider
-            setVisibleCreateModal={setVisibleCreateModal}
-            getCoQuanChuTri={getCoQuanChuTri}
             addNewTab={addNewTab}
+            tabList={tab.tabList}
             changeActiveTab={changeActiveTab}
-            getLoaiBaoCao={getLoaiBaoCao}
           />
         </Layout.Content>
       </Layout.Sider>
-      <CreateModal
-        visible={visibleCreateModal}
-        closeModal={() => {
-          setVisibleCreateModal(false)
-        }}
-        // coQuanChuTri={data.coQuanChuTri}
-        // mauBaoCao={data.mauBaoCao}
-        // tieuChi={data.tieuChi}
-        getTieuChi={getTieuChi}
-      />
     </Layout>
   )
 }

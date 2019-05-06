@@ -7,7 +7,8 @@ export default function DangXuLiMenuSider ({
   getCoQuanChuTri,
   getLoaiBaoCao,
   addNewTab,
-  changeActiveTab
+  changeActiveTab,
+  tabList
 }) {
   const SubMenu = Menu.SubMenu
 
@@ -126,7 +127,7 @@ export default function DangXuLiMenuSider ({
             onRow={record => {
               return {
                 onClick: () => {
-                  addNewTab(record)
+                  addNewTab(tabList, record)
                   changeActiveTab(String(record.maMau))
                 }
               }

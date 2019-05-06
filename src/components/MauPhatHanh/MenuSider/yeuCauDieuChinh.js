@@ -2,19 +2,20 @@ import React from 'react'
 import { Input, Row, Table, Menu, Icon, Button } from 'antd'
 import styled from 'styled-components'
 
-export default function DangXuLiMenuSider ({
+export default function YeuCauDieuChinhMenuSider ({
   setVisibleCreateModal,
   getCoQuanChuTri,
   getLoaiBaoCao,
   addNewTab,
-  changeActiveTab
+  changeActiveTab,
+  tabList
 }) {
   const SubMenu = Menu.SubMenu
 
   const ListTable = styled(Table)`
     margin-top: 10px !important;
     width: 90%;
-    margin: auto
+    margin: auto;
   `
 
   const SearchInput = styled(Input)`
@@ -88,7 +89,7 @@ export default function DangXuLiMenuSider ({
                 setVisibleCreateModal(true)
               }}
             >
-                    Tìm kiếm
+              Tìm kiếm
             </Button>
           </Row>
           <ListTable
@@ -98,7 +99,7 @@ export default function DangXuLiMenuSider ({
             onRow={record => {
               return {
                 onClick: () => {
-                  addNewTab(record)
+                  addNewTab(tabList, record)
                   changeActiveTab(String(record.maMau))
                 }
               }
@@ -122,9 +123,7 @@ export default function DangXuLiMenuSider ({
             padding: '0 0 !important'
           }}
         >
-          <SearchInput
-            placeholder='Tìm kiếm'
-          />
+          <SearchInput placeholder='Tìm kiếm' />
           <Row type='flex' justify='end'>
             <Button
               type='primary'

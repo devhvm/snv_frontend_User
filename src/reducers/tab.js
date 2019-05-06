@@ -1,9 +1,6 @@
 import { handleActions, createAction } from 'redux-actions'
 
-const tabList = [
-  { title: 'Tab 1', content: 'Content of Tab 1', key: '1' },
-  { title: 'Tab 2', content: 'Content of Tab 2', key: '2' }
-]
+const tabList = [{ title: 'Tab 1', content: 'Content of Tab 1', key: '1' }]
 
 // Action
 export const TAB_LIST = 'TAB_LIST'
@@ -14,27 +11,43 @@ export const fecthTab = () => dispatch => {
   dispatch(fetchTabRequest(tabList))
 }
 
-export const changeTabList = item => dispatch => {
-  dispatch(fetchTabRequest(item))
+export const removeTab = (list, targetKey, activeTab) => dispatch => {
+  let lastIndex = 0
+  list.forEach((item, i) => {
+    if (String(item.key) === targetKey) {
+      lastIndex = i - 1
+    }
+  })
+  const panes = list.filter(item => item.key !== targetKey)
+  if (panes.length && activeTab === targetKey) {
+    if (lastIndex >= 0) {
+      changeActiveTab(panes[lastIndex].key)
+    } else {
+      changeActiveTab(panes[0].key)
+    }
+  }
+  dispatch(fetchTabRequest(panes))
 }
 
 export const changeActiveTab = item => dispatch => {
   dispatch(changeActiveTabRequest(item))
 }
 
-export const addNewTab = item => dispatch => {
-  // tabList.forEach(function (elm) {
-  //   console.log(elm.key)
-  //   if (elm.key !== item.maMau) {
-  tabList.push({
-    title: item.tenMau,
-    content: 'Content of new Tab',
-    key: item.maMau
+export const addNewTab = (list, item) => dispatch => {
+  let isExist = false
+  list.forEach(function (elm) {
+    if (elm.key === item.maMau) {
+      isExist = true
+    }
   })
-  console.log('tabList', item.maMau)
-  // }
-  // })
-  dispatch(fetchTabRequest(tabList))
+  if (!isExist) {
+    list.push({
+      title: item.tenMau,
+      content: 'Content of new Tab',
+      key: item.maMau
+    })
+  }
+  dispatch(fetchTabRequest(list))
 }
 
 const changeActiveTabRequest = createAction(ACTIVE_TAB)
@@ -42,7 +55,11 @@ const fetchTabRequest = createAction(TAB_LIST)
 
 // Initial State
 const initialState = {
-  activeTab: '1'
+  activeTab: '1',
+  tabList: [
+    { title: 'Tab 1', content: 'Content of Tab 1', key: '1' },
+    { title: 'Tab 2', content: 'Content of Tab 2', key: '2' }
+  ]
 }
 
 // reducer

@@ -3,18 +3,18 @@ import YeuCauDieuChinhPage from './YeuCauDieuChinhPage'
 import { getCoQuanChuTri } from '../../../reducers/mauPhatHanh'
 import {
   fecthTab,
-  changeTabList,
+  removeTab,
   addNewTab,
   changeActiveTab
 } from '../../../reducers/tab'
 export default connect(
   state => ({
-    data: state.phatHanhMau,
+    data: state.mauPhatHanh,
     tab: state.tab
   }),
   {
     fecthTab,
-    changeTabList,
+    removeTab,
     addNewTab,
     changeActiveTab,
     getCoQuanChuTri

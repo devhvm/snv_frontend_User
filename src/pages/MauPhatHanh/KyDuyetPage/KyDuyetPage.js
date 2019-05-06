@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Layout } from 'antd'
-import CreateModal from '../../../components/MauPhatHanh/CreateModal'
 import TabsList from '../../../components/MauPhatHanh/TabsList'
-import DangXuLiMenuSider from '../../../components/MauPhatHanh/MenuSider/dangXuLi'
+import YeuCauDieuChinhMenuSider from '../../../components/MauPhatHanh/MenuSider/yeuCauDieuChinh'
 
-export default function DangXuLiPage ({
+export default function KyDuyetPage ({
   data,
   tab,
   fecthTab,
@@ -21,8 +20,6 @@ export default function DangXuLiPage ({
   useEffect(() => {
     // getMauPhatHanh()
   })
-
-  const [visibleCreateModal, setVisibleCreateModal] = useState(false)
 
   return (
     <Layout>
@@ -44,8 +41,7 @@ export default function DangXuLiPage ({
         // collapsed={collapsed}
       >
         <Layout.Content>
-          <DangXuLiMenuSider
-            setVisibleCreateModal={setVisibleCreateModal}
+          <YeuCauDieuChinhMenuSider
             getCoQuanChuTri={getCoQuanChuTri}
             addNewTab={addNewTab}
             tabList={tab.tabList}
@@ -54,16 +50,6 @@ export default function DangXuLiPage ({
           />
         </Layout.Content>
       </Layout.Sider>
-      <CreateModal
-        visible={visibleCreateModal}
-        closeModal={() => {
-          setVisibleCreateModal(false)
-        }}
-        coQuanChuTri={data.coQuanChuTri}
-        mauBaoCao={data.mauBaoCao}
-        tieuChi={data.tieuChi}
-        getTieuChi={getTieuChi}
-      />
     </Layout>
   )
 }

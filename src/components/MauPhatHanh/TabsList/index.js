@@ -7,7 +7,7 @@ const TabPane = Tabs.TabPane
 export default function TabList ({
   tab,
   fecthTab,
-  changeTabList,
+  removeTab,
   changeActiveTab
 }) {
   console.log(tab)
@@ -34,27 +34,27 @@ export default function TabList ({
   // }
 
   const remove = targetKey => {
-    let activeKey = activeTab
-    console.log('activeKey', activeKey)
-    console.log('targetKey', targetKey)
-    let lastIndex
-    tabList.forEach((pane, i) => {
-      if (String(pane.key) === targetKey) {
-        lastIndex = i - 1
-      }
-    })
-    const panes = tabList.filter(pane => pane.key !== targetKey)
-    if (panes.length && activeKey === targetKey) {
-      if (lastIndex >= 0) {
-        // activeKey = panes[lastIndex].key
-        changeActiveTab(panes[lastIndex].key)
-      } else {
-        // activeKey = panes[0].key
-        changeActiveTab(panes[0].key)
-      }
-    }
-    console.log('panes', panes)
-    changeTabList(panes)
+    // let activeKey = activeTab
+    // console.log('activeKey', activeKey)
+    // console.log('targetKey', targetKey)
+    // let lastIndex
+    // tabList.forEach((pane, i) => {
+    //   if (String(pane.key) === targetKey) {
+    //     lastIndex = i - 1
+    //   }
+    // })
+    // const panes = tabList.filter(pane => pane.key !== targetKey)
+    // if (panes.length && activeKey === targetKey) {
+    //   if (lastIndex >= 0) {
+    //     // activeKey = panes[lastIndex].key
+    //     changeActiveTab(panes[lastIndex].key)
+    //   } else {
+    //     // activeKey = panes[0].key
+    //     changeActiveTab(panes[0].key)
+    //   }
+    // }
+    // console.log('panes', panes)
+    removeTab(tabList, targetKey, activeTab)
     changeActiveTab(targetKey)
   }
 
