@@ -19,9 +19,8 @@ const DatePickerSearchMauPhatHanh = styled(DatePicker)`
   width: 95% !important;
 `
 
-const ButtonSearchMauPhatHanh = styled(Button)`
-  margin-top: 10px;
-  right: 2%;
+const ButtonTopTabItem = styled(Button)`
+  margin-right: 40px;
 `
 
 const dateFormat = 'DD-MM-YYYY'
@@ -414,18 +413,13 @@ export default function TabItem ({ visible, closeModal }) {
     <Fragment>
       <Row type='flex' justify='end'>
         <Row type='flex' justify='space-between'>
-          <ButtonSearchMauPhatHanh
+          <ButtonTopTabItem
             type='primary'
             onClick={() => setVisibleDeleteModal(true)}
           >
             Xoá
-          </ButtonSearchMauPhatHanh>
-          <ButtonSearchMauPhatHanh
-            type='primary'
-            style={{ marginLeft: '20px' }}
-          >
-            Lưu Lại
-          </ButtonSearchMauPhatHanh>
+          </ButtonTopTabItem>
+          <ButtonTopTabItem type='primary'>Lưu</ButtonTopTabItem>
         </Row>
       </Row>
       <FormSearchMauPhatHanh>
@@ -524,9 +518,9 @@ export default function TabItem ({ visible, closeModal }) {
         style={{ marginRight: '20px' }}
       />
       <Row type='flex' justify='end'>
-        <ButtonSearchMauPhatHanh type='primary'>
+        <Button style={{ marginTop: '10px', right: '2%' }} type='primary'>
           Yêu Cầu Kí Duyệt
-        </ButtonSearchMauPhatHanh>
+        </Button>
       </Row>
       <DeleteModal
         visible={visibleDeleteModal}

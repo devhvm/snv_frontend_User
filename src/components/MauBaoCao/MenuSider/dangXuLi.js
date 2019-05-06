@@ -1,8 +1,8 @@
 import React from 'react'
-import { Input, Row, Table, Menu, Icon, Button } from 'antd'
+import { Input, Row, Col, Table, Menu, Icon, Button } from 'antd'
 import styled from 'styled-components'
 
-export default function YeuCauDieuChinhMenuSider ({
+export default function DangXuLiMenuSider ({
   setVisibleCreateModal,
   getCoQuanChuTri,
   getLoaiBaoCao,
@@ -55,15 +55,15 @@ export default function YeuCauDieuChinhMenuSider ({
   return (
     <Menu
       mode='inline'
-      defaultOpenKeys={['editList']}
+      defaultOpenKeys={['createList']}
       style={{ background: '#ccc' }}
     >
       <SubMenu
-        key='editList'
+        key='createList'
         title={
           <React.Fragment>
             <Icon type='user' />
-            Danh sách ký duyệt
+            Danh sách tạo mới
           </React.Fragment>
         }
       >
@@ -71,26 +71,54 @@ export default function YeuCauDieuChinhMenuSider ({
           style={{
             display: 'flex',
             flexDirection: 'column',
+            height: '300px',
             padding: '0 0 !important'
           }}
         >
           <SearchInput placeholder='Tìm Kiếm' />
-          <Row type='flex' justify='end'>
-            <Button
-              type='primary'
-              icon='search'
-              style={{
-                margin: '10px 15px 0 0',
-                background: '#06d0d0',
-                borderColor: '#06d0d0',
-                fontSize: '10px'
-              }}
-              onClick={() => {
-                setVisibleCreateModal(true)
-              }}
-            >
-              Tìm kiếm
-            </Button>
+          <Row>
+            <Col span={20} offset={4}>
+              <Row>
+                <Col span={11}>
+                  <Button
+                    type='primary'
+                    icon='plus'
+                    style={{
+                      marginTop: '10px',
+                      background: '#44b100cc',
+                      borderColor: '#44b100cc',
+                      // width: '90%',
+                      fontSize: '10px'
+                    }}
+                    onClick={() => {
+                      setVisibleCreateModal(true)
+                      getCoQuanChuTri()
+                      getLoaiBaoCao()
+                    }}
+                  >
+                    Tạo Mới
+                  </Button>
+                </Col>
+                <Col span={11}>
+                  <Button
+                    type='primary'
+                    icon='search'
+                    style={{
+                      marginTop: '10px',
+                      background: '#06d0d0',
+                      borderColor: '#06d0d0',
+                      // width: '90%',
+                      fontSize: '10px'
+                    }}
+                    onClick={() => {
+                      setVisibleCreateModal(true)
+                    }}
+                  >
+                    Tìm kiếm
+                  </Button>
+                </Col>
+              </Row>
+            </Col>
           </Row>
           <ListTable
             columns={columnsSmall}

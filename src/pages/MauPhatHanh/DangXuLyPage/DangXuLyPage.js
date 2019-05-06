@@ -4,7 +4,7 @@ import CreateModal from '../../../components/MauPhatHanh/CreateModal'
 import TabsList from '../../../components/MauPhatHanh/TabsList'
 import DangXuLiMenuSider from '../../../components/MauPhatHanh/MenuSider/dangXuLi'
 
-export default function DangXuLiPage ({
+export default function DangXuLyPage ({
   data,
   tab,
   fecthTab,

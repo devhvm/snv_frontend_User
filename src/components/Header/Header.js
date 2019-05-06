@@ -73,12 +73,12 @@ export default function UserHeader ({
       ]
     },
     {
-      name: 'MẪU BÁO CÁO',
+      name: 'TẠO MẪU BÁO CÁO',
       child: [
         {
           screenCode: 9,
           name: 'DANH SÁCH ĐANG XỬ LÝ',
-          link: '/maubaocao/danhsachdangxuli'
+          link: '/maubaocao/danhsachdangxuly'
         },
         {
           screenCode: 10,

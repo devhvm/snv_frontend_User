@@ -6,15 +6,18 @@ import Footer from '../components/Footer'
 import styled from 'styled-components'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
-import MauBaoCao from '../pages/MauBaoCao'
-import MauPhatHanhDangXuLi from '../pages/MauPhatHanh/DangXuLiPage'
+import MauPhatHanhDangXuLi from '../pages/MauPhatHanh/DangXuLyPage'
 import MauPhatHanhYeuCauDieuChinh from '../pages/MauPhatHanh/YeuCauDieuChinhPage'
 import MauPhatHanhKyDuyet from '../pages/MauPhatHanh/KyDuyetPage'
 import MauPhatHanhTruyLuc from '../pages/MauPhatHanh/TruyLucPage'
-import MauBaoCaoProcessing from '../pages/MauBaoCao/processing'
-import MauBaoCaoEditing from '../pages/MauBaoCao/editing'
-import MauBaoCaoWaitForApproval from '../pages/MauBaoCao/waitForApproval'
-import MauBaoCaoSearch from '../pages/MauBaoCao/search'
+import MauBaoCaoDangXuLy from '../pages/MauBaoCao/DangXuLyPage'
+import MauBaoCaoYeuCauDieuChinh from '../pages/MauBaoCao/YeuCauDieuChinhPage'
+import MauBaoCaoKyDuyet from '../pages/MauBaoCao/KyDuyetPage'
+import MauBaoCaoTruyLuc from '../pages/MauBaoCao/TruyLucPage'
+import LapBaoCaoDangXuLy from '../pages/LapBaoCao/DangXuLyPage'
+import LapBaoCaoYeuCauDieuChinh from '../pages/LapBaoCao/YeuCauDieuChinhPage'
+import LapBaoCaoKyDuyet from '../pages/LapBaoCao/KyDuyetPage'
+import LapBaoCaoTruyLuc from '../pages/LapBaoCao/TruyLucPage'
 import { connect } from 'react-redux'
 import { loginReq } from '../reducers/login'
 
@@ -36,9 +39,6 @@ const ContentWrapper = styled.div`
 `
 
 function DashboardPage () {
-  // const [login, setLogin] = useState(false)
-  // console.log('loginStatus', loginStatus)
-
   // const ExContext = React.createContext(login)
   let loginStatus = localStorage.getItem('loginStatus')
 
@@ -74,35 +74,44 @@ function DashboardPage () {
                   />
                   <Route
                     exact
-                    path='/maubaocao/danhsachdangxuli'
-                    component={MauBaoCaoProcessing}
+                    path='/lapbaocao/danhsachdangxuly'
+                    component={MauBaoCaoDangXuLy}
+                  />
+                  <Route
+                    exact
+                    path='/lapbaocao/danhsachyeucaudieuchinh'
+                    component={MauBaoCaoYeuCauDieuChinh}
+                  />
+                  <Route
+                    exact
+                    path='/lapbaocao/danhsachchokyduyet'
+                    component={MauBaoCaoKyDuyet}
+                  />
+                  <Route
+                    exact
+                    path='/lapbaocao/truyluc'
+                    component={MauBaoCaoTruyLuc}
+                  />
+                  <Route
+                    exact
+                    path='/maubaocao/danhsachdangxuly'
+                    component={LapBaoCaoDangXuLy}
                   />
                   <Route
                     exact
                     path='/maubaocao/danhsachyeucaudieuchinh'
-                    component={MauBaoCaoEditing}
+                    component={LapBaoCaoYeuCauDieuChinh}
                   />
                   <Route
                     exact
-                    path='/baocao/danhsachchokyduyet'
-                    component={MauBaoCaoWaitForApproval}
+                    path='/maubaocao/danhsachchokyduyet'
+                    component={LapBaoCaoKyDuyet}
                   />
                   <Route
                     exact
                     path='/maubaocao/truyluc'
-                    component={MauBaoCaoSearch}
+                    component={LapBaoCaoTruyLuc}
                   />
-                  {/* <Route */}
-                  {/* exact */}
-                  {/* path='/mauphathanh/edit' */}
-                  {/* render={props => <MauPhatHanhEdit {...props} />} */}
-                  {/* /> */}
-                  {/* <Route */}
-                  {/* exact */}
-                  {/* path='/mauphathanh/add' */}
-                  {/* render={props => <MauPhatHanhAdd {...props} />} */}
-                  {/* /> */}
-                  <Route exact path='/maubaocao' component={MauBaoCao} />
                   <Redirect exact from='/' to='/' component={HomePage} />
                 </Switch>
               </ContentWrapper>

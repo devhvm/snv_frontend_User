@@ -63,7 +63,7 @@ export default function YeuCauDieuChinhMenuSider ({
         title={
           <React.Fragment>
             <Icon type='user' />
-            Danh sách ký duyệt
+            Danh sách yêu cầu điều chỉnh
           </React.Fragment>
         }
       >
@@ -104,6 +104,44 @@ export default function YeuCauDieuChinhMenuSider ({
                 }
               }
             }}
+          />
+        </Menu.ItemGroup>
+      </SubMenu>
+      <SubMenu
+        key='authorizedList'
+        title={
+          <React.Fragment>
+            <Icon type='user' />
+            Danh sách uỷ quyền
+          </React.Fragment>
+        }
+      >
+        <Menu.ItemGroup
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '0 0 !important'
+          }}
+        >
+          <SearchInput placeholder='Tìm kiếm' />
+          <Row type='flex' justify='end'>
+            <Button
+              type='primary'
+              icon='search'
+              style={{
+                margin: '10px 15px 0 0',
+                background: '#06d0d0',
+                borderColor: '#06d0d0',
+                fontSize: '10px'
+              }}
+            >
+              Tìm kiếm
+            </Button>
+          </Row>
+          <ListTable
+            columns={columnsSmall}
+            dataSource={dataSmall}
+            size='small'
           />
         </Menu.ItemGroup>
       </SubMenu>
