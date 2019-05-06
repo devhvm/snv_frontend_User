@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Row, Col, Table, Menu, Icon, Button } from 'antd'
+import { Input, Row, Table, Menu, Icon, Button } from 'antd'
 import styled from 'styled-components'
 
 export default function DangXuLiMenuSider ({
@@ -12,7 +12,9 @@ export default function DangXuLiMenuSider ({
   const SubMenu = Menu.SubMenu
 
   const ListTable = styled(Table)`
-    margin-top: 20px;
+    margin-top: 10px !important;
+    width: 90%;
+    margin: auto
   `
 
   const SearchInput = styled(Input)`
@@ -52,11 +54,11 @@ export default function DangXuLiMenuSider ({
   return (
     <Menu
       mode='inline'
-      defaultOpenKeys={['createList']}
+      defaultOpenKeys={['editList']}
       style={{ background: '#ccc' }}
     >
       <SubMenu
-        key='createList'
+        key='editList'
         title={
           <React.Fragment>
             <Icon type='user' />
@@ -68,57 +70,28 @@ export default function DangXuLiMenuSider ({
           style={{
             display: 'flex',
             flexDirection: 'column',
-            height: '300px',
             padding: '0 0 !important'
           }}
         >
           <SearchInput placeholder='Tìm Kiếm' />
-          <Row>
-            <Col span={20} offset={4}>
-              <Row>
-                <Col span={11}>
-                  <Button
-                    type='primary'
-                    icon='plus'
-                    style={{
-                      marginTop: '20px',
-                      background: '#44b100cc',
-                      borderColor: '#44b100cc',
-                      // width: '90%',
-                      fontSize: '10px'
-                    }}
-                    onClick={() => {
-                      setVisibleCreateModal(true)
-                      getCoQuanChuTri()
-                      getLoaiBaoCao()
-                    }}
-                  >
-                    Tạo Mới
-                  </Button>
-                </Col>
-                <Col span={11}>
-                  <Button
-                    type='primary'
-                    icon='search'
-                    style={{
-                      marginTop: '20px',
-                      background: '#06d0d0',
-                      borderColor: '#06d0d0',
-                      // width: '90%',
-                      fontSize: '10px'
-                    }}
-                    onClick={() => {
-                      setVisibleCreateModal(true)
-                    }}
-                  >
+          <Row type='flex' justify='end'>
+            <Button
+              type='primary'
+              icon='search'
+              style={{
+                margin: '10px 15px 0 0',
+                background: '#06d0d0',
+                borderColor: '#06d0d0',
+                fontSize: '10px'
+              }}
+              onClick={() => {
+                setVisibleCreateModal(true)
+              }}
+            >
                     Tìm kiếm
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
+            </Button>
           </Row>
           <ListTable
-            style={{}}
             columns={columnsSmall}
             dataSource={dataSmall}
             size='small'
@@ -134,7 +107,7 @@ export default function DangXuLiMenuSider ({
         </Menu.ItemGroup>
       </SubMenu>
       <SubMenu
-        key='editList'
+        key='authorizedList'
         title={
           <React.Fragment>
             <Icon type='user' />
@@ -146,13 +119,27 @@ export default function DangXuLiMenuSider ({
           style={{
             display: 'flex',
             flexDirection: 'column',
-            height: '300px',
             padding: '0 0 !important'
           }}
         >
-          <Input placeholder='Mã mẫu, Tên mẫu' style={{ marginTop: '10px' }} />
+          <SearchInput
+            placeholder='Tìm kiếm'
+          />
+          <Row type='flex' justify='end'>
+            <Button
+              type='primary'
+              icon='search'
+              style={{
+                margin: '10px 15px 0 0',
+                background: '#06d0d0',
+                borderColor: '#06d0d0',
+                fontSize: '10px'
+              }}
+            >
+              Tìm kiếm
+            </Button>
+          </Row>
           <ListTable
-            style={{}}
             columns={columnsSmall}
             dataSource={dataSmall}
             size='small'

@@ -12,7 +12,9 @@ export default function DangXuLiMenuSider ({
   const SubMenu = Menu.SubMenu
 
   const ListTable = styled(Table)`
-    margin-top: 20px;
+    margin-top: 10px !important;
+    width: 90%;
+    margin: auto;
   `
 
   const SearchInput = styled(Input)`
@@ -81,7 +83,7 @@ export default function DangXuLiMenuSider ({
                     type='primary'
                     icon='plus'
                     style={{
-                      marginTop: '20px',
+                      marginTop: '10px',
                       background: '#44b100cc',
                       borderColor: '#44b100cc',
                       // width: '90%',
@@ -101,7 +103,7 @@ export default function DangXuLiMenuSider ({
                     type='primary'
                     icon='search'
                     style={{
-                      marginTop: '20px',
+                      marginTop: '10px',
                       background: '#06d0d0',
                       borderColor: '#06d0d0',
                       // width: '90%',
@@ -118,7 +120,6 @@ export default function DangXuLiMenuSider ({
             </Col>
           </Row>
           <ListTable
-            style={{}}
             columns={columnsSmall}
             dataSource={dataSmall}
             size='small'

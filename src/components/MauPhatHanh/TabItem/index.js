@@ -21,7 +21,7 @@ const DatePickerSearchMauPhatHanh = styled(DatePicker)`
 
 const ButtonSearchMauPhatHanh = styled(Button)`
   margin-top: 10px;
-  right: 5%;
+  right: 2%;
 `
 
 const dateFormat = 'DD-MM-YYYY'
