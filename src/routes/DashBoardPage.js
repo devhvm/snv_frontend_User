@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import styled from 'styled-components'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
-import MauPhatHanhDangXuLi from '../pages/MauPhatHanh/DangXuLyPage'
+import MauPhatHanhDangXuLy from '../pages/MauPhatHanh/DangXuLyPage'
 import MauPhatHanhYeuCauDieuChinh from '../pages/MauPhatHanh/YeuCauDieuChinhPage'
 import MauPhatHanhKyDuyet from '../pages/MauPhatHanh/KyDuyetPage'
 import MauPhatHanhTruyLuc from '../pages/MauPhatHanh/TruyLucPage'
@@ -42,6 +42,62 @@ function DashboardPage () {
   // const ExContext = React.createContext(login)
   let loginStatus = localStorage.getItem('loginStatus')
 
+  const routes = [
+    { path: '/home', exact: true, component: HomePage },
+    {
+      path: '/mauphathanh/danhsachdangxuly',
+      exact: true,
+      component: MauPhatHanhDangXuLy
+    },
+    {
+      path: '/mauphathanh/danhsachyeucaudieuchinh',
+      exact: true,
+      component: MauPhatHanhYeuCauDieuChinh
+    },
+    {
+      path: '/mauphathanh/danhsachchokyduyet',
+      exact: true,
+      component: MauPhatHanhKyDuyet
+    },
+    {
+      path: '/mauphathanh/truyluc',
+      exact: true,
+      component: MauPhatHanhTruyLuc
+    },
+    {
+      path: '/maubaocao/danhsachdangxuly',
+      exact: true,
+      component: MauBaoCaoDangXuLy
+    },
+    {
+      path: '/maubaocao/danhsachyeucaudieuchinh',
+      exact: true,
+      component: MauBaoCaoYeuCauDieuChinh
+    },
+    {
+      path: '/maubaocao/danhsachchokyduyet',
+      exact: true,
+      component: MauBaoCaoKyDuyet
+    },
+    { path: '/maubaocao/truyluc', exact: true, component: MauBaoCaoTruyLuc },
+    {
+      path: '/lapbaocao/danhsachdangxuly',
+      exact: true,
+      component: LapBaoCaoDangXuLy
+    },
+    {
+      path: '/lapbaocao/danhsachyeucaudieuchinh',
+      exact: true,
+      component: LapBaoCaoYeuCauDieuChinh
+    },
+    {
+      path: '/lapbaocao/danhsachchokyduyet',
+      exact: true,
+      component: LapBaoCaoKyDuyet
+    },
+    { path: '/lapbaocao/truyluc', exact: true, component: LapBaoCaoTruyLuc }
+  ]
+
   return (
     <div className='App'>
       {loginStatus ? (
@@ -51,67 +107,14 @@ function DashboardPage () {
             <LayoutContent>
               <ContentWrapper style={{ marginTop: '60px' }}>
                 <Switch>
-                  <Route exact path='/home' component={HomePage} />
-                  <Route
-                    exact
-                    path='/mauphathanh/danhsachdangxuly'
-                    component={MauPhatHanhDangXuLi}
-                  />
-                  <Route
-                    exact
-                    path='/mauphathanh/danhsachyeucaudieuchinh'
-                    component={MauPhatHanhYeuCauDieuChinh}
-                  />
-                  <Route
-                    exact
-                    path='/mauphathanh/danhsachchokyduyet'
-                    component={MauPhatHanhKyDuyet}
-                  />
-                  <Route
-                    exact
-                    path='/mauphathanh/truyluc'
-                    component={MauPhatHanhTruyLuc}
-                  />
-                  <Route
-                    exact
-                    path='/lapbaocao/danhsachdangxuly'
-                    component={MauBaoCaoDangXuLy}
-                  />
-                  <Route
-                    exact
-                    path='/lapbaocao/danhsachyeucaudieuchinh'
-                    component={MauBaoCaoYeuCauDieuChinh}
-                  />
-                  <Route
-                    exact
-                    path='/lapbaocao/danhsachchokyduyet'
-                    component={MauBaoCaoKyDuyet}
-                  />
-                  <Route
-                    exact
-                    path='/lapbaocao/truyluc'
-                    component={MauBaoCaoTruyLuc}
-                  />
-                  <Route
-                    exact
-                    path='/maubaocao/danhsachdangxuly'
-                    component={LapBaoCaoDangXuLy}
-                  />
-                  <Route
-                    exact
-                    path='/maubaocao/danhsachyeucaudieuchinh'
-                    component={LapBaoCaoYeuCauDieuChinh}
-                  />
-                  <Route
-                    exact
-                    path='/maubaocao/danhsachchokyduyet'
-                    component={LapBaoCaoKyDuyet}
-                  />
-                  <Route
-                    exact
-                    path='/maubaocao/truyluc'
-                    component={LapBaoCaoTruyLuc}
-                  />
+                  {routes.map((route, index) => (
+                    <Route
+                      key={index}
+                      path={route.path}
+                      exact={route.exact}
+                      component={route.component}
+                    />
+                  ))}
                   <Redirect exact from='/' to='/' component={HomePage} />
                 </Switch>
               </ContentWrapper>

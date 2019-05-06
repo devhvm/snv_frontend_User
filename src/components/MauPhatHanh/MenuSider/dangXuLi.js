@@ -8,8 +8,11 @@ export default function DangXuLiMenuSider ({
   getLoaiBaoCao,
   addNewTab,
   changeActiveTab,
-  tabList
+  tabList,
+  dataTienTrinh
 }) {
+  console.log('dataTienTrinh', dataTienTrinh)
+
   const SubMenu = Menu.SubMenu
 
   const ListTable = styled(Table)`
@@ -34,23 +37,13 @@ export default function DangXuLiMenuSider ({
       dataIndex: 'tenMau'
     }
   ]
-  const dataSmall = [
-    {
-      key: '1',
-      maMau: '32',
-      tenMau: 'Báo Cáo Thanh Niên'
-    },
-    {
-      key: '2',
-      maMau: '33',
-      tenMau: 'Báo Cáo Thanh Niên'
-    },
-    {
-      key: '3',
-      maMau: '34',
-      tenMau: 'Báo Cáo Thanh Niên'
-    }
-  ]
+  const dataTable =
+    dataTienTrinh &&
+    dataTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh.map(item => ({
+      key: item.id,
+      maMau: item.duLieuCode,
+      tenMau: item.name
+    }))
 
   return (
     <Menu
@@ -63,7 +56,9 @@ export default function DangXuLiMenuSider ({
         title={
           <React.Fragment>
             <Icon type='user' />
-            Danh sách tạo mới
+            {/* Danh sách tạo mới */}
+            {dataTienTrinh &&
+              dataTienTrinh.tienTrinhXuLys[0].tienTrinhBatDau.name}
           </React.Fragment>
         }
       >
@@ -122,11 +117,12 @@ export default function DangXuLiMenuSider ({
           </Row>
           <ListTable
             columns={columnsSmall}
-            dataSource={dataSmall}
+            dataSource={dataTable}
             size='small'
             onRow={record => {
               return {
                 onClick: () => {
+                  console.log(record)
                   addNewTab(tabList, record)
                   changeActiveTab(String(record.maMau))
                 }

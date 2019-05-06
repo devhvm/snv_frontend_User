@@ -6,6 +6,7 @@ import DangXuLiMenuSider from '../../../components/MauPhatHanh/MenuSider/dangXuL
 
 export default function DangXuLyPage ({
   data,
+  dataTienTrinh,
   tab,
   fecthTab,
   addNewTab,
@@ -14,13 +15,12 @@ export default function DangXuLyPage ({
   getCoQuanChuTri,
   getMauPhatHanh,
   getLoaiBaoCao,
-  getTieuChi
+  getTieuChi,
+  getDuLieuTienTrinh
 }) {
-  // console.log('data', data)
-
   useEffect(() => {
-    // getMauPhatHanh()
-  })
+    getDuLieuTienTrinh()
+  }, [])
 
   const [visibleCreateModal, setVisibleCreateModal] = useState(false)
 
@@ -51,6 +51,7 @@ export default function DangXuLyPage ({
             tabList={tab.tabList}
             changeActiveTab={changeActiveTab}
             getLoaiBaoCao={getLoaiBaoCao}
+            dataTienTrinh={dataTienTrinh.duLieuTienTrinh}
           />
         </Layout.Content>
       </Layout.Sider>

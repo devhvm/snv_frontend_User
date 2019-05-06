@@ -10,8 +10,6 @@ export default function TabList ({
   removeTab,
   changeActiveTab
 }) {
-  console.log(tab)
-
   const tabList = tab.tabList
   const activeTab = tab.activeTab
 

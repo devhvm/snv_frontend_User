@@ -16,8 +16,6 @@ export default function DangXuLiPage ({
   getLoaiBaoCao,
   getTieuChi
 }) {
-  // console.log('data', data)
-
   useEffect(() => {
     // getMauPhatHanh()
   })

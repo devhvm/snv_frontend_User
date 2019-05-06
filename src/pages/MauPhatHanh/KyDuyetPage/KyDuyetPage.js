@@ -15,8 +15,6 @@ export default function KyDuyetPage ({
   getLoaiBaoCao,
   getTieuChi
 }) {
-  // console.log('data', data)
-
   useEffect(() => {
     // getMauPhatHanh()
   })

@@ -52,6 +52,8 @@ export default function CreateModal ({
       onOk={() => closeModal()}
       onCancel={() => closeModal()}
       width={800}
+      cancelText='Huỷ'
+      okText='Tạo'
     >
       <Form>
         <Row>

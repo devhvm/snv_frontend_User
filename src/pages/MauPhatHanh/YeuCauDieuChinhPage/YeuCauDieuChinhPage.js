@@ -15,8 +15,6 @@ export default function YeuCauDieuChinhPage ({
   getLoaiBaoCao,
   getTieuChi
 }) {
-  // console.log('data', data)
-
   useEffect(() => {
     // getMauPhatHanh()
   })
