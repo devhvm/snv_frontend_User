@@ -98,42 +98,70 @@ export default function UserHeader ({
       ]
     },
     {
-      name: 'BÁO CÁO',
+      name: 'LẬP BÁO CÁO',
       child: [
         {
           screenCode: 13,
           name: 'DANH SÁCH ĐANG XỬ LÝ',
-          link: '/baocao/danhsachdangxuli'
+          link: '/lapbaocao/danhsachdangxuly'
         },
         {
           screenCode: 14,
           name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-          link: '/baocao/danhsachyeucaudieuchinh'
+          link: '/lapbaocao/danhsachyeucaudieuchinh'
         },
         {
           screenCode: 15,
           name: 'DANH SÁCH CHỜ KÝ DUYỆT',
-          link: '/baocao/danhsachchokyduyet'
+          link: '/lapbaocao/danhsachchokyduyet'
         },
         {
           screenCode: 16,
           name: 'TRUY LỤC',
-          link: '/baocao/truyluc'
+          link: '/lapbaocao/truyluc'
         }
       ]
     },
     {
-      name: 'TỔNG HỢP DỮ LIỆU',
+      name: 'XỬ LÝ BÁO CÁO',
       child: [
         {
           screenCode: 17,
-          name: 'DANH SÁCH DỮ LIỆU TỔNG HỢP',
-          link: '/tonghopdulieu/danhsachdulieutonghop'
+          name: 'TIẾP NHẬN BÁO CÁO',
+          link: '',
+          child: [
+            {
+              name: 'PHÊ DUYỆT BÁO CÁO',
+              link: '/tiepnhanbaocao/pheduyetbaocao'
+            },
+            {
+              name: 'TRUY LỤC',
+              link: '/tiepnhanbaocao/pheduyetbaocao'
+            }
+          ]
         },
         {
           screenCode: 18,
-          name: 'TRUY LỤC',
-          link: '/tonghopdulieu/truyluc'
+          name: 'TỔNG HỢP DỮ LIỆU',
+          link: '',
+          child: [
+            {
+              name: 'DANH SÁCH ĐANG XỬ LÝ',
+              link: '/tonghopdulieu/dangsachdangxuly'
+            },
+            {
+              name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
+              link: '/tonghopdulieu/danhsachyeucaudieuchinh'
+            },
+            {
+              name: 'DANH SÁCH CHỜ KÝ DUYỆT',
+              link: '/tonghopdulieu/danhsachchokyduyet'
+            },
+            {
+              name: 'TRUY LỤC',
+              link: '/tonghopdulieu/truyluc'
+            }
+          ]
         }
       ]
     }
