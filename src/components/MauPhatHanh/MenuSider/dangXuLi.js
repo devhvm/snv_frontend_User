@@ -4,15 +4,13 @@ import styled from 'styled-components'
 
 export default function DangXuLiMenuSider ({
   setVisibleCreateModal,
-  getCoQuanChuTri,
+  getCoQuanChuTriList,
   getLoaiBaoCao,
   addNewTab,
   changeActiveTab,
   tabList,
   dataTienTrinh
 }) {
-  console.log('dataTienTrinh', dataTienTrinh)
-
   const SubMenu = Menu.SubMenu
 
   const ListTable = styled(Table)`
@@ -87,7 +85,7 @@ export default function DangXuLiMenuSider ({
                     }}
                     onClick={() => {
                       setVisibleCreateModal(true)
-                      getCoQuanChuTri()
+                      getCoQuanChuTriList()
                       getLoaiBaoCao()
                     }}
                   >
@@ -122,8 +120,11 @@ export default function DangXuLiMenuSider ({
             onRow={record => {
               return {
                 onClick: () => {
-                  console.log(record)
-                  addNewTab(tabList, record)
+                  addNewTab(
+                    tabList,
+                    record,
+                    dataTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0].status
+                  )
                   changeActiveTab(String(record.maMau))
                 }
               }

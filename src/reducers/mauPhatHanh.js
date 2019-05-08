@@ -8,10 +8,10 @@ export const MAU_BAO_CAO = 'MAU_BAO_CAO'
 export const TIEU_CHI = 'TIEU_CHI'
 
 // Action Creator
-export const getCoQuanChuTri = () => dispatch => {
+export const getCoQuanChuTriList = () => dispatch => {
   callApi('common/api/co-quan-chu-tris', 'GET')
     .then(res => {
-      dispatch(getCoQuanChuTriRequest(res.data))
+      dispatch(getCoQuanChuTriListRequest(res.data))
     })
     .catch(err => {
       console.log(err)
@@ -41,6 +41,29 @@ export const getLoaiBaoCao = () => dispatch => {
 export const getTieuChi = id => dispatch => {
   callApi(`common/api/tieu-chis/co_quan_chu_tri?id=${id}`, 'GET')
     .then(res => {
+      dispatch(getTieuChiRequest(res.data))
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+export const addMauPhatHanh = item => dispatch => {
+  console.log(item)
+  callApi('donviphathanh/api/mau-phat-hanh', 'POST', {
+    idCoQuanChuTri: item.idCoQuanChuTri,
+    maCoQuanChuTri: item.maCoQuanChuTri,
+    maMauPhatHanh: item.maMauPhatHanh,
+    max: item.min,
+    min: item.max,
+    note: item.note,
+    quyTrinhDonViId: item.quyTrinhDonViId,
+    quyTrinhDonViName: item.quyTrinhDonViName,
+    status: item.status,
+    tenMauPhatHanh: item.tenMauPhatHanh,
+    tienTrinhCode: item.tienTrinhCode
+  })
+    .then(res => {
       console.log(res.data)
       dispatch(getTieuChiRequest(res.data))
     })
@@ -49,7 +72,7 @@ export const getTieuChi = id => dispatch => {
     })
 }
 
-const getCoQuanChuTriRequest = createAction(CO_QUAN_CHU_TRI)
+const getCoQuanChuTriListRequest = createAction(CO_QUAN_CHU_TRI)
 const getMauPhatHanhRequest = createAction(MAU_PHAT_HANH)
 const getLoaiBaoCaoRequest = createAction(MAU_BAO_CAO)
 const getTieuChiRequest = createAction(TIEU_CHI)
@@ -62,7 +85,7 @@ export default handleActions(
   {
     [CO_QUAN_CHU_TRI]: (state, { payload }) => ({
       ...state,
-      coQuanChuTri: payload
+      coQuanChuTriList: payload
     }),
     [MAU_PHAT_HANH]: (state, { payload }) => ({
       ...state,

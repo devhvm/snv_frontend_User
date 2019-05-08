@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal, Form, Input, Select, Row, Col, Table } from 'antd'
 // import styled from 'styled-components'
 
 export default function CreateModal ({
   visible,
   closeModal,
-  coQuanChuTri,
+  coQuanChuTriList,
+  dataTienTrinh,
   mauBaoCao,
   tieuChi,
-  getTieuChi
+  getTieuChi,
+  addMauPhatHanh
 }) {
+  const [maMauPhatHanh, setMaMauPhatHanh] = useState('')
+  const [tenMauPhatHanh, setTenMauPhatHanh] = useState('')
+  const [coQuanChuTri, setCoQuanChuTri] = useState('')
+  const [phamViMin, setphamViMin] = useState(0)
+  const [phamViMax, setphamViMax] = useState(0)
   const columns = [
     {
       title: 'Code',
@@ -38,9 +45,9 @@ export default function CreateModal ({
     }))
 
   const dataSelect =
-    coQuanChuTri &&
-    coQuanChuTri.map((item, i) => (
-      <Select.Option key={item.id} value={item.id}>
+    coQuanChuTriList &&
+    coQuanChuTriList.map((item, i) => (
+      <Select.Option key={String(item.id)} value={JSON.stringify(item)}>
         {item.name}
       </Select.Option>
     ))
@@ -49,7 +56,26 @@ export default function CreateModal ({
     <Modal
       title='Tạo mới mẫu phát hành'
       visible={visible}
-      onOk={() => closeModal()}
+      onOk={() => {
+        closeModal()
+        addMauPhatHanh({
+          idCoQuanChuTri: coQuanChuTri.id,
+          maCoQuanChuTri: coQuanChuTri.maDinhDanhCode,
+          maMauPhatHanh: maMauPhatHanh,
+          max: Number(phamViMin),
+          min: Number(phamViMax),
+          note: '',
+          quyTrinhDonViId: dataTienTrinh ? dataTienTrinh.id : 0,
+          quyTrinhDonViName: dataTienTrinh ? dataTienTrinh.name : '',
+          status: dataTienTrinh
+            ? dataTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0].status
+            : '',
+          tenMauPhatHanh: tenMauPhatHanh,
+          tienTrinhCode: dataTienTrinh
+            ? dataTienTrinh.tienTrinhXuLys[0].tienTrinhKetThucs[0].tienTrinhCode
+            : ''
+        })
+      }}
       onCancel={() => closeModal()}
       width={800}
       cancelText='Huỷ'
@@ -59,17 +85,26 @@ export default function CreateModal ({
         <Row>
           <Col span={11}>
             <Form.Item label='Mã mẫu phát hành'>
-              <Input />
+              <Input
+                onChange={e => {
+                  setMaMauPhatHanh(e.target.value)
+                }}
+              />
             </Form.Item>
             <Form.Item label='Tên mẫu phát hành'>
-              <Input />
+              <Input
+                onChange={e => {
+                  setTenMauPhatHanh(e.target.value)
+                }}
+              />
             </Form.Item>
             <Form.Item label='Đơn vị chủ trì'>
               <Select
-                defaultValue={coQuanChuTri ? coQuanChuTri[0].name : ''}
-                value={coQuanChuTri ? coQuanChuTri[0].name : ''}
+                defaultValue=''
+                value={coQuanChuTriList ? coQuanChuTriList[0].name : ''}
                 onSelect={value => {
-                  getTieuChi(value)
+                  getTieuChi(JSON.parse(value).id)
+                  setCoQuanChuTri(JSON.parse(value))
                 }}
               >
                 {dataSelect}
@@ -84,11 +119,14 @@ export default function CreateModal ({
               <Input.Group compact>
                 <Select defaultValue='1'>
                   <Select.Option value='1'>Phạm vi</Select.Option>
-                  <Select.Option value='2'>Except</Select.Option>
                 </Select>
                 <Input
                   style={{ width: 100, textAlign: 'center' }}
                   placeholder='Minimum'
+                  type='number'
+                  onChange={e => {
+                    setphamViMin(e.target.value)
+                  }}
                 />
                 <Input
                   style={{
@@ -103,6 +141,10 @@ export default function CreateModal ({
                 <Input
                   style={{ width: 100, textAlign: 'center', borderLeft: 0 }}
                   placeholder='Maximum'
+                  type='number'
+                  onChange={e => {
+                    setphamViMax(e.target.value)
+                  }}
                 />
               </Input.Group>
             </Form.Item>

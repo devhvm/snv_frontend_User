@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 import DangXuLyPage from './DangXuLyPage'
 import {
-  getCoQuanChuTri,
+  getCoQuanChuTriList,
   getMauPhatHanh,
   getLoaiBaoCao,
-  getTieuChi
+  getTieuChi,
+  addMauPhatHanh
 } from '../../../reducers/mauPhatHanh'
 import { getDuLieuTienTrinh } from '../../../reducers/duLieuTienTrinh'
 import {
@@ -25,8 +26,9 @@ export default connect(
     removeTab,
     addNewTab,
     changeActiveTab,
-    getCoQuanChuTri,
+    getCoQuanChuTriList,
     getMauPhatHanh,
+    addMauPhatHanh,
     getLoaiBaoCao,
     getTieuChi,
     getDuLieuTienTrinh

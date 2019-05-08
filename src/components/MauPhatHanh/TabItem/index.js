@@ -25,7 +25,7 @@ const ButtonTopTabItem = styled(Button)`
 
 const dateFormat = 'DD-MM-YYYY'
 
-export default function TabItem ({ visible, closeModal }) {
+export default function TabItem ({ dataTienTrinh }) {
   const [maMauPhatHanh] = useState('')
   const [tenMauPhatHanh] = useState('')
   const [ngayPhatHanh] = useState(moment().format(dateFormat))
@@ -518,9 +518,20 @@ export default function TabItem ({ visible, closeModal }) {
         style={{ marginRight: '20px' }}
       />
       <Row type='flex' justify='end'>
-        <Button style={{ marginTop: '10px', right: '2%' }} type='primary'>
-          Yêu Cầu Kí Duyệt
-        </Button>
+        {dataTienTrinh &&
+          dataTienTrinh.tienTrinhXuLys[0].tienTrinhKetThucs.map(
+            (item, index) => {
+              return (
+                <Button
+                  key={index}
+                  style={{ marginTop: '10px', right: '2%' }}
+                  type='primary'
+                >
+                  {item.name}
+                </Button>
+              )
+            }
+          )}
       </Row>
       <DeleteModal
         visible={visibleDeleteModal}

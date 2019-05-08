@@ -12,8 +12,9 @@ export default function DangXuLyPage ({
   addNewTab,
   removeTab,
   changeActiveTab,
-  getCoQuanChuTri,
+  getCoQuanChuTriList,
   getMauPhatHanh,
+  addMauPhatHanh,
   getLoaiBaoCao,
   getTieuChi,
   getDuLieuTienTrinh
@@ -32,6 +33,7 @@ export default function DangXuLyPage ({
           fecthTab={fecthTab}
           removeTab={removeTab}
           changeActiveTab={changeActiveTab}
+          dataTienTrinh={dataTienTrinh.duLieuTienTrinh}
         />
       </Layout.Content>
       <Layout.Sider
@@ -46,7 +48,7 @@ export default function DangXuLyPage ({
         <Layout.Content>
           <DangXuLiMenuSider
             setVisibleCreateModal={setVisibleCreateModal}
-            getCoQuanChuTri={getCoQuanChuTri}
+            getCoQuanChuTriList={getCoQuanChuTriList}
             addNewTab={addNewTab}
             tabList={tab.tabList}
             changeActiveTab={changeActiveTab}
@@ -60,10 +62,12 @@ export default function DangXuLyPage ({
         closeModal={() => {
           setVisibleCreateModal(false)
         }}
-        coQuanChuTri={data.coQuanChuTri}
+        coQuanChuTriList={data.coQuanChuTriList}
         mauBaoCao={data.mauBaoCao}
         tieuChi={data.tieuChi}
         getTieuChi={getTieuChi}
+        addMauPhatHanh={addMauPhatHanh}
+        dataTienTrinh={dataTienTrinh.duLieuTienTrinh}
       />
     </Layout>
   )

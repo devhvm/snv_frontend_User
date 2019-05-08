@@ -33,7 +33,7 @@ export const changeActiveTab = item => dispatch => {
   dispatch(changeActiveTabRequest(item))
 }
 
-export const addNewTab = (list, item) => dispatch => {
+export const addNewTab = (list, item, status) => dispatch => {
   let isExist = false
   list.forEach(function (elm) {
     if (elm.key === item.maMau) {
@@ -42,7 +42,7 @@ export const addNewTab = (list, item) => dispatch => {
   })
   if (!isExist) {
     list.push({
-      title: item.tenMau,
+      title: `${item.tenMau} (${status})`,
       content: 'Content of new Tab',
       key: item.maMau
     })
