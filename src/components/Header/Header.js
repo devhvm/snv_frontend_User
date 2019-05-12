@@ -192,7 +192,10 @@ export default function UserHeader ({
                 {item.child
                   ? item.child.map(itemChild =>
                       itemChild.child ? (
-                        <Menu.SubMenu title={itemChild.name}>
+                        <Menu.SubMenu
+                          title={itemChild.name}
+                          style={{ width: '200px' }}
+                        >
                           {itemChild.child.map(itemChild2 => (
                             <Menu.Item key={itemChild2.screenCode}>
                               <Link to={itemChild2.link}>
@@ -212,6 +215,20 @@ export default function UserHeader ({
               </Menu.SubMenu>
             )
           })}
+          <Menu.SubMenu
+            key='24'
+            title={
+              <span
+                style={{
+                  position: 'absolute',
+                  left: '15px',
+                  fontWeight: 900
+                }}
+              >
+                Nguyễn Văn A
+              </span>
+            }
+          />
           <Menu.SubMenu key='21' title={<Avatar size='large' icon='user' />}>
             <Menu.Item>change password</Menu.Item>
             <Menu.Item
