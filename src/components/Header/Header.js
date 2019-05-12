@@ -56,7 +56,7 @@ export default function UserHeader ({
           link: '/mauphathanh/danhsachdangxuly'
         },
         {
-          screenCode: 14,
+          screenCode: 6,
           name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
           link: '/mauphathanh/danhsachyeucaudieuchinh'
         },
@@ -126,40 +126,42 @@ export default function UserHeader ({
       name: 'XỬ LÝ BÁO CÁO',
       child: [
         {
-          screenCode: 17,
           name: 'TIẾP NHẬN BÁO CÁO',
-          link: '',
           child: [
             {
               name: 'PHÊ DUYỆT BÁO CÁO',
-              link: '/tiepnhanbaocao/pheduyetbaocao'
+              link: '/tiepnhanbaocao/pheduyetbaocao',
+              screenCode: 17
             },
             {
               name: 'TRUY LỤC',
-              link: '/tiepnhanbaocao/pheduyetbaocao'
+              link: '/tiepnhanbaocao/pheduyetbaocao',
+              screenCode: 18
             }
           ]
         },
         {
-          screenCode: 18,
           name: 'TỔNG HỢP DỮ LIỆU',
-          link: '',
           child: [
             {
               name: 'DANH SÁCH ĐANG XỬ LÝ',
-              link: '/tonghopdulieu/dangsachdangxuly'
+              link: '/tonghopdulieu/dangsachdangxuly',
+              screenCode: 19
             },
             {
               name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-              link: '/tonghopdulieu/danhsachyeucaudieuchinh'
+              link: '/tonghopdulieu/danhsachyeucaudieuchinh',
+              screenCode: 20
             },
             {
               name: 'DANH SÁCH CHỜ KÝ DUYỆT',
-              link: '/tonghopdulieu/danhsachchokyduyet'
+              link: '/tonghopdulieu/danhsachchokyduyet',
+              screenCode: 21
             },
             {
               name: 'TRUY LỤC',
-              link: '/tonghopdulieu/truyluc'
+              link: '/tonghopdulieu/truyluc',
+              screenCode: 22
             }
           ]
         }
@@ -188,13 +190,23 @@ export default function UserHeader ({
               <Menu.SubMenu key={index} title={item.name}>
                 {/* eslint-disable indent */}
                 {item.child
-                  ? item.child.map((itemChild, index) => {
-                      return (
+                  ? item.child.map(itemChild =>
+                      itemChild.child ? (
+                        <Menu.SubMenu title={itemChild.name}>
+                          {itemChild.child.map(itemChild2 => (
+                            <Menu.Item key={itemChild2.screenCode}>
+                              <Link to={itemChild2.link}>
+                                {itemChild2.name}
+                              </Link>
+                            </Menu.Item>
+                          ))}
+                        </Menu.SubMenu>
+                      ) : (
                         <Menu.Item key={itemChild.screenCode}>
                           <Link to={itemChild.link}>{itemChild.name}</Link>
                         </Menu.Item>
                       )
-                    })
+                    )
                   : ''}
                 {/* eslint-enable indent */}
               </Menu.SubMenu>
