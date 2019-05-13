@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { Col, DatePicker, Row, Table, Select, Form, Input, Button } from 'antd'
+import { Col, DatePicker, Row, Table, Form, Input, Button } from 'antd'
 import moment from 'moment'
 import styled from 'styled-components'
 import DeleteModal from '../DeleteModal'
@@ -9,6 +9,7 @@ const FormSearchMauPhatHanh = styled(Form)`
   display: grid;
   grid-template-columns: auto auto;
   width: 80%;
+  margin-top: 20px !important;
 `
 
 const InputSearchMauPhatHanh = styled(Input)`
@@ -409,6 +410,17 @@ export default function TabItem ({ dataTienTrinh }) {
     }
   ]
 
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 8 }
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 16 }
+    }
+  }
+
   return (
     <Fragment>
       <Row type='flex' justify='end'>
@@ -422,9 +434,9 @@ export default function TabItem ({ dataTienTrinh }) {
           <ButtonTopTabItem type='primary'>Lưu</ButtonTopTabItem>
         </Row>
       </Row>
-      <FormSearchMauPhatHanh>
+      <FormSearchMauPhatHanh {...formItemLayout}>
         <Row>
-          <Col span={21}>
+          <Col span={19}>
             <Row>
               <Col span={12}>
                 <Form.Item label='Mã mẫu:'>
@@ -464,17 +476,18 @@ export default function TabItem ({ dataTienTrinh }) {
                 </Form.Item>
                 <Form.Item label='Chọn phạm vi'>
                   <Input.Group compact>
-                    <Select defaultValue='1'>
-                      <Select.Option value='1'>Phạm vi</Select.Option>
-                      <Select.Option value='2'>Except</Select.Option>
-                    </Select>
                     <Input
-                      style={{ width: 100, textAlign: 'center' }}
-                      placeholder='Minimum'
+                      style={{ width: 75, textAlign: 'center' }}
+                      placeholder='Phạm vi'
+                      disabled
+                    />
+                    <Input
+                      style={{ width: 55, textAlign: 'center' }}
+                      placeholder='Min'
                     />
                     <Input
                       style={{
-                        width: 30,
+                        width: 35,
                         borderLeft: 0,
                         pointerEvents: 'none',
                         backgroundColor: '#fff'
@@ -484,25 +497,26 @@ export default function TabItem ({ dataTienTrinh }) {
                     />
                     <Input
                       style={{
-                        width: 100,
+                        width: 55,
                         textAlign: 'center',
                         borderLeft: 0
                       }}
-                      placeholder='Maximum'
+                      placeholder='Max'
                     />
                   </Input.Group>
                 </Form.Item>
               </Col>
             </Row>
           </Col>
-          <Col span={3}>
+          <Col span={5}>
             <Form.Item label='Ghi chú:'>
               <Input.TextArea
                 placeholder='Ghi chú'
                 style={{
-                  height: 130,
+                  height: 95,
                   width: '300px',
-                  maxWidth: 'unset'
+                  maxWidth: 'unset',
+                  marginTop: 5
                 }}
               />
             </Form.Item>
