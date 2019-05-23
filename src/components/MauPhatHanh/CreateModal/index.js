@@ -35,6 +35,8 @@ export default function CreateModal ({
     }
   ]
 
+  console.log('tieuChi', tieuChi)
+
   const dataTable =
     tieuChi &&
     tieuChi.map((item, i) => ({
@@ -52,6 +54,8 @@ export default function CreateModal ({
       </Select.Option>
     ))
 
+  console.log('dataTienTrinh', dataTienTrinh)
+
   return (
     <Modal
       title='Tạo mới mẫu phát hành'
@@ -65,14 +69,14 @@ export default function CreateModal ({
           max: Number(phamViMin),
           min: Number(phamViMax),
           note: '',
-          quyTrinhDonViId: dataTienTrinh ? dataTienTrinh.id : 0,
+          quyTrinhDonViId: dataTienTrinh ? dataTienTrinh.quyTrinhDonViId : 0,
           quyTrinhDonViName: dataTienTrinh ? dataTienTrinh.name : '',
           status: dataTienTrinh
             ? dataTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0].status
             : '',
           tenMauPhatHanh: tenMauPhatHanh,
           tienTrinhCode: dataTienTrinh
-            ? dataTienTrinh.tienTrinhXuLys[0].tienTrinhKetThucs[0].tienTrinhCode
+            ? dataTienTrinh.tienTrinhXuLys[0].tienTrinhBatDau.tienTrinhCode
             : ''
         })
       }}

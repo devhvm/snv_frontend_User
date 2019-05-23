@@ -18,9 +18,10 @@ export const getCoQuanChuTriList = () => dispatch => {
     })
 }
 
-export const getMauPhatHanh = () => dispatch => {
-  callApi('donviphathanh/api/mau-phat-hanh', 'GET')
+export const getMauPhatHanh = maMauPhatHanh => dispatch => {
+  callApi(`donviphathanh/api/mau-phat-hanh/${maMauPhatHanh}`, 'GET', {}, {})
     .then(res => {
+      console.log(res.data)
       dispatch(getMauPhatHanhRequest(res.data))
     })
     .catch(err => {
@@ -41,6 +42,7 @@ export const getLoaiBaoCao = () => dispatch => {
 export const getTieuChi = id => dispatch => {
   callApi(`common/api/tieu-chis/co_quan_chu_tri?id=${id}`, 'GET')
     .then(res => {
+      console.log('datatieuChi', res.data)
       dispatch(getTieuChiRequest(res.data))
     })
     .catch(err => {
@@ -64,7 +66,7 @@ export const addMauPhatHanh = item => dispatch => {
     tienTrinhCode: item.tienTrinhCode
   })
     .then(res => {
-      console.log(res.data)
+      console.log('res.data', res.data)
       dispatch(getTieuChiRequest(res.data))
     })
     .catch(err => {

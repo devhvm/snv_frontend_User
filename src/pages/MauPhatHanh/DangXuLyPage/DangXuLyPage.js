@@ -50,6 +50,7 @@ export default function DangXuLyPage ({
             setVisibleCreateModal={setVisibleCreateModal}
             getCoQuanChuTriList={getCoQuanChuTriList}
             addNewTab={addNewTab}
+            getMauPhatHanh={getMauPhatHanh}
             tabList={tab.tabList}
             changeActiveTab={changeActiveTab}
             getLoaiBaoCao={getLoaiBaoCao}

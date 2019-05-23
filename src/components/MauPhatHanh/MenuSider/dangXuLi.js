@@ -6,6 +6,7 @@ export default function DangXuLiMenuSider ({
   setVisibleCreateModal,
   getCoQuanChuTriList,
   getLoaiBaoCao,
+  getMauPhatHanh,
   addNewTab,
   changeActiveTab,
   tabList,
@@ -126,6 +127,7 @@ export default function DangXuLiMenuSider ({
                     dataTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0].status
                   )
                   changeActiveTab(String(record.maMau))
+                  getMauPhatHanh(record.maMau)
                 }
               }
             }}
