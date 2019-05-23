@@ -43,7 +43,7 @@ function DashboardPage () {
   let loginStatus = localStorage.getItem('loginStatus')
 
   const routes = [
-    { path: '/home', exact: true, component: HomePage },
+    { path: '/', exact: true, component: HomePage },
     {
       path: '/mauphathanh/danhsachdangxuly',
       exact: true,

@@ -183,7 +183,7 @@ export default function UserHeader ({
           }}
         >
           <AppName key='23'>
-            <Link to='/home'>SNV</Link>
+            <Link to='/'>SNV</Link>
           </AppName>
           {menuList.map((item, index) => {
             return (
