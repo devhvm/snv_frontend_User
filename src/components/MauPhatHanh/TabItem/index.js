@@ -26,168 +26,106 @@ const ButtonTopTabItem = styled(Button)`
 
 const dateFormat = 'DD-MM-YYYY'
 
-export default function TabItem ({ dataTienTrinh }) {
+export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
   const [maMauPhatHanh] = useState('')
   const [tenMauPhatHanh] = useState('')
   const [ngayPhatHanh] = useState(moment().format(dateFormat))
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
-  const dataTable = [
-    {
-      key: '1',
-      table: {
-        rows: [
-          {
-            tieu_chi_code: '',
-            tieu_chi_name: '',
-            nhom_danh_muc: [
-              {
-                nhom_danh_muc_code: '',
-                nhom_danh_muc_name: '',
-                danh_mucs: [
-                  {
-                    danh_muc_code: '',
-                    danh_muc_name: ''
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        columns: [
-          {
-            title: '',
-            code: '',
-            children: [
-              {
-                title: '',
-                code: ''
-              },
-              {
-                title: '',
-                code: ''
-              }
-            ]
-          }
-        ]
-      },
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 1'
-    },
-    {
-      key: '2',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 2'
-    },
-    {
-      key: '3',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 3'
-    },
-    {
-      key: '4',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 4'
-    },
-    {
-      key: '5',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 5'
-    },
-    {
-      key: '6',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 6'
-    },
-    {
-      key: '7',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 7'
-    },
-    {
-      key: '8',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 8'
-    },
-    {
-      key: '9',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 9'
-    },
-    {
-      key: '10',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Dân tộc',
-      danhmuc: 'Nhóm 10'
-    },
-    {
-      key: '11',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Loại tật',
-      danhmuc: 'Nhóm 1'
-    },
-    {
-      key: '12',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Loại tật',
-      danhmuc: 'Nhóm 2'
-    },
-    {
-      key: '13',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Loại tật',
-      danhmuc: 'Nhóm 3'
-    },
-    {
-      key: '14',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Loại tật',
-      danhmuc: 'Nhóm 4'
-    },
-    {
-      key: '15',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Loại tật',
-      danhmuc: 'Nhóm 5'
-    },
-    {
-      key: '16',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Loại tật',
-      danhmuc: 'Nhóm 6'
-    },
-    {
-      key: '17',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Mức độ',
-      danhmuc: 'Nhóm 1'
-    },
-    {
-      key: '18',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Mức độ',
-      danhmuc: 'Nhóm 2'
-    },
-    {
-      key: '19',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Mức độ',
-      danhmuc: 'Nhóm 3'
-    },
-    {
-      key: '20',
-      tieuchi: '0204 Số thanh niên là người khuyết tật',
-      nhom: 'Nguyên nhân',
-      danhmuc: ''
+  console.log('dataMauPhatHanh.tieuChiDetails', dataMauPhatHanh.tieuChiDetails)
+
+  const initTieuChiRow = (index, tieuChiDetail) => {
+    let count = 0
+    let datas = []
+    if (tieuChiDetail) {
+      tieuChiDetail.noiDungs.map(item => {
+        count += initNhomNoiDungDauVaoRow(
+          index,
+          tieuChiDetail.chiTieu,
+          item,
+          datas
+        )
+      })
+
+      datas.map(item => {
+        item.totalRowTieuChi = count
+      })
     }
-  ]
+    return datas
+  }
+
+  const initNhomNoiDungDauVaoRow = (index, chiTieu, noiDung, datas) => {
+    let count = 0
+    let keyTieuChi = `${chiTieu.chiTieuCode}`
+    let keyNoiDung = `${keyTieuChi}_${noiDung.noiDungCode}`
+
+    if (noiDung) {
+      noiDung.noiDungDauVaos.map(item => {
+        count += initDanhMucRow(index, chiTieu, noiDung, item, datas)
+      })
+
+      datas.map(item => {
+        if (item.key.indexOf(`${keyNoiDung}`)) {
+          item.totalRowNoiDung = count
+        }
+      })
+    }
+    return count
+  }
+
+  const initDanhMucRow = (index, chiTieu, noiDung, nhom, datas) => {
+    let count = 0
+    let keyTieuChi = `${chiTieu.chiTieuCode}`
+    let keyNoiDung = `${keyTieuChi}_${noiDung.noiDungCode}`
+    let keyNhom = `${keyNoiDung}_${nhom.nhomDanhMucCode}`
+    if (nhom) {
+      nhom.danhMucs.map(item => {
+        datas.push({
+          key: `${keyNhom}_${item.danhMucCode}_${index}`,
+          keyTieuChi: keyTieuChi,
+          keyNoiDung: keyNoiDung,
+          keyNhom: keyNhom,
+          tieuchi: chiTieu.name,
+          nhom: nhom.nhomDanhMucName,
+          danhmuc: item.name
+        })
+        index++
+        count++
+      })
+
+      datas.map(item => {
+        if (item.key.indexOf(keyNhom) === 0) {
+          item.totalRowNhom = count
+        }
+      })
+    }
+    return count
+  }
+
+  let dataTable = []
+
+  const getDataTable = () => {
+    if (dataMauPhatHanh.tieuChiDetails) {
+      dataMauPhatHanh.tieuChiDetails.map((item, index) =>
+        initTieuChiRow(index, item).map(item1 => {
+          dataTable.push(item1)
+        })
+      )
+    }
+  }
+
+  // const getDataTable = () => {
+  //   if (dataMauPhatHanh.tieuChiDetails) {
+  //     countTotalRowTieuChi(0, dataMauPhatHanh.tieuChiDetails[0]).map((item1) => {
+  //       console.log(item1)
+  //       dataTable.push(item1)
+  //     })
+  //   }
+  // }
+  //
+
+  getDataTable()
+
+  console.log(dataTable)
 
   const columns = [
     {
@@ -201,17 +139,20 @@ export default function TabItem ({ dataTienTrinh }) {
           key: 'tieuchi',
           width: 120,
           render: (value, row, index) => {
+            // console.log('value', value)
+            // console.log('row', row)
+            // console.log('index', index)
             const obj = {
               children: value,
               props: {}
             }
+
             if (index === 0) {
-              obj.props.rowSpan = 20
-            }
-            for (let i = 1; i <= 20; i++) {
-              if (index === i) {
-                obj.props.rowSpan = 0
-              }
+              obj.props.rowSpan = row.totalRowTieuChi
+            } else if (dataTable[index - 1].keyTieuChi !== row.keyTieuChi) {
+              obj.props.rowSpan = row.totalRowTieuChi
+            } else {
+              obj.props.rowSpan = 0
             }
             return obj
           }
@@ -227,28 +168,11 @@ export default function TabItem ({ dataTienTrinh }) {
               props: {}
             }
             if (index === 0) {
-              obj.props.rowSpan = 10
-            }
-            for (let i = 1; i <= 10; i++) {
-              if (index === i) {
-                obj.props.rowSpan = 0
-              }
-            }
-            if (index === 10) {
-              obj.props.rowSpan = 6
-            }
-            for (let i = 11; i <= 16; i++) {
-              if (index === i) {
-                obj.props.rowSpan = 0
-              }
-            }
-            if (index === 16) {
-              obj.props.rowSpan = 3
-            }
-            for (let i = 17; i <= 18; i++) {
-              if (index === i) {
-                obj.props.rowSpan = 0
-              }
+              obj.props.rowSpan = row.totalRowNhom
+            } else if (dataTable[index - 1].keyNhom !== row.keyNhom) {
+              obj.props.rowSpan = row.totalRowNhom
+            } else {
+              obj.props.rowSpan = 0
             }
             return obj
           }
@@ -258,13 +182,12 @@ export default function TabItem ({ dataTienTrinh }) {
           dataIndex: 'danhmuc',
           key: 'danhmuc',
           width: 120
-          // fixed: 'left',
         }
       ]
     },
     {
       title: '15',
-      dataIndex: '15',
+      dataIndex: 'tuoi15',
       key: '21',
       width: 120,
       children: [

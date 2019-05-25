@@ -14,8 +14,8 @@ const AppName = styled(Menu.Item)`
 export default function UserHeader ({
   menu,
   logOutReq,
-  // getMenuItem,
-  // getScreen,
+  getMenuItem,
+  getScreen,
   getMenu
 }) {
   useLayoutEffect(() => {
@@ -24,10 +24,8 @@ export default function UserHeader ({
     // getScreen()
   }, [])
 
+  console.log(menu)
   // const menuList = []
-  //
-  // console.log(menu)
-  //
   // for (let i in menu.menu) {
   //   menuList.push({ name: menu.menu[i].name, child: [] })
   //   for (let j in menu.menuItem) {

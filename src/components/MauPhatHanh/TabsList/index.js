@@ -9,7 +9,8 @@ export default function TabList ({
   fecthTab,
   removeTab,
   changeActiveTab,
-  dataTienTrinh
+  dataTienTrinh,
+  dataMauPhatHanh
 }) {
   const tabList = tab.tabList
   const activeTab = tab.activeTab
@@ -33,7 +34,10 @@ export default function TabList ({
         {tabList &&
           tabList.map(pane => (
             <TabPane tab={pane.title} key={pane.key}>
-              <TabItem dataTienTrinh={dataTienTrinh} />
+              <TabItem
+                dataTienTrinh={dataTienTrinh}
+                dataMauPhatHanh={dataMauPhatHanh}
+              />
             </TabPane>
           ))}
       </Tabs>

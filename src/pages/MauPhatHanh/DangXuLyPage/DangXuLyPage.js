@@ -34,6 +34,7 @@ export default function DangXuLyPage ({
           removeTab={removeTab}
           changeActiveTab={changeActiveTab}
           dataTienTrinh={dataTienTrinh.duLieuTienTrinh}
+          dataMauPhatHanh={data.mauPhatHanh}
         />
       </Layout.Content>
       <Layout.Sider
@@ -43,7 +44,6 @@ export default function DangXuLyPage ({
           marginLeft: '10px',
           background: '#fff'
         }}
-        // collapsed={collapsed}
       >
         <Layout.Content>
           <DangXuLiMenuSider

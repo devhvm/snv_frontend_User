@@ -1,6 +1,4 @@
-import axios from 'axios'
 import { handleActions, createAction } from 'redux-actions'
-import token from '../utils/jwtToken'
 import callApi from '../utils/APIcaller'
 
 // Action
@@ -10,32 +8,17 @@ export const SCREEN = 'SCREEN'
 
 // Action Creator
 export const getMenuItem = () => dispatch => {
-  return (
-    callApi('/phanquyenchucnang/api/menu-items', 'GET')
-      // return axios({
-      //   url: 'http://vtools.xyz:9999/phanquyenchucnang/api/menu-items',
-      //   method: 'GET',
-      //   headers: {
-      //     Authorization: token()
-      //   }
-      // })
-      .then(res => {
-        dispatch(getMenuItemRequest(res.data))
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  )
+  callApi('phanquyenchucnang/api/menu-items', 'GET')
+    .then(res => {
+      dispatch(getMenuItemRequest(res.data))
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
 export const getMenu = () => dispatch => {
-  return axios({
-    url: 'http://vtools.xyz:9999/phanquyenchucnang/api/menus',
-    method: 'GET',
-    headers: {
-      Authorization: token()
-    }
-  })
+  callApi('phanquyenchucnang/api/menus', 'GET')
     .then(res => {
       dispatch(getMenuRequest(res.data))
     })
@@ -45,13 +28,7 @@ export const getMenu = () => dispatch => {
 }
 
 export const getScreen = () => dispatch => {
-  return axios({
-    url: 'http://vtools.xyz:9999/phanquyenchucnang/api/screens',
-    method: 'GET',
-    headers: {
-      Authorization: token()
-    }
-  })
+  callApi('phanquyenchucnang/api/screens', 'GET')
     .then(res => {
       dispatch(getScreenRequest(res.data))
     })

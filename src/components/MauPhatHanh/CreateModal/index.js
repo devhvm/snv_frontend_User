@@ -35,8 +35,6 @@ export default function CreateModal ({
     }
   ]
 
-  console.log('tieuChi', tieuChi)
-
   const dataTable =
     tieuChi &&
     tieuChi.map((item, i) => ({
@@ -54,7 +52,7 @@ export default function CreateModal ({
       </Select.Option>
     ))
 
-  console.log('dataTienTrinh', dataTienTrinh)
+  // console.log('dataTienTrinh', dataTienTrinh)
 
   return (
     <Modal
