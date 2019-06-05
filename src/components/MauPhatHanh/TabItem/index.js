@@ -3,7 +3,7 @@ import { Col, DatePicker, Row, Table, Form, Input, Button } from 'antd'
 import moment from 'moment'
 import styled from 'styled-components'
 import DeleteModal from '../DeleteModal'
-// import styled from 'styled-components'
+import EditTableModal from '../EditTableModal'
 
 const FormSearchMauPhatHanh = styled(Form)`
   display: grid;
@@ -31,6 +31,7 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
   const [tenMauPhatHanh] = useState('')
   const [ngayPhatHanh] = useState(moment().format(dateFormat))
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
+  const [visibleEditModal, setVisibleEditModal] = useState(false)
   console.log('dataMauPhatHanh.tieuChiDetails', dataMauPhatHanh.tieuChiDetails)
 
   const initTieuChiRow = (index, tieuChiDetail) => {
@@ -443,6 +444,20 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
                 }}
               />
             </Form.Item>
+            <Button
+              type='primary'
+              onClick={() => {
+                setVisibleEditModal(true)
+              }}
+            >
+              Edit
+            </Button>
+            <EditTableModal
+              visible={visibleEditModal}
+              closeModal={() => {
+                setVisibleEditModal(false)
+              }}
+            />
           </Col>
         </Row>
       </FormSearchMauPhatHanh>
