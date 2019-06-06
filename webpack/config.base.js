@@ -46,7 +46,7 @@ module.exports = {
           }
         ]
       }, {
-        test: /\.scss$/,
+        test: /\.s(a|c)ss$/,
         use: [
           'style-loader',
           {
@@ -68,6 +68,19 @@ module.exports = {
           }
         ]
       }, {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
+      }, {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
@@ -75,6 +88,10 @@ module.exports = {
             options: {}
           }
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   },

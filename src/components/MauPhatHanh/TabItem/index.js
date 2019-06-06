@@ -4,6 +4,7 @@ import moment from 'moment'
 import styled from 'styled-components'
 import DeleteModal from '../DeleteModal'
 import EditTableModal from '../EditTableModal'
+import Spreadsheet from 'x-data-spreadsheet'
 
 const FormSearchMauPhatHanh = styled(Form)`
   display: grid;
@@ -32,6 +33,7 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
   const [ngayPhatHanh] = useState(moment().format(dateFormat))
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
   const [visibleEditModal, setVisibleEditModal] = useState(false)
+  const [visibleEditTable, setVisibleEditTable] = useState(false)
   console.log('dataMauPhatHanh.tieuChiDetails', dataMauPhatHanh.tieuChiDetails)
 
   const initTieuChiRow = (index, tieuChiDetail) => {
@@ -140,9 +142,6 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
           key: 'tieuchi',
           width: 120,
           render: (value, row, index) => {
-            // console.log('value', value)
-            // console.log('row', row)
-            // console.log('index', index)
             const obj = {
               children: value,
               props: {}
@@ -444,10 +443,55 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
                 }}
               />
             </Form.Item>
+            {/* <div id='edit-table' /> */}
             <Button
               type='primary'
               onClick={() => {
-                setVisibleEditModal(true)
+                setVisibleEditTable(true)
+                const editTable = document.getElementById('edit-table')
+                if (typeof editTable !== 'undefined' && editTable != null) {
+                  console.log(editTable)
+                  const s = new Spreadsheet(editTable)
+                  s.loadData({
+                    freeze: 'B3',
+                    styles: [
+                      {
+                        bgcolor: '#f4f5f8',
+                        textwrap: true,
+                        color: '#900b09',
+                        border: {
+                          top: ['thin', '#0366d6'],
+                          bottom: ['thin', '#0366d6'],
+                          right: ['thin', '#0366d6'],
+                          left: ['thin', '#0366d6']
+                        }
+                      }
+                    ],
+                    merges: ['C3:D4'],
+                    rows: {
+                      1: {
+                        cells: {
+                          0: { text: 'testingtesttestetst' },
+                          2: { text: 'testing' }
+                        }
+                      },
+                      2: {
+                        cells: {
+                          0: { text: 'render', style: 0 },
+                          1: { text: 'Hello' },
+                          2: { text: 'haha', merge: [1, 1] }
+                        }
+                      },
+                      8: {
+                        cells: {
+                          8: { text: 'border test', style: 0 }
+                        }
+                      }
+                    }
+                  }).change(cdata => {
+                    console.log(cdata)
+                  })
+                }
               }}
             >
               Edit
@@ -461,14 +505,18 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
           </Col>
         </Row>
       </FormSearchMauPhatHanh>
-      <Table
-        columns={columns}
-        dataSource={dataTable}
-        bordered
-        pagination={false}
-        scroll={{ x: 1630, y: 400 }}
-        style={{ marginRight: '20px' }}
-      />
+      {visibleEditTable ? (
+        <div id='edit-table' />
+      ) : (
+        <Table
+          columns={columns}
+          dataSource={dataTable}
+          bordered
+          pagination={false}
+          scroll={{ x: 1630, y: 400 }}
+          style={{ marginRight: '20px' }}
+        />
+      )}
       <Row type='flex' justify='end'>
         {dataTienTrinh &&
           dataTienTrinh.tienTrinhXuLys[0].tienTrinhKetThucs.map(

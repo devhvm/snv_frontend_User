@@ -1,6 +1,5 @@
 import React from 'react'
 import { Modal } from 'antd'
-// import styled from 'styled-components'
 
 export default function EditTableModal ({ visible, closeModal }) {
   return (
@@ -10,7 +9,7 @@ export default function EditTableModal ({ visible, closeModal }) {
       onOk={() => closeModal()}
       onCancel={() => closeModal()}
     >
-      asd
+      {/* <div id='edit-table' /> */}
     </Modal>
   )
 }
