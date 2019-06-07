@@ -450,7 +450,6 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
                 setVisibleEditTable(true)
                 const editTable = document.getElementById('edit-table')
                 if (typeof editTable !== 'undefined' && editTable != null) {
-                  console.log(editTable)
                   const s = new Spreadsheet(editTable)
                   s.loadData({
                     freeze: 'B3',
@@ -505,8 +504,9 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
           </Col>
         </Row>
       </FormSearchMauPhatHanh>
+      <div id='edit-table' />
       {visibleEditTable ? (
-        <div id='edit-table' />
+        ''
       ) : (
         <Table
           columns={columns}
