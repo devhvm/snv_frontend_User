@@ -1,14 +1,38 @@
-import React, { useState } from 'react'
-import { Row, Table, Button } from 'antd'
+import React, { Fragment, useState } from 'react'
+import { Col, DatePicker, Row, Table, Form, Input, Button } from 'antd'
+import moment from 'moment'
+import styled from 'styled-components'
 import DeleteModal from '../DeleteModal'
-import FormItem from '../FormItem'
-// import styled from 'styled-components'
+import EditTableModal from '../EditTableModal'
 import Spreadsheet from 'x-data-spreadsheet'
 
+const FormSearchMauPhatHanh = styled(Form)`
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 80%;
+  margin-top: 20px !important;
+`
+
+const InputSearchMauPhatHanh = styled(Input)`
+  width: 95% !important;
+`
+
+const DatePickerSearchMauPhatHanh = styled(DatePicker)`
+  width: 95% !important;
+`
+
+const ButtonTopTabItem = styled(Button)`
+  margin-right: 40px;
+`
+
+const dateFormat = 'DD-MM-YYYY'
+
 export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
+  const [maMauPhatHanh] = useState('')
+  const [tenMauPhatHanh] = useState('')
+  const [ngayPhatHanh] = useState(moment().format(dateFormat))
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
-  console.log('dataMauPhatHanh', dataMauPhatHanh)
-  // const [visibleEditModal, setVisibleEditModal] = useState(false)
+  const [visibleEditModal, setVisibleEditModal] = useState(false)
   const [visibleEditTable, setVisibleEditTable] = useState(false)
   console.log('dataMauPhatHanh.tieuChiDetails', dataMauPhatHanh.tieuChiDetails)
 
@@ -309,63 +333,180 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
     }
   ]
 
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 8 }
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 16 }
+    }
+  }
+
   return (
-    <>
-      <FormItem setVisibleDeleteModal={setVisibleDeleteModal} />
-      <Button
-        type='primary'
-        onClick={() => {
-          setVisibleEditTable(true)
-          const editTable = document.getElementById('edit-table')
-          if (typeof editTable !== 'undefined' && editTable != null) {
-            const s = new Spreadsheet(editTable)
-            s.loadData({
-              freeze: 'B3',
-              styles: [
-                {
-                  bgcolor: '#f4f5f8',
-                  textwrap: true,
-                  color: '#900b09',
-                  border: {
-                    top: ['thin', '#0366d6'],
-                    bottom: ['thin', '#0366d6'],
-                    right: ['thin', '#0366d6'],
-                    left: ['thin', '#0366d6']
-                  }
+    <Fragment>
+      <Row type='flex' justify='end'>
+        <Row type='flex' justify='space-between'>
+          <ButtonTopTabItem
+            type='primary'
+            onClick={() => setVisibleDeleteModal(true)}
+          >
+            Xoá
+          </ButtonTopTabItem>
+          <ButtonTopTabItem type='primary'>Lưu</ButtonTopTabItem>
+        </Row>
+      </Row>
+      <FormSearchMauPhatHanh {...formItemLayout}>
+        <Row>
+          <Col span={19}>
+            <Row>
+              <Col span={12}>
+                <Form.Item label='Mã mẫu:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập mã mẫu phát hành'
+                    value={maMauPhatHanh}
+                    disabled
+                  />
+                </Form.Item>
+                <Form.Item label='Tên mẫu:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập tên mẫu phát hành'
+                    value={tenMauPhatHanh}
+                  />
+                </Form.Item>
+                <Form.Item label='Ngày phát hành:'>
+                  <DatePickerSearchMauPhatHanh
+                    defaultValue={moment(ngayPhatHanh, dateFormat)}
+                    placeholder='Nhập ngày phát hành'
+                  />
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item label='Người lập:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập tên mẫu phát hành'
+                    value={tenMauPhatHanh}
+                    disabled
+                  />
+                </Form.Item>
+                <Form.Item label='Cơ quan chủ trì:'>
+                  <InputSearchMauPhatHanh
+                    placeholder='Nhập tên mẫu phát hành'
+                    value={tenMauPhatHanh}
+                    disabled
+                  />
+                </Form.Item>
+                <Form.Item label='Chọn phạm vi'>
+                  <Input.Group compact>
+                    <Input
+                      style={{ width: 75, textAlign: 'center' }}
+                      placeholder='Phạm vi'
+                      disabled
+                    />
+                    <Input
+                      style={{ width: 55, textAlign: 'center' }}
+                      placeholder='Min'
+                    />
+                    <Input
+                      style={{
+                        width: 35,
+                        borderLeft: 0,
+                        pointerEvents: 'none',
+                        backgroundColor: '#fff'
+                      }}
+                      placeholder='~'
+                      disabled
+                    />
+                    <Input
+                      style={{
+                        width: 55,
+                        textAlign: 'center',
+                        borderLeft: 0
+                      }}
+                      placeholder='Max'
+                    />
+                  </Input.Group>
+                </Form.Item>
+              </Col>
+            </Row>
+          </Col>
+          <Col span={5}>
+            <Form.Item label='Ghi chú:'>
+              <Input.TextArea
+                placeholder='Ghi chú'
+                style={{
+                  height: 95,
+                  width: '300px',
+                  maxWidth: 'unset',
+                  marginTop: 5
+                }}
+              />
+            </Form.Item>
+            {/* <div id='edit-table' /> */}
+            <Button
+              type='primary'
+              onClick={() => {
+                setVisibleEditTable(true)
+                const editTable = document.getElementById('edit-table')
+                if (typeof editTable !== 'undefined' && editTable != null) {
+                  console.log(editTable)
+                  const s = new Spreadsheet(editTable)
+                  s.loadData({
+                    freeze: 'B3',
+                    styles: [
+                      {
+                        bgcolor: '#f4f5f8',
+                        textwrap: true,
+                        color: '#900b09',
+                        border: {
+                          top: ['thin', '#0366d6'],
+                          bottom: ['thin', '#0366d6'],
+                          right: ['thin', '#0366d6'],
+                          left: ['thin', '#0366d6']
+                        }
+                      }
+                    ],
+                    merges: ['C3:D4'],
+                    rows: {
+                      1: {
+                        cells: {
+                          0: { text: 'testingtesttestetst' },
+                          2: { text: 'testing' }
+                        }
+                      },
+                      2: {
+                        cells: {
+                          0: { text: 'render', style: 0 },
+                          1: { text: 'Hello' },
+                          2: { text: 'haha', merge: [1, 1] }
+                        }
+                      },
+                      8: {
+                        cells: {
+                          8: { text: 'border test', style: 0 }
+                        }
+                      }
+                    }
+                  }).change(cdata => {
+                    console.log(cdata)
+                  })
                 }
-              ],
-              merges: ['C3:D4'],
-              rows: {
-                1: {
-                  cells: {
-                    0: { text: 'testingtesttestetst' },
-                    2: { text: 'testing' }
-                  }
-                },
-                2: {
-                  cells: {
-                    0: { text: 'render', style: 0 },
-                    1: { text: 'Hello' },
-                    2: { text: 'haha', merge: [1, 1] }
-                  }
-                },
-                8: {
-                  cells: {
-                    8: { text: 'border test', style: 0 }
-                  }
-                }
-              }
-            }).change(cdata => {
-              console.log(cdata)
-            })
-          }
-        }}
-      >
-        Edit
-      </Button>
-      <div id='edit-table' />
+              }}
+            >
+              Edit
+            </Button>
+            <EditTableModal
+              visible={visibleEditModal}
+              closeModal={() => {
+                setVisibleEditModal(false)
+              }}
+            />
+          </Col>
+        </Row>
+      </FormSearchMauPhatHanh>
       {visibleEditTable ? (
-        ''
+        <div id='edit-table' />
       ) : (
         <Table
           columns={columns}
@@ -398,6 +539,6 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
           setVisibleDeleteModal(false)
         }}
       />
-    </>
+    </Fragment>
   )
 }
