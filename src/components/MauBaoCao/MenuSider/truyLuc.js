@@ -55,10 +55,10 @@ export default function YeuCauDieuChinhMenuSider ({
       <SubMenu
         key='editList'
         title={
-          <React.Fragment>
+          <>
             <Icon type='user' />
             Truy lục
-          </React.Fragment>
+          </>
         }
       >
         <Menu.ItemGroup

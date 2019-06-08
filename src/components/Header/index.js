@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import Header from './Header'
 import { logOutReq } from '../../reducers/login'
 import { getMenuItem, getMenu, getScreen } from '../../reducers/menu'
+import { getCoQuanHanhChinh } from '../../reducers/duLieuTienTrinh'
 
 export default connect(
   state => ({
@@ -11,6 +12,7 @@ export default connect(
     logOutReq,
     getMenuItem,
     getMenu,
-    getScreen
+    getScreen,
+    getCoQuanHanhChinh
   }
 )(Header)

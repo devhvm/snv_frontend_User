@@ -61,10 +61,10 @@ export default function YeuCauDieuChinhMenuSider ({
       <SubMenu
         key='editList'
         title={
-          <React.Fragment>
+          <>
             <Icon type='user' />
             Danh sách ký duyệt
-          </React.Fragment>
+          </>
         }
       >
         <Menu.ItemGroup

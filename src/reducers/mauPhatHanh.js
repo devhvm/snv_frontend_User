@@ -1,5 +1,5 @@
 import { handleActions, createAction } from 'redux-actions'
-import callApi from '../utils/APIcaller'
+import { rest } from '../utils/rest'
 
 // Action
 export const CO_QUAN_CHU_TRI = 'CO_QUAN_CHU_TRI'
@@ -9,7 +9,8 @@ export const TIEU_CHI = 'TIEU_CHI'
 
 // Action Creator
 export const getCoQuanChuTriList = () => dispatch => {
-  callApi('common/api/co-quan-chu-tris', 'GET')
+  rest
+    .get('common/api/co-quan-chu-tris')
     .then(res => {
       dispatch(getCoQuanChuTriListRequest(res.data))
     })
@@ -19,7 +20,8 @@ export const getCoQuanChuTriList = () => dispatch => {
 }
 
 export const getMauPhatHanh = maMauPhatHanh => dispatch => {
-  callApi(`donviphathanh/api/mau-phat-hanh/${maMauPhatHanh}`, 'GET', {}, {})
+  rest
+    .get(`donviphathanh/api/mau-phat-hanh/${maMauPhatHanh}`)
     .then(res => {
       dispatch(getMauPhatHanhRequest(res.data))
     })
@@ -29,7 +31,8 @@ export const getMauPhatHanh = maMauPhatHanh => dispatch => {
 }
 
 export const getLoaiBaoCao = () => dispatch => {
-  callApi('common/api/loai-bao-caos', 'GET')
+  rest
+    .get('common/api/loai-bao-caos')
     .then(res => {
       dispatch(getLoaiBaoCaoRequest(res.data[0].name))
     })
@@ -39,7 +42,8 @@ export const getLoaiBaoCao = () => dispatch => {
 }
 
 export const getTieuChi = id => dispatch => {
-  callApi(`common/api/tieu-chis/co_quan_chu_tri?id=${id}`, 'GET')
+  rest
+    .get(`common/api/tieu-chis/co_quan_chu_tri?id=${id}`)
     .then(res => {
       dispatch(getTieuChiRequest(res.data))
     })
@@ -50,19 +54,20 @@ export const getTieuChi = id => dispatch => {
 
 export const addMauPhatHanh = item => dispatch => {
   console.log(item)
-  callApi('donviphathanh/api/mau-phat-hanh', 'POST', {
-    idCoQuanChuTri: item.idCoQuanChuTri,
-    maCoQuanChuTri: item.maCoQuanChuTri,
-    maMauPhatHanh: item.maMauPhatHanh,
-    max: item.min,
-    min: item.max,
-    note: item.note,
-    quyTrinhDonViId: item.quyTrinhDonViId,
-    quyTrinhDonViName: item.quyTrinhDonViName,
-    status: item.status,
-    tenMauPhatHanh: item.tenMauPhatHanh,
-    tienTrinhCode: item.tienTrinhCode
-  })
+  rest
+    .post('donviphathanh/api/mau-phat-hanh', {
+      idCoQuanChuTri: item.idCoQuanChuTri,
+      maCoQuanChuTri: item.maCoQuanChuTri,
+      maMauPhatHanh: item.maMauPhatHanh,
+      max: item.min,
+      min: item.max,
+      note: item.note,
+      quyTrinhDonViId: item.quyTrinhDonViId,
+      quyTrinhDonViName: item.quyTrinhDonViName,
+      status: item.status,
+      tenMauPhatHanh: item.tenMauPhatHanh,
+      tienTrinhCode: item.tienTrinhCode
+    })
     .then(res => {
       dispatch(getTieuChiRequest(res.data))
     })

@@ -61,10 +61,10 @@ export default function DangXuLiMenuSider ({
       <SubMenu
         key='createList'
         title={
-          <React.Fragment>
+          <>
             <Icon type='user' />
             Danh sách tạo mới
-          </React.Fragment>
+          </>
         }
       >
         <Menu.ItemGroup

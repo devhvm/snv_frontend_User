@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { Col, DatePicker, Row, Table, Select, Form, Input, Button } from 'antd'
 import moment from 'moment'
 import styled from 'styled-components'
@@ -410,7 +410,7 @@ export default function TabItem ({ visible, closeModal }) {
   ]
 
   return (
-    <Fragment>
+    <>
       <Row type='flex' justify='end'>
         <Row type='flex' justify='space-between'>
           <ButtonTopTabItem
@@ -542,6 +542,6 @@ export default function TabItem ({ visible, closeModal }) {
           setVisibleDeleteModal(false)
         }}
       />
-    </Fragment>
+    </>
   )
 }

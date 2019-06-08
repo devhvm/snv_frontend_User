@@ -53,12 +53,12 @@ export default function DangXuLiMenuSider ({
       <SubMenu
         key='createList'
         title={
-          <React.Fragment>
+          <>
             <Icon type='user' />
             {/* Danh sách tạo mới */}
             {dataTienTrinh &&
               dataTienTrinh.tienTrinhXuLys[0].tienTrinhBatDau.name}
-          </React.Fragment>
+          </>
         }
       >
         <Menu.ItemGroup

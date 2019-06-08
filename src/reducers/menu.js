@@ -1,5 +1,5 @@
 import { handleActions, createAction } from 'redux-actions'
-import callApi from '../utils/APIcaller'
+import { rest } from '../utils/rest'
 
 // Action
 export const MENU_ITEM = 'MENU_ITEM'
@@ -8,7 +8,8 @@ export const SCREEN = 'SCREEN'
 
 // Action Creator
 export const getMenuItem = () => dispatch => {
-  callApi('phanquyenchucnang/api/menu-items', 'GET')
+  rest
+    .get('phanquyenchucnang/api/menu-items')
     .then(res => {
       dispatch(getMenuItemRequest(res.data))
     })
@@ -18,7 +19,8 @@ export const getMenuItem = () => dispatch => {
 }
 
 export const getMenu = () => dispatch => {
-  callApi('phanquyenchucnang/api/menus', 'GET')
+  rest
+    .get('phanquyenchucnang/api/menus')
     .then(res => {
       dispatch(getMenuRequest(res.data))
     })
@@ -28,7 +30,8 @@ export const getMenu = () => dispatch => {
 }
 
 export const getScreen = () => dispatch => {
-  callApi('phanquyenchucnang/api/screens', 'GET')
+  rest
+    .get('phanquyenchucnang/api/screens')
     .then(res => {
       dispatch(getScreenRequest(res.data))
     })

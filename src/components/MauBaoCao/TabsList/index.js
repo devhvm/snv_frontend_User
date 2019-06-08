@@ -37,7 +37,7 @@ export default function TabList ({
   }
 
   return (
-    <React.Fragment>
+    <>
       <Tabs defaultActiveKey='1' type='editable-card' hideAdd onEdit={onEdit}>
         {tabList &&
           tabList.map(pane => (
@@ -46,6 +46,6 @@ export default function TabList ({
             </TabPane>
           ))}
       </Tabs>
-    </React.Fragment>
+    </>
   )
 }

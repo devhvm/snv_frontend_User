@@ -20,6 +20,10 @@ import LapBaoCaoKyDuyet from '../pages/LapBaoCao/KyDuyetPage'
 import LapBaoCaoTruyLuc from '../pages/LapBaoCao/TruyLucPage'
 import { connect } from 'react-redux'
 import { loginReq } from '../reducers/login'
+// import {
+//   getCoQuanHanhChinh,
+//   getDuLieuTienTrinh
+// } from '../reducers/duLieuTienTrinh'
 
 const RootLayout = styled(Layout)`
   && {
@@ -41,7 +45,6 @@ const ContentWrapper = styled.div`
 function DashboardPage () {
   // const ExContext = React.createContext(login)
   let loginStatus = localStorage.getItem('loginStatus')
-
   const routes = [
     { path: '/', exact: true, component: HomePage },
     {

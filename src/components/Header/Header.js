@@ -2,6 +2,7 @@ import React, { useLayoutEffect } from 'react'
 import { Layout, Menu, Avatar } from 'antd'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+// import { getCoQuanHanhChinh } from '../../reducers/duLieuTienTrinh'
 
 const { Header } = Layout
 
@@ -16,12 +17,14 @@ export default function UserHeader ({
   logOutReq,
   getMenuItem,
   getScreen,
-  getMenu
+  getMenu,
+  getCoQuanHanhChinh
 }) {
   useLayoutEffect(() => {
     // getMenu()
     // getMenuItem()
     // getScreen()
+    getCoQuanHanhChinh()
   }, [])
 
   console.log(menu)

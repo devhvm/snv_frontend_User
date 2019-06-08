@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Table } from 'antd'
 // import logo from '../../../assets/img/logo.png'
 import styled from 'styled-components'
@@ -89,7 +89,7 @@ function HomePage () {
   ]
 
   return (
-    <Fragment>
+    <>
       <HomeTags>
         <HomeTag style={{ background: '#ff7789' }}>
           <HomeTagTitle>YÊU CẦU ĐIỀU CHỈNH</HomeTagTitle>
@@ -108,7 +108,7 @@ function HomePage () {
       <Table dataSource={dataTable} columns={columns} pagination={false} />
       <TableTitle>YÊU CẦU KÍ DUYỆT</TableTitle>
       <Table dataSource={dataTable} columns={columns} pagination={false} />
-    </Fragment>
+    </>
   )
 }
 
