@@ -5,16 +5,15 @@ import TabItem from '../TabItem'
 const TabPane = Tabs.TabPane
 
 export default function TabList ({
-  tab,
+  tabList,
+  activeTab,
   fecthTab,
   removeTab,
   changeActiveTab,
-  dataTienTrinh,
-  dataMauPhatHanh
+  duLieuTienTrinh,
+  dataMauPhatHanh,
+  upDateDuLieuTienTrinh
 }) {
-  const tabList = tab.tabList
-  const activeTab = tab.activeTab
-
   useEffect(() => {
     fecthTab()
   }, [])
@@ -35,8 +34,9 @@ export default function TabList ({
           tabList.map(pane => (
             <TabPane tab={pane.title} key={pane.key}>
               <TabItem
-                dataTienTrinh={dataTienTrinh}
+                duLieuTienTrinh={duLieuTienTrinh}
                 dataMauPhatHanh={dataMauPhatHanh}
+                upDateDuLieuTienTrinh={upDateDuLieuTienTrinh}
               />
             </TabPane>
           ))}

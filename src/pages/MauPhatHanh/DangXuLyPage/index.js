@@ -7,7 +7,11 @@ import {
   getTieuChi,
   addMauPhatHanh
 } from '../../../reducers/mauPhatHanh'
-import { getDuLieuTienTrinh } from '../../../reducers/duLieuTienTrinh'
+import {
+  getDuLieuTienTrinh,
+  getCoQuanHanhChinh,
+  upDateDuLieuTienTrinh
+} from '../../../reducers/duLieuTienTrinh'
 import {
   fecthTab,
   removeTab,
@@ -18,8 +22,8 @@ import {
 export default connect(
   state => ({
     data: state.mauPhatHanh,
-    dataTienTrinh: state.duLieuTienTrinh,
-    tab: state.tab
+    ...state.duLieuTienTrinh,
+    ...state.tab
   }),
   {
     fecthTab,
@@ -31,6 +35,8 @@ export default connect(
     addMauPhatHanh,
     getLoaiBaoCao,
     getTieuChi,
-    getDuLieuTienTrinh
+    getDuLieuTienTrinh,
+    getCoQuanHanhChinh,
+    upDateDuLieuTienTrinh
   }
 )(DangXuLyPage)

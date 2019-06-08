@@ -6,7 +6,7 @@ export default function CreateModal ({
   visible,
   closeModal,
   coQuanChuTriList,
-  dataTienTrinh,
+  duLieuTienTrinh,
   mauBaoCao,
   tieuChi,
   getTieuChi,
@@ -52,8 +52,6 @@ export default function CreateModal ({
       </Select.Option>
     ))
 
-  // console.log('dataTienTrinh', dataTienTrinh)
-
   return (
     <Modal
       title='Tạo mới mẫu phát hành'
@@ -67,14 +65,16 @@ export default function CreateModal ({
           max: Number(phamViMin),
           min: Number(phamViMax),
           note: '',
-          quyTrinhDonViId: dataTienTrinh ? dataTienTrinh.quyTrinhDonViId : 0,
-          quyTrinhDonViName: dataTienTrinh ? dataTienTrinh.name : '',
-          status: dataTienTrinh
-            ? dataTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0].status
+          quyTrinhDonViId: duLieuTienTrinh
+            ? duLieuTienTrinh.quyTrinhDonViId
+            : 0,
+          quyTrinhDonViName: duLieuTienTrinh ? duLieuTienTrinh.name : '',
+          status: duLieuTienTrinh
+            ? duLieuTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0].status
             : '',
           tenMauPhatHanh: tenMauPhatHanh,
-          tienTrinhCode: dataTienTrinh
-            ? dataTienTrinh.tienTrinhXuLys[0].tienTrinhBatDau.tienTrinhCode
+          tienTrinhCode: duLieuTienTrinh
+            ? duLieuTienTrinh.tienTrinhXuLys[0].tienTrinhBatDau.tienTrinhCode
             : ''
         })
       }}

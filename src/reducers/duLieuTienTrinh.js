@@ -37,8 +37,20 @@ export const getDuLieuTienTrinh = () => (dispatch, getState) => {
       }`
     )
     .then(res => {
-      console.log('dataIndex', res)
       dispatch(getDuLieuTienTrinhRequest(res.data))
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+export const upDateDuLieuTienTrinh = item => dispatch => {
+  console.log('item', item.duLieuCode)
+  rest
+    .put('quytrinhdonvi/api/update-du-lieu-tien-trinhs', item)
+    .then(res => {
+      console.log(item)
+      console.log(res)
     })
     .catch(err => {
       console.log(err)

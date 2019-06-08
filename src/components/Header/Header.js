@@ -27,7 +27,6 @@ export default function UserHeader ({
     getCoQuanHanhChinh()
   }, [])
 
-  console.log(menu)
   // const menuList = []
   // for (let i in menu.menu) {
   //   menuList.push({ name: menu.menu[i].name, child: [] })

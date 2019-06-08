@@ -10,7 +10,7 @@ export default function DangXuLiMenuSider ({
   addNewTab,
   changeActiveTab,
   tabList,
-  dataTienTrinh
+  duLieuTienTrinh
 }) {
   const SubMenu = Menu.SubMenu
 
@@ -37,8 +37,8 @@ export default function DangXuLiMenuSider ({
     }
   ]
   const dataTable =
-    dataTienTrinh &&
-    dataTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh.map(item => ({
+    duLieuTienTrinh &&
+    duLieuTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh.map(item => ({
       key: item.id,
       maMau: item.duLieuCode,
       tenMau: item.name
@@ -56,8 +56,8 @@ export default function DangXuLiMenuSider ({
           <>
             <Icon type='user' />
             {/* Danh sách tạo mới */}
-            {dataTienTrinh &&
-              dataTienTrinh.tienTrinhXuLys[0].tienTrinhBatDau.name}
+            {duLieuTienTrinh &&
+              duLieuTienTrinh.tienTrinhXuLys[0].tienTrinhBatDau.name}
           </>
         }
       >
@@ -124,7 +124,7 @@ export default function DangXuLiMenuSider ({
                   addNewTab(
                     tabList,
                     record,
-                    dataTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0].status
+                    duLieuTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0].status
                   )
                   changeActiveTab(String(record.maMau))
                   getMauPhatHanh(record.maMau)

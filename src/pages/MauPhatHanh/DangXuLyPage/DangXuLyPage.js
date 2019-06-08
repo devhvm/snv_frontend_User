@@ -6,8 +6,9 @@ import DangXuLiMenuSider from '../../../components/MauPhatHanh/MenuSider/dangXuL
 
 export default function DangXuLyPage ({
   data,
-  dataTienTrinh,
-  tab,
+  duLieuTienTrinh,
+  tabList,
+  activeTab,
   fecthTab,
   addNewTab,
   removeTab,
@@ -17,10 +18,12 @@ export default function DangXuLyPage ({
   addMauPhatHanh,
   getLoaiBaoCao,
   getTieuChi,
-  getDuLieuTienTrinh
+  getDuLieuTienTrinh,
+  getCoQuanHanhChinh,
+  upDateDuLieuTienTrinh
 }) {
   useEffect(() => {
-    getDuLieuTienTrinh()
+    getCoQuanHanhChinh()
   }, [])
 
   const [visibleCreateModal, setVisibleCreateModal] = useState(false)
@@ -29,12 +32,14 @@ export default function DangXuLyPage ({
     <Layout>
       <Layout.Content style={{ background: '#fff' }}>
         <TabsList
-          tab={tab}
+          tabList={tabList}
+          activeTab={activeTab}
           fecthTab={fecthTab}
           removeTab={removeTab}
           changeActiveTab={changeActiveTab}
-          dataTienTrinh={dataTienTrinh.duLieuTienTrinh}
+          duLieuTienTrinh={duLieuTienTrinh}
           dataMauPhatHanh={data.mauPhatHanh}
+          upDateDuLieuTienTrinh={upDateDuLieuTienTrinh}
         />
       </Layout.Content>
       <Layout.Sider
@@ -51,10 +56,10 @@ export default function DangXuLyPage ({
             getCoQuanChuTriList={getCoQuanChuTriList}
             addNewTab={addNewTab}
             getMauPhatHanh={getMauPhatHanh}
-            tabList={tab.tabList}
+            tabList={tabList}
             changeActiveTab={changeActiveTab}
             getLoaiBaoCao={getLoaiBaoCao}
-            dataTienTrinh={dataTienTrinh.duLieuTienTrinh}
+            duLieuTienTrinh={duLieuTienTrinh}
           />
         </Layout.Content>
       </Layout.Sider>
@@ -68,7 +73,7 @@ export default function DangXuLyPage ({
         tieuChi={data.tieuChi}
         getTieuChi={getTieuChi}
         addMauPhatHanh={addMauPhatHanh}
-        dataTienTrinh={dataTienTrinh.duLieuTienTrinh}
+        duLieuTienTrinh={duLieuTienTrinh}
       />
     </Layout>
   )

@@ -27,15 +27,19 @@ const ButtonTopTabItem = styled(Button)`
 
 const dateFormat = 'DD-MM-YYYY'
 
-export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
+export default function TabItem ({
+  duLieuTienTrinh,
+  dataMauPhatHanh,
+  upDateDuLieuTienTrinh
+}) {
   const [maMauPhatHanh] = useState('')
   const [tenMauPhatHanh] = useState('')
   const [ngayPhatHanh] = useState(moment().format(dateFormat))
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
   const [visibleEditModal, setVisibleEditModal] = useState(false)
   const [visibleEditTable, setVisibleEditTable] = useState(false)
-  console.log('dataMauPhatHanh.tieuChiDetails', dataMauPhatHanh.tieuChiDetails)
-
+  // console.log('dataMauPhatHanh.tieuChiDetails', dataMauPhatHanh.tieuChiDetails)
+  console.log('duLieuTienTrinh', duLieuTienTrinh)
   const initTieuChiRow = (index, tieuChiDetail) => {
     let count = 0
     let datas = []
@@ -127,8 +131,6 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
   //
 
   getDataTable()
-
-  console.log(dataTable)
 
   const columns = [
     {
@@ -450,7 +452,6 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
                 setVisibleEditTable(true)
                 const editTable = document.getElementById('edit-table')
                 if (typeof editTable !== 'undefined' && editTable != null) {
-                  console.log(editTable)
                   const s = new Spreadsheet(editTable)
                   s.loadData({
                     freeze: 'B3',
@@ -518,14 +519,19 @@ export default function TabItem ({ dataTienTrinh, dataMauPhatHanh }) {
         />
       )}
       <Row type='flex' justify='end'>
-        {dataTienTrinh &&
-          dataTienTrinh.tienTrinhXuLys[0].tienTrinhKetThucs.map(
+        {duLieuTienTrinh &&
+          duLieuTienTrinh.tienTrinhXuLys[0].tienTrinhKetThucs.map(
             (item, index) => {
               return (
                 <Button
                   key={index}
                   style={{ marginTop: '10px', right: '2%' }}
                   type='primary'
+                  onClick={() => {
+                    upDateDuLieuTienTrinh(
+                      duLieuTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0]
+                    )
+                  }}
                 >
                   {item.name}
                 </Button>
