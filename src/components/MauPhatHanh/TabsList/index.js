@@ -11,7 +11,7 @@ export default function TabList ({
   removeTab,
   changeActiveTab,
   duLieuTienTrinh,
-  dataMauPhatHanh,
+  mauPhatHanh,
   upDateDuLieuTienTrinh
 }) {
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function TabList ({
             <TabPane tab={pane.title} key={pane.key}>
               <TabItem
                 duLieuTienTrinh={duLieuTienTrinh}
-                dataMauPhatHanh={dataMauPhatHanh}
+                mauPhatHanh={mauPhatHanh}
                 upDateDuLieuTienTrinh={upDateDuLieuTienTrinh}
               />
             </TabPane>

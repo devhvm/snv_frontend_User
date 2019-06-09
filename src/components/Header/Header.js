@@ -185,36 +185,30 @@ export default function UserHeader ({
           <AppName key='23'>
             <Link to='/'>SNV</Link>
           </AppName>
-          {menuList.map((item, index) => {
-            return (
-              <Menu.SubMenu key={index} title={item.name}>
-                {/* eslint-disable indent */}
-                {item.child
-                  ? item.child.map(itemChild =>
-                      itemChild.child ? (
-                        <Menu.SubMenu
-                          title={itemChild.name}
-                          style={{ width: '200px' }}
-                        >
-                          {itemChild.child.map(itemChild2 => (
-                            <Menu.Item key={itemChild2.screenCode}>
-                              <Link to={itemChild2.link}>
-                                {itemChild2.name}
-                              </Link>
-                            </Menu.Item>
-                          ))}
-                        </Menu.SubMenu>
-                      ) : (
-                        <Menu.Item key={itemChild.screenCode}>
-                          <Link to={itemChild.link}>{itemChild.name}</Link>
+          {menuList.map((item, index) => (
+            <Menu.SubMenu key={index} title={item.name}>
+              {item.child
+                ? item.child.map(itemChild =>
+                  itemChild.child ? (
+                    <Menu.SubMenu
+                      title={itemChild.name}
+                      style={{ width: '200px' }}
+                    >
+                      {itemChild.child.map(itemChild2 => (
+                        <Menu.Item key={itemChild2.screenCode}>
+                          <Link to={itemChild2.link}>{itemChild2.name}</Link>
                         </Menu.Item>
-                      )
-                    )
-                  : ''}
-                {/* eslint-enable indent */}
-              </Menu.SubMenu>
-            )
-          })}
+                      ))}
+                    </Menu.SubMenu>
+                  ) : (
+                    <Menu.Item key={itemChild.screenCode}>
+                      <Link to={itemChild.link}>{itemChild.name}</Link>
+                    </Menu.Item>
+                  )
+                )
+                : ''}
+            </Menu.SubMenu>
+          ))}
           <Menu.SubMenu
             key='24'
             title={

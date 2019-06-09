@@ -9,7 +9,7 @@ export default function CreateModal ({
   duLieuTienTrinh,
   mauBaoCao,
   tieuChi,
-  getTieuChi,
+  getTieuChiByCoQuanChuTri,
   addMauPhatHanh
 }) {
   const [maMauPhatHanh, setMaMauPhatHanh] = useState('')
@@ -105,7 +105,7 @@ export default function CreateModal ({
                 defaultValue=''
                 value={coQuanChuTriList ? coQuanChuTriList[0].name : ''}
                 onSelect={value => {
-                  getTieuChi(JSON.parse(value).id)
+                  getTieuChiByCoQuanChuTri(JSON.parse(value).id)
                   setCoQuanChuTri(JSON.parse(value))
                 }}
               >

@@ -121,11 +121,7 @@ export default function DangXuLiMenuSider ({
             onRow={record => {
               return {
                 onClick: () => {
-                  addNewTab(
-                    tabList,
-                    record,
-                    duLieuTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0].status
-                  )
+                  addNewTab(tabList, record, 'NEW')
                   changeActiveTab(String(record.maMau))
                   getMauPhatHanh(record.maMau)
                 }

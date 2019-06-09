@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from 'react'
-import { Col, DatePicker, Row, Table, Form, Input, Button } from 'antd'
-import moment from 'moment'
+import { Col, Row, Table, Form, Input, Button } from 'antd'
+// import moment from 'moment'
 import styled from 'styled-components'
 import DeleteModal from '../DeleteModal'
 import EditTableModal from '../EditTableModal'
+import InputItem from '../../InputItem'
 import Spreadsheet from 'x-data-spreadsheet'
 
 const FormSearchMauPhatHanh = styled(Form)`
@@ -13,32 +14,22 @@ const FormSearchMauPhatHanh = styled(Form)`
   margin-top: 20px !important;
 `
 
-const InputSearchMauPhatHanh = styled(Input)`
-  width: 95% !important;
-`
-
-const DatePickerSearchMauPhatHanh = styled(DatePicker)`
-  width: 95% !important;
-`
-
 const ButtonTopTabItem = styled(Button)`
   margin-right: 40px;
 `
 
-const dateFormat = 'DD-MM-YYYY'
+// const dateFormat = 'DD-MM-YYYY'
 
-export default function TabItem ({
+function TabItem ({
+  form,
   duLieuTienTrinh,
-  dataMauPhatHanh,
+  mauPhatHanh,
   upDateDuLieuTienTrinh
 }) {
-  const [maMauPhatHanh] = useState('')
-  const [tenMauPhatHanh] = useState('')
-  const [ngayPhatHanh] = useState(moment().format(dateFormat))
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
   const [visibleEditModal, setVisibleEditModal] = useState(false)
   const [visibleEditTable, setVisibleEditTable] = useState(false)
-  // console.log('dataMauPhatHanh.tieuChiDetails', dataMauPhatHanh.tieuChiDetails)
+  console.log('mauPhatHanh', mauPhatHanh)
   console.log('duLieuTienTrinh', duLieuTienTrinh)
   const initTieuChiRow = (index, tieuChiDetail) => {
     let count = 0
@@ -111,8 +102,8 @@ export default function TabItem ({
   let dataTable = []
 
   const getDataTable = () => {
-    if (dataMauPhatHanh.tieuChiDetails) {
-      dataMauPhatHanh.tieuChiDetails.map((item, index) =>
+    if (mauPhatHanh.tieuChiDetails) {
+      mauPhatHanh.tieuChiDetails.map((item, index) =>
         initTieuChiRow(index, item).map(item1 => {
           dataTable.push(item1)
         })
@@ -364,69 +355,127 @@ export default function TabItem ({
           <Col span={19}>
             <Row>
               <Col span={12}>
-                <Form.Item label='Mã mẫu:'>
-                  <InputSearchMauPhatHanh
-                    placeholder='Nhập mã mẫu phát hành'
-                    value={maMauPhatHanh}
-                    disabled
-                  />
-                </Form.Item>
-                <Form.Item label='Tên mẫu:'>
-                  <InputSearchMauPhatHanh
-                    placeholder='Nhập tên mẫu phát hành'
-                    value={tenMauPhatHanh}
-                  />
-                </Form.Item>
-                <Form.Item label='Ngày phát hành:'>
-                  <DatePickerSearchMauPhatHanh
-                    defaultValue={moment(ngayPhatHanh, dateFormat)}
-                    placeholder='Nhập ngày phát hành'
-                  />
-                </Form.Item>
+                <InputItem
+                  form={form}
+                  label='Mã mẫu:'
+                  field='maMau'
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Vui lòng không để trống thẻ này'
+                    }
+                  ]}
+                  disabled='disabled'
+                />
+                <InputItem
+                  form={form}
+                  label='Tên mẫu:'
+                  field='tenMau'
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Vui lòng không để trống thẻ này'
+                    }
+                  ]}
+                  // disabled='disabled'
+                />
+                <InputItem
+                  form={form}
+                  label='Ngày phát hành:'
+                  field='ngayPhatHanh'
+                  type='datepicker'
+                  style={{ width: '220px' }}
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Vui lòng không để trống thẻ này'
+                    }
+                  ]}
+                  disabled='disabled'
+                />
               </Col>
               <Col span={12}>
-                <Form.Item label='Người lập:'>
-                  <InputSearchMauPhatHanh
-                    placeholder='Nhập tên mẫu phát hành'
-                    value={tenMauPhatHanh}
-                    disabled
-                  />
-                </Form.Item>
-                <Form.Item label='Cơ quan chủ trì:'>
-                  <InputSearchMauPhatHanh
-                    placeholder='Nhập tên mẫu phát hành'
-                    value={tenMauPhatHanh}
-                    disabled
-                  />
-                </Form.Item>
+                <InputItem
+                  form={form}
+                  label='Người lập:'
+                  field='nguoiLap'
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Vui lòng không để trống thẻ này'
+                    }
+                  ]}
+                  disabled='disabled'
+                />
+                <InputItem
+                  form={form}
+                  label='Cơ quan chủ trì:'
+                  field='coQuanChuTri'
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Vui lòng không để trống thẻ này'
+                    }
+                  ]}
+                  disabled='disabled'
+                />
                 <Form.Item label='Chọn phạm vi'>
                   <Input.Group compact>
-                    <Input
-                      style={{ width: 75, textAlign: 'center' }}
+                    <InputItem
+                      form={form}
                       placeholder='Phạm vi'
-                      disabled
+                      field='phamVi'
+                      disabled='disabled'
+                      style={{
+                        width: 75,
+                        textAlign: 'center',
+                        borderRadius: 'unset'
+                      }}
                     />
-                    <Input
-                      style={{ width: 55, textAlign: 'center' }}
+                    <InputItem
+                      form={form}
                       placeholder='Min'
+                      field='min'
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Vui lòng không để trống thẻ này'
+                        }
+                      ]}
+                      style={{
+                        width: 55,
+                        textAlign: 'center',
+                        borderRadius: 'unset'
+                      }}
                     />
-                    <Input
+                    <InputItem
+                      form={form}
+                      placeholder='~'
+                      field='~'
                       style={{
                         width: 35,
                         borderLeft: 0,
                         pointerEvents: 'none',
-                        backgroundColor: '#fff'
+                        backgroundColor: '#fff',
+                        borderRadius: 'unset'
                       }}
-                      placeholder='~'
-                      disabled
                     />
-                    <Input
+                    <InputItem
+                      form={form}
+                      placeholder='Max'
+                      field='max'
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Vui lòng không để trống thẻ này'
+                        }
+                      ]}
                       style={{
                         width: 55,
                         textAlign: 'center',
-                        borderLeft: 0
+                        borderLeft: 0,
+                        borderRadius: 'unset'
                       }}
-                      placeholder='Max'
                     />
                   </Input.Group>
                 </Form.Item>
@@ -434,17 +483,21 @@ export default function TabItem ({
             </Row>
           </Col>
           <Col span={5}>
-            <Form.Item label='Ghi chú:'>
-              <Input.TextArea
-                placeholder='Ghi chú'
-                style={{
-                  height: 95,
-                  width: '300px',
-                  maxWidth: 'unset',
-                  marginTop: 5
-                }}
-              />
-            </Form.Item>
+            <InputItem
+              form={form}
+              label='Ghi chú'
+              field='ghiChu'
+              placeholder='Ghi chú'
+              type='textarea'
+              autosize={{ minRows: 5 }}
+              style={{
+                width: '300px',
+                maxWidth: 'unset'
+              }}
+              rules={[
+                { required: true, message: 'Vui lòng không để trống thẻ này' }
+              ]}
+            />
             {/* <div id='edit-table' /> */}
             <Button
               type='primary'
@@ -520,23 +573,62 @@ export default function TabItem ({
       )}
       <Row type='flex' justify='end'>
         {duLieuTienTrinh &&
-          duLieuTienTrinh.tienTrinhXuLys[0].tienTrinhKetThucs.map(
-            (item, index) => {
-              return (
-                <Button
-                  key={index}
-                  style={{ marginTop: '10px', right: '2%' }}
-                  type='primary'
-                  onClick={() => {
-                    upDateDuLieuTienTrinh(
-                      duLieuTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh[0]
-                    )
-                  }}
-                >
-                  {item.name}
-                </Button>
-              )
-            }
+          duLieuTienTrinh.tienTrinhXuLys.map(item =>
+            item.duLieuTienTrinh.map(itemDuLieuTienTrinh => {
+              if (
+                itemDuLieuTienTrinh.duLieuCode === mauPhatHanh.mauPhatHanhCode
+              ) {
+                return item.tienTrinhKetThucs
+                  ? item.tienTrinhKetThucs.map(ItemTienTrinhKetThucs => (
+                    <>
+                      <Button
+                        key={`${ItemTienTrinhKetThucs.tienTrinhCode}_${
+                          ItemTienTrinhKetThucs.id
+                        }`}
+                        style={{
+                          marginTop: '10px',
+                          right: '2%',
+                          marginLeft: '10px'
+                        }}
+                        type='primary'
+                        onClick={() => {
+                          duLieuTienTrinh.tienTrinhXuLys[0].duLieuTienTrinh.map(
+                            item => {
+                              if (
+                                item.duLieuCode ===
+                                  mauPhatHanh.mauPhatHanhCode
+                              ) {
+                                upDateDuLieuTienTrinh({
+                                  duLieuCode: itemDuLieuTienTrinh.duLieuCode,
+                                  fromUserId: itemDuLieuTienTrinh.fromUserId,
+                                  id: itemDuLieuTienTrinh.id,
+                                  name: itemDuLieuTienTrinh.name,
+                                  note: itemDuLieuTienTrinh.note,
+                                  quyTrinhDonViId:
+                                      itemDuLieuTienTrinh.quyTrinhDonViId,
+                                  quyTrinhDonViName:
+                                      itemDuLieuTienTrinh.quyTrinhDonViName,
+                                  status: ItemTienTrinhKetThucs.status,
+                                  tienTrinhCode:
+                                      ItemTienTrinhKetThucs.tienTrinhCode,
+                                  toUserId: ''
+                                })
+                              }
+                            }
+                          )
+                        }}
+                      >
+                        {ItemTienTrinhKetThucs.name}
+                        {console.log(
+                          'ItemTienTrinhKetThucs',
+                          ItemTienTrinhKetThucs
+                        )}
+                      </Button>
+                    </>
+                  ))
+                  : ''
+              }
+            })
           )}
       </Row>
       <DeleteModal
@@ -548,3 +640,5 @@ export default function TabItem ({
     </Fragment>
   )
 }
+
+export default Form.create({ name: 'form_modal' })(TabItem)

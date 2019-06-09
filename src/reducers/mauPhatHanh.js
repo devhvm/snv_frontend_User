@@ -1,11 +1,11 @@
 import { handleActions, createAction } from 'redux-actions'
 import { rest } from '../utils/rest'
+import { getDuLieuTienTrinh } from './duLieuTienTrinh'
 
 // Action
 export const CO_QUAN_CHU_TRI = 'CO_QUAN_CHU_TRI'
 export const MAU_PHAT_HANH = 'MAU_PHAT_HANH'
 export const MAU_BAO_CAO = 'MAU_BAO_CAO'
-export const TIEU_CHI = 'TIEU_CHI'
 
 // Action Creator
 export const getCoQuanChuTriList = () => dispatch => {
@@ -41,19 +41,7 @@ export const getLoaiBaoCao = () => dispatch => {
     })
 }
 
-export const getTieuChi = id => dispatch => {
-  rest
-    .get(`common/api/tieu-chis/co_quan_chu_tri?id=${id}`)
-    .then(res => {
-      dispatch(getTieuChiRequest(res.data))
-    })
-    .catch(err => {
-      console.log(err)
-    })
-}
-
 export const addMauPhatHanh = item => dispatch => {
-  console.log(item)
   rest
     .post('donviphathanh/api/mau-phat-hanh', {
       idCoQuanChuTri: item.idCoQuanChuTri,
@@ -69,7 +57,7 @@ export const addMauPhatHanh = item => dispatch => {
       tienTrinhCode: item.tienTrinhCode
     })
     .then(res => {
-      dispatch(getTieuChiRequest(res.data))
+      dispatch(getDuLieuTienTrinh())
     })
     .catch(err => {
       console.log(err)
@@ -79,11 +67,10 @@ export const addMauPhatHanh = item => dispatch => {
 const getCoQuanChuTriListRequest = createAction(CO_QUAN_CHU_TRI)
 const getMauPhatHanhRequest = createAction(MAU_PHAT_HANH)
 const getLoaiBaoCaoRequest = createAction(MAU_BAO_CAO)
-const getTieuChiRequest = createAction(TIEU_CHI)
 
 // Initial State
 const initialState = {
-  mauPhatHanh: []
+  mauPhatHanh: {}
 }
 
 // reducer
@@ -100,10 +87,6 @@ export default handleActions(
     [MAU_BAO_CAO]: (state, { payload }) => ({
       ...state,
       mauBaoCao: payload
-    }),
-    [TIEU_CHI]: (state, { payload }) => ({
-      ...state,
-      tieuChi: payload
     })
   },
   initialState

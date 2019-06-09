@@ -4,29 +4,37 @@ import TabsList from '../../../components/MauPhatHanh/TabsList'
 import KyDuyetMenuSider from '../../../components/MauPhatHanh/MenuSider/kyDuyet'
 
 export default function KyDuyetPage ({
-  data,
-  tab,
+  mauPhatHanh,
+  mauBaoCao,
+  duLieuTienTrinh,
+  tabList,
+  activeTab,
   fecthTab,
   addNewTab,
   removeTab,
   changeActiveTab,
-  getCoQuanChuTri,
   getMauPhatHanh,
-  getLoaiBaoCao,
-  getTieuChi
+  getDuLieuTienTrinh,
+  getCoQuanHanhChinh,
+  upDateDuLieuTienTrinh,
+  getMauPhatHanhSelecting
 }) {
   useEffect(() => {
-    // getMauPhatHanh()
-  })
+    getCoQuanHanhChinh()
+  }, [])
 
   return (
     <Layout>
       <Layout.Content style={{ background: '#fff' }}>
         <TabsList
-          tab={tab}
+          tabList={tabList}
+          activeTab={activeTab}
           fecthTab={fecthTab}
           removeTab={removeTab}
           changeActiveTab={changeActiveTab}
+          duLieuTienTrinh={duLieuTienTrinh}
+          mauPhatHanh={mauPhatHanh}
+          upDateDuLieuTienTrinh={upDateDuLieuTienTrinh}
         />
       </Layout.Content>
       <Layout.Sider
@@ -40,11 +48,12 @@ export default function KyDuyetPage ({
       >
         <Layout.Content>
           <KyDuyetMenuSider
-            getCoQuanChuTri={getCoQuanChuTri}
             addNewTab={addNewTab}
-            tabList={tab.tabList}
+            getMauPhatHanh={getMauPhatHanh}
+            tabList={tabList}
             changeActiveTab={changeActiveTab}
-            getLoaiBaoCao={getLoaiBaoCao}
+            duLieuTienTrinh={duLieuTienTrinh}
+            getMauPhatHanhSelecting={getMauPhatHanhSelecting}
           />
         </Layout.Content>
       </Layout.Sider>

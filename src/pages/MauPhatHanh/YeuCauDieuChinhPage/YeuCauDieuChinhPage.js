@@ -4,16 +4,20 @@ import TabsList from '../../../components/MauPhatHanh/TabsList'
 import YeuCauDieuChinhMenuSider from '../../../components/MauPhatHanh/MenuSider/yeuCauDieuChinh'
 
 export default function YeuCauDieuChinhPage ({
-  data,
-  tab,
+  mauPhatHanh,
+  mauBaoCao,
+  duLieuTienTrinh,
+  tabList,
+  activeTab,
   fecthTab,
   addNewTab,
   removeTab,
   changeActiveTab,
-  getCoQuanChuTri,
   getMauPhatHanh,
-  getLoaiBaoCao,
-  getTieuChi
+  getDuLieuTienTrinh,
+  getCoQuanHanhChinh,
+  upDateDuLieuTienTrinh,
+  getMauPhatHanhSelecting
 }) {
   useEffect(() => {
     // getMauPhatHanh()
@@ -23,10 +27,14 @@ export default function YeuCauDieuChinhPage ({
     <Layout>
       <Layout.Content style={{ background: '#fff' }}>
         <TabsList
-          tab={tab}
+          tabList={tabList}
+          activeTab={activeTab}
           fecthTab={fecthTab}
           removeTab={removeTab}
           changeActiveTab={changeActiveTab}
+          duLieuTienTrinh={duLieuTienTrinh}
+          mauPhatHanh={mauPhatHanh}
+          upDateDuLieuTienTrinh={upDateDuLieuTienTrinh}
         />
       </Layout.Content>
       <Layout.Sider
@@ -41,8 +49,11 @@ export default function YeuCauDieuChinhPage ({
         <Layout.Content>
           <YeuCauDieuChinhMenuSider
             addNewTab={addNewTab}
-            tabList={tab.tabList}
+            getMauPhatHanh={getMauPhatHanh}
+            tabList={tabList}
             changeActiveTab={changeActiveTab}
+            duLieuTienTrinh={duLieuTienTrinh}
+            getMauPhatHanhSelecting={getMauPhatHanhSelecting}
           />
         </Layout.Content>
       </Layout.Sider>

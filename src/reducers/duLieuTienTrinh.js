@@ -45,12 +45,10 @@ export const getDuLieuTienTrinh = () => (dispatch, getState) => {
 }
 
 export const upDateDuLieuTienTrinh = item => dispatch => {
-  console.log('item', item.duLieuCode)
   rest
     .put('quytrinhdonvi/api/update-du-lieu-tien-trinhs', item)
     .then(res => {
-      console.log(item)
-      console.log(res)
+      dispatch(getDuLieuTienTrinh())
     })
     .catch(err => {
       console.log(err)
@@ -62,6 +60,7 @@ const getCoQuanHanhChinhRequest = createAction(CO_QUAN_HANH_CHINH)
 
 // Initial State
 const initialState = {
+  // duLieuTienTrinh: {},
   coQuanHanhChinhList: []
 }
 

@@ -2,13 +2,13 @@ import React from 'react'
 import { Input, Row, Table, Menu, Icon, Button } from 'antd'
 import styled from 'styled-components'
 
-export default function YeuCauDieuChinhMenuSider ({
-  setVisibleCreateModal,
-  getCoQuanChuTri,
+export default function KyDuyetMenuSider ({
   getLoaiBaoCao,
+  getMauPhatHanh,
   addNewTab,
   changeActiveTab,
-  tabList
+  tabList,
+  duLieuTienTrinh
 }) {
   const SubMenu = Menu.SubMenu
 
@@ -34,23 +34,13 @@ export default function YeuCauDieuChinhMenuSider ({
       dataIndex: 'tenMau'
     }
   ]
-  const dataSmall = [
-    {
-      key: '1',
-      maMau: '32',
-      tenMau: 'Báo Cáo Thanh Niên'
-    },
-    {
-      key: '2',
-      maMau: '33',
-      tenMau: 'Báo Cáo Thanh Niên'
-    },
-    {
-      key: '3',
-      maMau: '34',
-      tenMau: 'Báo Cáo Thanh Niên'
-    }
-  ]
+  const dataSmall =
+    duLieuTienTrinh &&
+    duLieuTienTrinh.tienTrinhXuLys[3].duLieuTienTrinh.map(item => ({
+      key: item.id,
+      maMau: item.duLieuCode,
+      tenMau: item.name
+    }))
 
   return (
     <Menu
@@ -85,9 +75,6 @@ export default function YeuCauDieuChinhMenuSider ({
                 borderColor: '#06d0d0',
                 fontSize: '10px'
               }}
-              onClick={() => {
-                setVisibleCreateModal(true)
-              }}
             >
               Tìm kiếm
             </Button>
@@ -99,8 +86,9 @@ export default function YeuCauDieuChinhMenuSider ({
             onRow={record => {
               return {
                 onClick: () => {
-                  addNewTab(tabList, record)
+                  addNewTab(tabList, record, 'SIGNED')
                   changeActiveTab(String(record.maMau))
+                  getMauPhatHanh(record.maMau)
                 }
               }
             }}

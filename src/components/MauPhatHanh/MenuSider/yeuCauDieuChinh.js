@@ -3,12 +3,13 @@ import { Input, Row, Table, Menu, Icon, Button } from 'antd'
 import styled from 'styled-components'
 
 export default function YeuCauDieuChinhMenuSider ({
-  setVisibleCreateModal,
-  getCoQuanChuTri,
+  getCoQuanChuTriList,
   getLoaiBaoCao,
+  getMauPhatHanh,
   addNewTab,
   changeActiveTab,
-  tabList
+  tabList,
+  duLieuTienTrinh
 }) {
   const SubMenu = Menu.SubMenu
 
@@ -34,23 +35,21 @@ export default function YeuCauDieuChinhMenuSider ({
       dataIndex: 'tenMau'
     }
   ]
-  const dataSmall = [
-    {
-      key: '1',
-      maMau: '32',
-      tenMau: 'Báo Cáo Thanh Niên'
-    },
-    {
-      key: '2',
-      maMau: '33',
-      tenMau: 'Báo Cáo Thanh Niên'
-    },
-    {
-      key: '3',
-      maMau: '34',
-      tenMau: 'Báo Cáo Thanh Niên'
-    }
-  ]
+  const dataEdit =
+    duLieuTienTrinh &&
+    duLieuTienTrinh.tienTrinhXuLys[1].duLieuTienTrinh.map(item => ({
+      key: item.id,
+      maMau: item.duLieuCode,
+      tenMau: item.name
+    }))
+
+  const authorizedList =
+    duLieuTienTrinh &&
+    duLieuTienTrinh.tienTrinhXuLys[2].duLieuTienTrinh.map(item => ({
+      key: item.id,
+      maMau: item.duLieuCode,
+      tenMau: item.name
+    }))
 
   return (
     <Menu
@@ -85,22 +84,20 @@ export default function YeuCauDieuChinhMenuSider ({
                 borderColor: '#06d0d0',
                 fontSize: '10px'
               }}
-              onClick={() => {
-                setVisibleCreateModal(true)
-              }}
             >
               Tìm kiếm
             </Button>
           </Row>
           <ListTable
             columns={columnsSmall}
-            dataSource={dataSmall}
+            dataSource={dataEdit}
             size='small'
             onRow={record => {
               return {
                 onClick: () => {
-                  addNewTab(tabList, record)
+                  addNewTab(tabList, record, 'ACTIVE')
                   changeActiveTab(String(record.maMau))
+                  getMauPhatHanh(record.maMau)
                 }
               }
             }}
@@ -140,7 +137,7 @@ export default function YeuCauDieuChinhMenuSider ({
           </Row>
           <ListTable
             columns={columnsSmall}
-            dataSource={dataSmall}
+            dataSource={authorizedList}
             size='small'
           />
         </Menu.ItemGroup>

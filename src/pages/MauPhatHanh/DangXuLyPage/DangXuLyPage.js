@@ -5,7 +5,10 @@ import TabsList from '../../../components/MauPhatHanh/TabsList'
 import DangXuLiMenuSider from '../../../components/MauPhatHanh/MenuSider/dangXuLi'
 
 export default function DangXuLyPage ({
-  data,
+  mauPhatHanh,
+  coQuanChuTriList,
+  mauBaoCao,
+  tieuChi,
   duLieuTienTrinh,
   tabList,
   activeTab,
@@ -17,10 +20,11 @@ export default function DangXuLyPage ({
   getMauPhatHanh,
   addMauPhatHanh,
   getLoaiBaoCao,
-  getTieuChi,
+  getTieuChiByCoQuanChuTri,
   getDuLieuTienTrinh,
   getCoQuanHanhChinh,
-  upDateDuLieuTienTrinh
+  upDateDuLieuTienTrinh,
+  getMauPhatHanhSelecting
 }) {
   useEffect(() => {
     getCoQuanHanhChinh()
@@ -38,7 +42,7 @@ export default function DangXuLyPage ({
           removeTab={removeTab}
           changeActiveTab={changeActiveTab}
           duLieuTienTrinh={duLieuTienTrinh}
-          dataMauPhatHanh={data.mauPhatHanh}
+          mauPhatHanh={mauPhatHanh}
           upDateDuLieuTienTrinh={upDateDuLieuTienTrinh}
         />
       </Layout.Content>
@@ -60,6 +64,7 @@ export default function DangXuLyPage ({
             changeActiveTab={changeActiveTab}
             getLoaiBaoCao={getLoaiBaoCao}
             duLieuTienTrinh={duLieuTienTrinh}
+            getMauPhatHanhSelecting={getMauPhatHanhSelecting}
           />
         </Layout.Content>
       </Layout.Sider>
@@ -68,10 +73,10 @@ export default function DangXuLyPage ({
         closeModal={() => {
           setVisibleCreateModal(false)
         }}
-        coQuanChuTriList={data.coQuanChuTriList}
-        mauBaoCao={data.mauBaoCao}
-        tieuChi={data.tieuChi}
-        getTieuChi={getTieuChi}
+        coQuanChuTriList={coQuanChuTriList}
+        mauBaoCao={mauBaoCao}
+        tieuChi={tieuChi}
+        getTieuChiByCoQuanChuTri={getTieuChiByCoQuanChuTri}
         addMauPhatHanh={addMauPhatHanh}
         duLieuTienTrinh={duLieuTienTrinh}
       />

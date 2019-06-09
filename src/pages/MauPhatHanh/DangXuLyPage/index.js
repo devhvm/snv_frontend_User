@@ -4,7 +4,6 @@ import {
   getCoQuanChuTriList,
   getMauPhatHanh,
   getLoaiBaoCao,
-  getTieuChi,
   addMauPhatHanh
 } from '../../../reducers/mauPhatHanh'
 import {
@@ -18,12 +17,14 @@ import {
   addNewTab,
   changeActiveTab
 } from '../../../reducers/tab'
+import { getTieuChiByCoQuanChuTri } from '../../../reducers/tieuChi'
 
 export default connect(
   state => ({
-    data: state.mauPhatHanh,
+    ...state.mauPhatHanh,
     ...state.duLieuTienTrinh,
-    ...state.tab
+    ...state.tab,
+    ...state.tieuChi
   }),
   {
     fecthTab,
@@ -34,7 +35,7 @@ export default connect(
     getMauPhatHanh,
     addMauPhatHanh,
     getLoaiBaoCao,
-    getTieuChi,
+    getTieuChiByCoQuanChuTri,
     getDuLieuTienTrinh,
     getCoQuanHanhChinh,
     upDateDuLieuTienTrinh
