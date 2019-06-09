@@ -4,7 +4,8 @@ import {
   getCoQuanChuTriList,
   getMauPhatHanh,
   getLoaiBaoCao,
-  addMauPhatHanh
+  addMauPhatHanh,
+  deleteMauPhatHanh
 } from '../../../reducers/mauPhatHanh'
 import {
   getDuLieuTienTrinh,
@@ -38,6 +39,7 @@ export default connect(
     getTieuChiByCoQuanChuTri,
     getDuLieuTienTrinh,
     getCoQuanHanhChinh,
-    upDateDuLieuTienTrinh
+    upDateDuLieuTienTrinh,
+    deleteMauPhatHanh
   }
 )(DangXuLyPage)

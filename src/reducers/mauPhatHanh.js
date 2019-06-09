@@ -64,6 +64,17 @@ export const addMauPhatHanh = item => dispatch => {
     })
 }
 
+export const deleteMauPhatHanh = maMauPhatHanh => dispatch => {
+  rest
+    .delete(`donviphathanh/api/mau-phat-hanh/${maMauPhatHanh}`)
+    .then(res => {
+      dispatch(getDuLieuTienTrinh())
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
 const getCoQuanChuTriListRequest = createAction(CO_QUAN_CHU_TRI)
 const getMauPhatHanhRequest = createAction(MAU_PHAT_HANH)
 const getLoaiBaoCaoRequest = createAction(MAU_BAO_CAO)

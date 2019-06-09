@@ -24,7 +24,8 @@ export default function DangXuLyPage ({
   getDuLieuTienTrinh,
   getCoQuanHanhChinh,
   upDateDuLieuTienTrinh,
-  getMauPhatHanhSelecting
+  getMauPhatHanhSelecting,
+  deleteMauPhatHanh
 }) {
   useEffect(() => {
     getCoQuanHanhChinh()
@@ -44,6 +45,7 @@ export default function DangXuLyPage ({
           duLieuTienTrinh={duLieuTienTrinh}
           mauPhatHanh={mauPhatHanh}
           upDateDuLieuTienTrinh={upDateDuLieuTienTrinh}
+          deleteMauPhatHanh={deleteMauPhatHanh}
         />
       </Layout.Content>
       <Layout.Sider

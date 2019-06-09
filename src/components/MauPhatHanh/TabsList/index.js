@@ -12,7 +12,8 @@ export default function TabList ({
   changeActiveTab,
   duLieuTienTrinh,
   mauPhatHanh,
-  upDateDuLieuTienTrinh
+  upDateDuLieuTienTrinh,
+  deleteMauPhatHanh
 }) {
   useEffect(() => {
     fecthTab()
@@ -37,6 +38,7 @@ export default function TabList ({
                 duLieuTienTrinh={duLieuTienTrinh}
                 mauPhatHanh={mauPhatHanh}
                 upDateDuLieuTienTrinh={upDateDuLieuTienTrinh}
+                deleteMauPhatHanh={deleteMauPhatHanh}
               />
             </TabPane>
           ))}

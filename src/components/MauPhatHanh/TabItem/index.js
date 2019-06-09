@@ -24,7 +24,8 @@ function TabItem ({
   form,
   duLieuTienTrinh,
   mauPhatHanh,
-  upDateDuLieuTienTrinh
+  upDateDuLieuTienTrinh,
+  deleteMauPhatHanh
 }) {
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
   const [visibleEditModal, setVisibleEditModal] = useState(false)
@@ -343,7 +344,9 @@ function TabItem ({
         <Row type='flex' justify='space-between'>
           <ButtonTopTabItem
             type='primary'
-            onClick={() => setVisibleDeleteModal(true)}
+            onClick={() => {
+              setVisibleDeleteModal(true)
+            }}
           >
             Xoá
           </ButtonTopTabItem>
@@ -636,6 +639,8 @@ function TabItem ({
         closeModal={() => {
           setVisibleDeleteModal(false)
         }}
+        deleteMauPhatHanh={deleteMauPhatHanh}
+        mauPhatHanh={mauPhatHanh}
       />
     </Fragment>
   )
