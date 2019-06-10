@@ -55,7 +55,6 @@ export default function DangXuLiMenuSider ({
         title={
           <>
             <Icon type='user' />
-            {/* Danh sách tạo mới */}
             {duLieuTienTrinh &&
               duLieuTienTrinh.tienTrinhXuLys[0].tienTrinhBatDau.name}
           </>
