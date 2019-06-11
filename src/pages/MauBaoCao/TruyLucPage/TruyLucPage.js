@@ -36,7 +36,6 @@ export default function TruyLucPage ({
           marginLeft: '10px',
           background: '#fff'
         }}
-        // collapsed={collapsed}
       >
         <Layout.Content>
           <TruyLucMenuSider

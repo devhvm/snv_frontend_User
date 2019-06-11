@@ -20,8 +20,8 @@ export default function YeuCauDieuChinhPage ({
   getMauPhatHanhSelecting
 }) {
   useEffect(() => {
-    // getMauPhatHanh()
-  })
+    getCoQuanHanhChinh()
+  }, [])
 
   return (
     <Layout>
@@ -44,7 +44,6 @@ export default function YeuCauDieuChinhPage ({
           marginLeft: '10px',
           background: '#fff'
         }}
-        // collapsed={collapsed}
       >
         <Layout.Content>
           <YeuCauDieuChinhMenuSider

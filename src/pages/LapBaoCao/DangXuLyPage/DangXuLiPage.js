@@ -39,7 +39,6 @@ export default function DangXuLiPage ({
           marginLeft: '10px',
           background: '#fff'
         }}
-        // collapsed={collapsed}
       >
         <Layout.Content>
           <DangXuLiMenuSider

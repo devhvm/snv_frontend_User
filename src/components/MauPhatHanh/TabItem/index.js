@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import DeleteModal from '../DeleteModal'
 import EditTableModal from '../EditTableModal'
 import InputItem from '../../InputItem'
-import Spreadsheet from 'x-data-spreadsheet'
+// import Spreadsheet from 'x-data-spreadsheet'
 
 const FormSearchMauPhatHanh = styled(Form)`
   display: grid;
@@ -29,7 +29,7 @@ function TabItem ({
 }) {
   const [visibleDeleteModal, setVisibleDeleteModal] = useState(false)
   const [visibleEditModal, setVisibleEditModal] = useState(false)
-  const [visibleEditTable, setVisibleEditTable] = useState(false)
+  const [visibleEditTable] = useState(false)
   console.log('mauPhatHanh', mauPhatHanh)
   console.log('duLieuTienTrinh', duLieuTienTrinh)
   const initTieuChiRow = (index, tieuChiDetail) => {
@@ -368,7 +368,7 @@ function TabItem ({
                       message: 'Vui lòng không để trống thẻ này'
                     }
                   ]}
-                  disabled='disabled'
+                  initialValue={mauPhatHanh ? mauPhatHanh.mauPhatHanhCode : ''}
                 />
                 <InputItem
                   form={form}
@@ -380,6 +380,7 @@ function TabItem ({
                       message: 'Vui lòng không để trống thẻ này'
                     }
                   ]}
+                  initialValue={mauPhatHanh ? mauPhatHanh.name : ''}
                   // disabled='disabled'
                 />
                 <InputItem
@@ -502,57 +503,57 @@ function TabItem ({
               ]}
             />
             {/* <div id='edit-table' /> */}
-            <Button
-              type='primary'
-              onClick={() => {
-                setVisibleEditTable(true)
-                const editTable = document.getElementById('edit-table')
-                if (typeof editTable !== 'undefined' && editTable != null) {
-                  const s = new Spreadsheet(editTable)
-                  s.loadData({
-                    freeze: 'B3',
-                    styles: [
-                      {
-                        bgcolor: '#f4f5f8',
-                        textwrap: true,
-                        color: '#900b09',
-                        border: {
-                          top: ['thin', '#0366d6'],
-                          bottom: ['thin', '#0366d6'],
-                          right: ['thin', '#0366d6'],
-                          left: ['thin', '#0366d6']
-                        }
-                      }
-                    ],
-                    merges: ['C3:D4'],
-                    rows: {
-                      1: {
-                        cells: {
-                          0: { text: 'testingtesttestetst' },
-                          2: { text: 'testing' }
-                        }
-                      },
-                      2: {
-                        cells: {
-                          0: { text: 'render', style: 0 },
-                          1: { text: 'Hello' },
-                          2: { text: 'haha', merge: [1, 1] }
-                        }
-                      },
-                      8: {
-                        cells: {
-                          8: { text: 'border test', style: 0 }
-                        }
-                      }
-                    }
-                  }).change(cdata => {
-                    console.log(cdata)
-                  })
-                }
-              }}
-            >
-              Edit
-            </Button>
+            {/* <Button */}
+            {/* type='primary' */}
+            {/* onClick={() => { */}
+            {/* setVisibleEditTable(true) */}
+            {/* const editTable = document.getElementById('edit-table') */}
+            {/* if (typeof editTable !== 'undefined' && editTable != null) { */}
+            {/* const s = new Spreadsheet(editTable) */}
+            {/* s.loadData({ */}
+            {/* freeze: 'B3', */}
+            {/* styles: [ */}
+            {/* { */}
+            {/* bgcolor: '#f4f5f8', */}
+            {/* textwrap: true, */}
+            {/* color: '#900b09', */}
+            {/* border: { */}
+            {/* top: ['thin', '#0366d6'], */}
+            {/* bottom: ['thin', '#0366d6'], */}
+            {/* right: ['thin', '#0366d6'], */}
+            {/* left: ['thin', '#0366d6'] */}
+            {/* } */}
+            {/* } */}
+            {/* ], */}
+            {/* merges: ['C3:D4'], */}
+            {/* rows: { */}
+            {/* 1: { */}
+            {/* cells: { */}
+            {/* 0: { text: 'testingtesttestetst' }, */}
+            {/* 2: { text: 'testing' } */}
+            {/* } */}
+            {/* }, */}
+            {/* 2: { */}
+            {/* cells: { */}
+            {/* 0: { text: 'render', style: 0 }, */}
+            {/* 1: { text: 'Hello' }, */}
+            {/* 2: { text: 'haha', merge: [1, 1] } */}
+            {/* } */}
+            {/* }, */}
+            {/* 8: { */}
+            {/* cells: { */}
+            {/* 8: { text: 'border test', style: 0 } */}
+            {/* } */}
+            {/* } */}
+            {/* } */}
+            {/* }).change(cdata => { */}
+            {/* console.log(cdata) */}
+            {/* }) */}
+            {/* } */}
+            {/* }} */}
+            {/* > */}
+            {/* Edit */}
+            {/* </Button> */}
             <EditTableModal
               visible={visibleEditModal}
               closeModal={() => {

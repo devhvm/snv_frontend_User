@@ -36,7 +36,6 @@ export default function KyDuyetPage ({
           marginLeft: '10px',
           background: '#fff'
         }}
-        // collapsed={collapsed}
       >
         <Layout.Content>
           <KyDuyetMenuSider

@@ -8,7 +8,8 @@ export default function YeuCauDieuChinhMenuSider ({
   getLoaiBaoCao,
   addNewTab,
   changeActiveTab,
-  tabList
+  tabList,
+  duLieuTienTrinh
 }) {
   const SubMenu = Menu.SubMenu
 
@@ -28,23 +29,14 @@ export default function YeuCauDieuChinhMenuSider ({
       dataIndex: 'tenMau'
     }
   ]
-  const dataSmall = [
-    {
-      key: '1',
-      maMau: '32',
-      tenMau: 'Báo Cáo Thanh Niên'
-    },
-    {
-      key: '2',
-      maMau: '33',
-      tenMau: 'Báo Cáo Thanh Niên'
-    },
-    {
-      key: '3',
-      maMau: '34',
-      tenMau: 'Báo Cáo Thanh Niên'
-    }
-  ]
+
+  const dataTable =
+    duLieuTienTrinh &&
+    duLieuTienTrinh.tienTrinhXuLys[1].duLieuTienTrinh.map(item => ({
+      key: item.id,
+      maMau: item.duLieuCode,
+      tenMau: item.name
+    }))
 
   return (
     <Menu
@@ -111,7 +103,7 @@ export default function YeuCauDieuChinhMenuSider ({
           </Form>
           <ListTable
             columns={columnsSmall}
-            dataSource={dataSmall}
+            dataSource={dataTable}
             size='small'
             onRow={record => {
               return {

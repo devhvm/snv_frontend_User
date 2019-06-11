@@ -117,6 +117,7 @@ export default function DangXuLiMenuSider ({
           <ListTable
             columns={columnsSmall}
             dataSource={dataTable}
+            pagination={{ defaultPageSize: 5 }}
             size='small'
             onRow={record => {
               return {

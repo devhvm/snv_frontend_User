@@ -1,22 +1,32 @@
 import { connect } from 'react-redux'
 import TruyLucPage from './TruyLucPage'
-import { getCoQuanChuTri } from '../../../reducers/mauPhatHanh'
+import {
+  getCoQuanChuTriList,
+  getMauPhatHanh
+} from '../../../reducers/mauPhatHanh'
 import {
   fecthTab,
   removeTab,
   addNewTab,
   changeActiveTab
 } from '../../../reducers/tab'
+import {
+  getCoQuanHanhChinh
+  // getDuLieuTienTrinh
+} from '../../../reducers/duLieuTienTrinh'
 export default connect(
   state => ({
-    data: state.mauPhatHanh,
-    tab: state.tab
+    ...state.mauPhatHanh,
+    ...state.tab,
+    ...state.duLieuTienTrinh
   }),
   {
     fecthTab,
     removeTab,
     addNewTab,
     changeActiveTab,
-    getCoQuanChuTri
+    getCoQuanChuTriList,
+    getCoQuanHanhChinh,
+    getMauPhatHanh
   }
 )(TruyLucPage)

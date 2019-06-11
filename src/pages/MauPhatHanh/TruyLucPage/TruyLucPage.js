@@ -4,29 +4,37 @@ import TabsList from '../../../components/MauPhatHanh/TabsList'
 import TruyLucMenuSider from '../../../components/MauPhatHanh/MenuSider/truyLuc'
 
 export default function TruyLucPage ({
-  data,
-  tab,
+  mauPhatHanh,
+  mauBaoCao,
+  duLieuTienTrinh,
+  tabList,
+  activeTab,
   fecthTab,
   addNewTab,
   removeTab,
   changeActiveTab,
-  getCoQuanChuTri,
   getMauPhatHanh,
-  getLoaiBaoCao,
-  getTieuChi
+  getDuLieuTienTrinh,
+  getCoQuanHanhChinh,
+  upDateDuLieuTienTrinh,
+  getMauPhatHanhSelecting
 }) {
   useEffect(() => {
-    // getMauPhatHanh()
-  })
+    getCoQuanHanhChinh()
+  }, [])
 
   return (
     <Layout>
       <Layout.Content style={{ background: '#fff' }}>
         <TabsList
-          tab={tab}
+          tabList={tabList}
+          activeTab={activeTab}
           fecthTab={fecthTab}
           removeTab={removeTab}
           changeActiveTab={changeActiveTab}
+          duLieuTienTrinh={duLieuTienTrinh}
+          mauPhatHanh={mauPhatHanh}
+          upDateDuLieuTienTrinh={upDateDuLieuTienTrinh}
         />
       </Layout.Content>
       <Layout.Sider
@@ -36,15 +44,15 @@ export default function TruyLucPage ({
           marginLeft: '10px',
           background: '#fff'
         }}
-        // collapsed={collapsed}
       >
         <Layout.Content>
           <TruyLucMenuSider
-            getCoQuanChuTri={getCoQuanChuTri}
             addNewTab={addNewTab}
-            tabList={tab.tabList}
+            getMauPhatHanh={getMauPhatHanh}
+            tabList={tabList}
             changeActiveTab={changeActiveTab}
-            getLoaiBaoCao={getLoaiBaoCao}
+            duLieuTienTrinh={duLieuTienTrinh}
+            getMauPhatHanhSelecting={getMauPhatHanhSelecting}
           />
         </Layout.Content>
       </Layout.Sider>
