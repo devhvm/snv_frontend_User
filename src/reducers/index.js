@@ -6,6 +6,8 @@ import mauPhatHanh from './mauPhatHanh'
 import duLieuTienTrinh from './duLieuTienTrinh'
 import tab from './tab'
 import tieuChi from './tieuChi'
+import loaiBaoCao from './loaiBaoCao'
+import coQuanChuTri from './coQuanChuTri'
 
 export default history =>
   combineReducers({
@@ -15,5 +17,7 @@ export default history =>
     mauPhatHanh,
     tab,
     duLieuTienTrinh,
-    tieuChi
+    tieuChi,
+    loaiBaoCao,
+    coQuanChuTri
   })

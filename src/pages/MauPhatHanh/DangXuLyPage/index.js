@@ -1,9 +1,7 @@
 import { connect } from 'react-redux'
 import DangXuLyPage from './DangXuLyPage'
 import {
-  getCoQuanChuTriList,
   getMauPhatHanh,
-  getLoaiBaoCao,
   addMauPhatHanh,
   deleteMauPhatHanh
 } from '../../../reducers/mauPhatHanh'
@@ -20,12 +18,17 @@ import {
 } from '../../../reducers/tab'
 import { getTieuChiByCoQuanChuTri } from '../../../reducers/tieuChi'
 
+import { getLoaiBaoCao } from '../../../reducers/loaiBaoCao'
+import { getCoQuanChuTriList } from '../../../reducers/coQuanChuTri'
+
 export default connect(
   state => ({
     ...state.mauPhatHanh,
     ...state.duLieuTienTrinh,
     ...state.tab,
-    ...state.tieuChi
+    ...state.tieuChi,
+    ...state.loaiBaoCao,
+    ...state.coQuanChuTri
   }),
   {
     fecthTab,

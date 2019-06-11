@@ -6,15 +6,6 @@ export const DU_LIEU_TIEN_TRINH = 'DU_LIEU_TIEN_TRINH'
 export const CO_QUAN_HANH_CHINH = 'CO_QUAN_HANH_CHINH'
 
 // Action Creator
-// export const getDuLieuTienTrinh = () => dispatch => {
-//   rest.get('quytrinhdonvi/api/du-lieu-tien-trinhs-detail/1/TTMPHNEW')
-//     .then(res => {
-//       dispatch(getDuLieuTienTrinhRequest(res.data))
-//     })
-//     .catch(err => {
-//       console.log(err)
-//     })
-// }
 
 export const getCoQuanHanhChinh = () => dispatch => {
   rest
