@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { handleActions, createAction } from 'redux-actions'
+import { rest } from '../utils/rest'
 
 // Action
 export const LOGIN_STATUS = 'LOGIN_STATUS'
@@ -18,6 +19,7 @@ export const loginReq = item => dispatch => {
     .then(res => {
       localStorage.setItem('jwt_token', res.data.id_token)
       localStorage.setItem('loginStatus', true)
+      dispatch(userInfo())
     })
     .then(() => {
       dispatch(setLoginStatus(true))
@@ -33,6 +35,17 @@ export const logOutReq = () => dispatch => {
   localStorage.removeItem('jwt_token')
   localStorage.removeItem('loginStatus')
   window.location.reload()
+}
+
+export const userInfo = () => dispatch => {
+  rest
+    .get('/api/nguoiDung/admin')
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
 export const setLoginStatus = status => dispatch => {
