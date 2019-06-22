@@ -1,21 +1,24 @@
 import React from 'react'
-import { Input, InputNumber, Form, Select, DatePicker } from 'antd'
+import { Input, InputNumber, Form, Select, Checkbox, DatePicker } from 'antd'
 
-const { TextArea } = Input
+const { TextArea, Group, Password } = Input
 const { Item } = Form
 
 function InputItem ({
   form,
   label,
+  style,
   field,
+  placeholder,
   initialValue = '',
   type = 'text',
-  placeholder,
   rules,
+  disabled,
   autosize,
   options,
-  style,
-  disabled
+  group,
+  prefix,
+  checkboxLabel
 }) {
   return (
     <Item label={label}>
@@ -24,12 +27,27 @@ function InputItem ({
           <InputNumber style={style} />
         ) : type === 'textarea' ? (
           <TextArea style={style} autosize={autosize} />
+        ) : type === 'password' ? (
+          <Password
+            prefix={prefix}
+            style={style}
+            type='password'
+            placeholder={placeholder}
+          />
         ) : type === 'select' ? (
-          <Select>{options}</Select>
+          <Select style={style}>{options}</Select>
+        ) : type === 'disabled' ? (
+          <Input style={style} placeholder={placeholder} disabled />
+        ) : type === 'hidden' ? (
+          <Input prefix={prefix} style={style} type='hidden' />
+        ) : type === 'group' ? (
+          <Group compact>{group}</Group>
         ) : type === 'datepicker' ? (
           <DatePicker style={style} />
+        ) : type === 'checkbox' ? (
+          <Checkbox>{checkboxLabel}</Checkbox>
         ) : (
-          <Input placeholder={placeholder} disabled={disabled} style={style} />
+          <Input prefix={prefix} style={style} placeholder={placeholder} />
         )
       )}
     </Item>

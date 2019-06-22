@@ -19,7 +19,6 @@ import LapBaoCaoYeuCauDieuChinh from '../pages/LapBaoCao/YeuCauDieuChinhPage'
 import LapBaoCaoKyDuyet from '../pages/LapBaoCao/KyDuyetPage'
 import LapBaoCaoTruyLuc from '../pages/LapBaoCao/TruyLucPage'
 import { connect } from 'react-redux'
-import { loginReq } from '../reducers/login'
 // import {
 //   getCoQuanHanhChinh,
 //   getDuLieuTienTrinh
@@ -126,20 +125,13 @@ function DashboardPage () {
           </Layout>
         </RootLayout>
       ) : (
-        <LoginPage
-        // ExContext={ExContext}
-        // loginShow={loginShow}
-        />
+        <LoginPage />
       )}
     </div>
   )
 }
 
 export default connect(
-  state => ({
-    ...state.login
-  }),
-  {
-    loginReq
-  }
+  state => ({}),
+  {}
 )(DashboardPage)
