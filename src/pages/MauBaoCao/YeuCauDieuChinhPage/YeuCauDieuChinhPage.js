@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Layout } from 'antd'
-import TabsList from '../../../components/MauPhatHanh/TabsList'
+import TabsList from '../../../components/MauBaoCao/TabsList'
 import YeuCauDieuChinhMenuSider from '../../../components/MauPhatHanh/MenuSider/yeuCauDieuChinh'
 
 export default function YeuCauDieuChinhPage ({
@@ -22,6 +22,12 @@ export default function YeuCauDieuChinhPage ({
   return (
     <Layout>
       <Layout.Content style={{ background: '#fff' }}>
+        {/* <TabsList */}
+        {/* tab={tab} */}
+        {/* fecthTab={fecthTab} */}
+        {/* removeTab={removeTab} */}
+        {/* changeActiveTab={changeActiveTab} */}
+        {/* /> */}
         <TabsList
           tab={tab}
           fecthTab={fecthTab}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Layout } from 'antd'
-import TabsList from '../../../components/MauPhatHanh/TabsList'
+import TabsList from '../../../components/MauBaoCao/TabsList'
 import YeuCauDieuChinhMenuSider from '../../../components/MauPhatHanh/MenuSider/yeuCauDieuChinh'
 
 export default function YeuCauDieuChinhPage ({
