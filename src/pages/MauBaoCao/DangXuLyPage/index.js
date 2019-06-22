@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import DangXuLiPage from './DangXuLiPage'
+import DangXuLyPage from './DangXuLyPage'
 import {
   getCoQuanChuTri,
   getMauPhatHanh,
@@ -28,4 +28,4 @@ export default connect(
     getLoaiBaoCao,
     getTieuChi
   }
-)(DangXuLiPage)
+)(DangXuLyPage)

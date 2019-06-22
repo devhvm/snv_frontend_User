@@ -4,12 +4,13 @@ import { rest } from '../utils/rest'
 // Action
 
 // Action Creator
-export const loginReq = form => {
+export const loginReq = form => dispatch => {
   rest
     .post('http://vtools.xyz:9999/api/authenticate', form)
     .then(res => {
       localStorage.setItem('id_token', res.data.id_token)
       localStorage.setItem('loginStatus', true)
+      dispatch(userInfo())
     })
     .then(() => {
       window.location.reload()
@@ -27,10 +28,19 @@ export const logOutReq = () => dispatch => {
   window.location.reload()
 }
 
-// Initial State
-const initialState = {
-  loginStatus: false
+export const userInfo = () => dispatch => {
+  rest
+    .get('/api/nguoiDung/admin')
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
+
+// Initial State
+const initialState = {}
 
 // reducer
 export default handleActions({}, initialState)
