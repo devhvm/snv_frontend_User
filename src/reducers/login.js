@@ -8,7 +8,7 @@ export const loginReq = form => dispatch => {
   rest
     .post('http://vtools.xyz:9999/api/authenticate', form)
     .then(res => {
-      localStorage.setItem('id_token', res.data.id_token)
+      localStorage.setItem('jwt_token', res.data.id_token)
       localStorage.setItem('loginStatus', true)
       dispatch(userInfo())
     })
