@@ -18,6 +18,7 @@ import LapBaoCaoDangXuLy from '../pages/LapBaoCao/DangXuLyPage'
 import LapBaoCaoYeuCauDieuChinh from '../pages/LapBaoCao/YeuCauDieuChinhPage'
 import LapBaoCaoKyDuyet from '../pages/LapBaoCao/KyDuyetPage'
 import LapBaoCaoTruyLuc from '../pages/LapBaoCao/TruyLucPage'
+import TongHopDuLieuDangXuLy from '../pages/TongHopDuLieu/DangXuly'
 import { connect } from 'react-redux'
 // import {
 //   getCoQuanHanhChinh,
@@ -96,6 +97,16 @@ function DashboardPage () {
       path: '/lapbaocao/danhsachchokyduyet',
       exact: true,
       component: LapBaoCaoKyDuyet
+    },
+    {
+      path: '/lapbaocao/danhsachchokyduyet',
+      exact: true,
+      component: LapBaoCaoKyDuyet
+    },
+    {
+      path: '/tonghopdulieu/dangsachdangxuly',
+      exact: true,
+      component: TongHopDuLieuDangXuLy
     },
     { path: '/lapbaocao/truyluc', exact: true, component: LapBaoCaoTruyLuc }
   ]
