@@ -26,19 +26,19 @@ function EditableTable ({ form }) {
 
   let columnsUp = [
     {
-      title: 'name',
+      title: 'Mã',
       dataIndex: 'name',
       width: '25%',
       editable: true
     },
     {
-      title: 'age',
+      title: 'Tuổi',
       dataIndex: 'age',
       width: '15%',
       editable: true
     },
     {
-      title: 'address',
+      title: 'Tên',
       dataIndex: 'address',
       width: '40%',
       editable: true
