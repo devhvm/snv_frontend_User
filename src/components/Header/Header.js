@@ -48,125 +48,135 @@ export default function UserHeader ({
 
   const menuList = [
     {
-      name: 'PHÁT HÀNH MẪU',
-      child: [
-        {
-          screenCode: 5,
-          name: 'DANH SÁCH XỬ LÝ',
-          link: '/mauphathanh/danhsachdangxuly'
-        },
-        {
-          screenCode: 6,
-          name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-          link: '/mauphathanh/danhsachyeucaudieuchinh'
-        },
-        {
-          screenCode: 7,
-          name: 'DANH SÁCH KÝ DUYỆT',
-          link: '/mauphathanh/danhsachchokyduyet'
-        },
-        {
-          screenCode: 8,
-          name: 'TRUY LỤC',
-          link: '/mauphathanh/truyluc'
-        }
-      ]
+      name: 'BÁO CÁO HẠNG MỤC',
+      link: '/baocaohangmuc',
+      screenCode: 1
     },
     {
-      name: 'TẠO MẪU BÁO CÁO',
-      child: [
-        {
-          screenCode: 9,
-          name: 'DANH SÁCH ĐANG XỬ LÝ',
-          link: '/maubaocao/danhsachdangxuly'
-        },
-        {
-          screenCode: 10,
-          name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-          link: '/maubaocao/danhsachyeucaudieuchinh'
-        },
-        {
-          screenCode: 11,
-          name: 'DANH SÁCH CHỜ KÝ DUYỆT',
-          link: '/maubaocao/danhsachchokyduyet'
-        },
-        {
-          screenCode: 12,
-          name: 'TRUY LỤC',
-          link: '/maubaocao/truyluc'
-        }
-      ]
-    },
-    {
-      name: 'LẬP BÁO CÁO',
-      child: [
-        {
-          screenCode: 13,
-          name: 'DANH SÁCH ĐANG XỬ LÝ',
-          link: '/lapbaocao/danhsachdangxuly'
-        },
-        {
-          screenCode: 14,
-          name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-          link: '/lapbaocao/danhsachyeucaudieuchinh'
-        },
-        {
-          screenCode: 15,
-          name: 'DANH SÁCH CHỜ KÝ DUYỆT',
-          link: '/lapbaocao/danhsachchokyduyet'
-        },
-        {
-          screenCode: 16,
-          name: 'TRUY LỤC',
-          link: '/lapbaocao/truyluc'
-        }
-      ]
-    },
-    {
-      name: 'XỬ LÝ BÁO CÁO',
-      child: [
-        {
-          name: 'TIẾP NHẬN BÁO CÁO',
-          child: [
-            {
-              name: 'PHÊ DUYỆT BÁO CÁO',
-              link: '/tiepnhanbaocao/pheduyetbaocao',
-              screenCode: 17
-            },
-            {
-              name: 'TRUY LỤC',
-              link: '/tiepnhanbaocao/pheduyetbaocao',
-              screenCode: 18
-            }
-          ]
-        },
-        {
-          name: 'TỔNG HỢP DỮ LIỆU',
-          child: [
-            {
-              name: 'DANH SÁCH ĐANG XỬ LÝ',
-              link: '/tonghopdulieu/dangsachdangxuly',
-              screenCode: 19
-            },
-            {
-              name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
-              link: '/tonghopdulieu/danhsachyeucaudieuchinh',
-              screenCode: 20
-            },
-            {
-              name: 'DANH SÁCH CHỜ KÝ DUYỆT',
-              link: '/tonghopdulieu/danhsachchokyduyet',
-              screenCode: 21
-            },
-            {
-              name: 'TRUY LỤC',
-              link: '/tonghopdulieu/truyluc',
-              screenCode: 22
-            }
-          ]
-        }
-      ]
+      name: 'TỔNG HỢP',
+      link: '/tonghop',
+      screenCode: 2
     }
+    // {
+    //   name: 'PHÁT HÀNH MẪU',
+    //   child: [
+    //     {
+    //       screenCode: 5,
+    //       name: 'DANH SÁCH XỬ LÝ',
+    //       link: '/mauphathanh/danhsachdangxuly'
+    //     },
+    //     {
+    //       screenCode: 6,
+    //       name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
+    //       link: '/mauphathanh/danhsachyeucaudieuchinh'
+    //     },
+    //     {
+    //       screenCode: 7,
+    //       name: 'DANH SÁCH KÝ DUYỆT',
+    //       link: '/mauphathanh/danhsachchokyduyet'
+    //     },
+    //     {
+    //       screenCode: 8,
+    //       name: 'TRUY LỤC',
+    //       link: '/mauphathanh/truyluc'
+    //     }
+    //   ]
+    // },
+    // {
+    //   name: 'TẠO MẪU BÁO CÁO',
+    //   child: [
+    //     {
+    //       screenCode: 9,
+    //       name: 'DANH SÁCH ĐANG XỬ LÝ',
+    //       link: '/maubaocao/danhsachdangxuly'
+    //     },
+    //     {
+    //       screenCode: 10,
+    //       name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
+    //       link: '/maubaocao/danhsachyeucaudieuchinh'
+    //     },
+    //     {
+    //       screenCode: 11,
+    //       name: 'DANH SÁCH CHỜ KÝ DUYỆT',
+    //       link: '/maubaocao/danhsachchokyduyet'
+    //     },
+    //     {
+    //       screenCode: 12,
+    //       name: 'TRUY LỤC',
+    //       link: '/maubaocao/truyluc'
+    //     }
+    //   ]
+    // },
+    // {
+    //   name: 'LẬP BÁO CÁO',
+    //   child: [
+    //     {
+    //       screenCode: 13,
+    //       name: 'DANH SÁCH ĐANG XỬ LÝ',
+    //       link: '/lapbaocao/danhsachdangxuly'
+    //     },
+    //     {
+    //       screenCode: 14,
+    //       name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
+    //       link: '/lapbaocao/danhsachyeucaudieuchinh'
+    //     },
+    //     {
+    //       screenCode: 15,
+    //       name: 'DANH SÁCH CHỜ KÝ DUYỆT',
+    //       link: '/lapbaocao/danhsachchokyduyet'
+    //     },
+    //     {
+    //       screenCode: 16,
+    //       name: 'TRUY LỤC',
+    //       link: '/lapbaocao/truyluc'
+    //     }
+    //   ]
+    // },
+    // {
+    //   name: 'XỬ LÝ BÁO CÁO',
+    //   child: [
+    //     {
+    //       name: 'TIẾP NHẬN BÁO CÁO',
+    //       child: [
+    //         {
+    //           name: 'PHÊ DUYỆT BÁO CÁO',
+    //           link: '/tiepnhanbaocao/pheduyetbaocao',
+    //           screenCode: 17
+    //         },
+    //         {
+    //           name: 'TRUY LỤC',
+    //           link: '/tiepnhanbaocao/pheduyetbaocao',
+    //           screenCode: 18
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       name: 'TỔNG HỢP DỮ LIỆU',
+    //       child: [
+    //         {
+    //           name: 'DANH SÁCH ĐANG XỬ LÝ',
+    //           link: '/tonghopdulieu/dangsachdangxuly',
+    //           screenCode: 19
+    //         },
+    //         {
+    //           name: 'DANH SÁCH YÊU CẦU ĐIỀU CHỈNH',
+    //           link: '/tonghopdulieu/danhsachyeucaudieuchinh',
+    //           screenCode: 20
+    //         },
+    //         {
+    //           name: 'DANH SÁCH CHỜ KÝ DUYỆT',
+    //           link: '/tonghopdulieu/danhsachchokyduyet',
+    //           screenCode: 21
+    //         },
+    //         {
+    //           name: 'TRUY LỤC',
+    //           link: '/tonghopdulieu/truyluc',
+    //           screenCode: 22
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // }
   ]
 
   return (
@@ -185,29 +195,34 @@ export default function UserHeader ({
           <AppName key='23'>
             <Link to='/'>SNV</Link>
           </AppName>
-          {menuList.map((item, index) => (
-            <Menu.SubMenu key={index} title={item.name}>
-              {item.child
-                ? item.child.map(itemChild =>
-                  itemChild.child ? (
-                    <Menu.SubMenu
-                      title={itemChild.name}
-                      style={{ width: '200px' }}
-                    >
-                      {itemChild.child.map(itemChild2 => (
-                        <Menu.Item key={itemChild2.screenCode}>
-                          <Link to={itemChild2.link}>{itemChild2.name}</Link>
-                        </Menu.Item>
-                      ))}
-                    </Menu.SubMenu>
-                  ) : (
-                    <Menu.Item key={itemChild.screenCode}>
-                      <Link to={itemChild.link}>{itemChild.name}</Link>
-                    </Menu.Item>
-                  )
-                )
-                : ''}
-            </Menu.SubMenu>
+          {/* {menuList.map((item, index) => ( */}
+          {/* <Menu.SubMenu key={index} title={item.name}> */}
+          {/* {item.child */}
+          {/* ? item.child.map(itemChild => */}
+          {/* itemChild.child ? ( */}
+          {/* <Menu.SubMenu */}
+          {/* title={itemChild.name} */}
+          {/* style={{ width: '200px' }} */}
+          {/* > */}
+          {/* {itemChild.child.map(itemChild2 => ( */}
+          {/* <Menu.Item key={itemChild2.screenCode}> */}
+          {/* <Link to={itemChild2.link}>{itemChild2.name}</Link> */}
+          {/* </Menu.Item> */}
+          {/* ))} */}
+          {/* </Menu.SubMenu> */}
+          {/* ) : ( */}
+          {/* <Menu.Item key={itemChild.screenCode}> */}
+          {/* <Link to={itemChild.link}>{itemChild.name}</Link> */}
+          {/* </Menu.Item> */}
+          {/* ) */}
+          {/* ) */}
+          {/*: ''} */}
+          {/* </Menu.SubMenu> */}
+          {/* ))} */}
+          {menuList.map(item => (
+            <Menu.Item key={item.screenCode}>
+              <Link to={item.link}>{item.name}</Link>
+            </Menu.Item>
           ))}
           <Menu.SubMenu
             key='24'

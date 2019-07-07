@@ -108,7 +108,17 @@ function DashboardPage () {
       exact: true,
       component: TongHopDuLieuDangXuLy
     },
-    { path: '/lapbaocao/truyluc', exact: true, component: LapBaoCaoTruyLuc }
+    { path: '/lapbaocao/truyluc', exact: true, component: LapBaoCaoTruyLuc },
+    {
+      path: '/baocaohangmuc',
+      exact: true,
+      component: TongHopDuLieuDangXuLy
+    },
+    {
+      path: '/tonghop',
+      exact: true,
+      component: TongHopDuLieuDangXuLy
+    }
   ]
 
   return (
