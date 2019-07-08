@@ -19,6 +19,7 @@ import LapBaoCaoYeuCauDieuChinh from '../pages/LapBaoCao/YeuCauDieuChinhPage'
 import LapBaoCaoKyDuyet from '../pages/LapBaoCao/KyDuyetPage'
 import LapBaoCaoTruyLuc from '../pages/LapBaoCao/TruyLucPage'
 import TongHopDuLieuDangXuLy from '../pages/TongHopDuLieu/DangXuly'
+import BaoCaoHangMuc from '../pages/BaoCaoHangMuc'
 import { connect } from 'react-redux'
 // import {
 //   getCoQuanHanhChinh,
@@ -112,7 +113,7 @@ function DashboardPage () {
     {
       path: '/baocaohangmuc',
       exact: true,
-      component: TongHopDuLieuDangXuLy
+      component: BaoCaoHangMuc
     },
     {
       path: '/tonghop',
