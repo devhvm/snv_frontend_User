@@ -48,7 +48,7 @@ function DonViChuQuan ({
   return (
     <>
       <Form>
-        <Item label='Upload Image'>
+        <Item label='Upload File'>
           {form.getFieldDecorator('file', {
             valuePropName: 'fileList',
             getValueFromEvent: resetFileField,

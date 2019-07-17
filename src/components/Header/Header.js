@@ -56,6 +56,11 @@ export default function UserHeader ({
       name: 'TỔNG HỢP',
       link: '/tonghop',
       screenCode: 2
+    },
+    {
+      name: 'DỰ THẢO',
+      link: '/duthao',
+      screenCode: 3
     }
     // {
     //   name: 'PHÁT HÀNH MẪU',
