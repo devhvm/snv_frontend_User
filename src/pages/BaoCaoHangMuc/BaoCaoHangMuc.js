@@ -6,16 +6,7 @@ import { Row, Col, Button, Form, Upload, Icon } from 'antd'
 const { Item } = Form
 const { Dragger } = Upload
 
-function DonViChuQuan ({
-  form,
-  donViChuQuanList,
-  donViChuQuanEditing,
-  getDonViChuQuan,
-  getDonViChuQuanEditing,
-  editDonViChuQuan,
-  addDonViChuQuan,
-  deleteDonViChuQuan
-}) {
+function DonViChuQuan ({ form, postExcelFile }) {
   // const { Column } = Table
   const [file, setFile] = useState()
   // const [addVisible, setAddVisible] = useState(false)
@@ -80,6 +71,7 @@ function DonViChuQuan ({
             onClick={() => {
               const formData = new FormData()
               formData.append('file', file)
+              postExcelFile(formData)
             }}
           >
             Send
